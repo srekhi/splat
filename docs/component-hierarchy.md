@@ -39,5 +39,21 @@ Main Logged In View
         - receives all private messages for current user (use 'selectAllPrivateChannels' selector)
       -DirectMessages:
         props: private messages 
+ + MainChannel
+   -ChannelHeaderContainer
+    -mapStateToProps
+      - receive channel from state.channels[id] (id comes from URL params)
+    -ChannelHeader
+      -props: channel name 
+      -props: count of users
+   -ChannelMessagesContainer
+     -mapStateToProps (from state.messages)
+      - receive channel from state.channels[id] (id comes from URL params)
+      - receive all messages for this channel (use selector fetchAllMessages(channelId))
+     -ChannelMessages
+      -props: channel_messages 
+      ChannelMessageItem
+        -props: channelMessage
+    
       
         
