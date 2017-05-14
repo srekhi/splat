@@ -15,24 +15,24 @@
  ## After logging in:
  ### LeftNav:
     - Header Container:
-      - mapStateToProps (from state.session):
-       - receive currentUser name 
-      - mapDispatchToProps
-        + receive logout action creator 
-      - Header:
-        + props: username
-        + display username 
-        + display 'Spack'
-        + render logout form (passing in logout action creator as props) 
-        + Logout Form: 
-          * props: receive logout 
-          * renders button with onClick handler to logout.
+      + mapStateToProps (from state.session):
+       * receive currentUser name 
+      + mapDispatchToProps
+       * receive logout action creator 
+      + Header:
+        * props: username
+        * display username 
+        * display 'Spack'
+        * render logout form (passing in logout action creator as props) 
+        * Logout Form: 
+          - props: receive logout 
+          - renders button with onClick handler to logout.
     - ChannelListContainer:
-      - mapStateToProps(from state.channels):
-        - receives all channels for current user (use 'selectAllChannels' selector to get objects)
-      - ChannelList (functional):
-        - props: channel objects.
-        - onClick pushes new link to URL for channel show page.  
+      + mapStateToProps(from state.channels):
+        * receives all channels for current user (use 'selectAllChannels' selector to get objects)
+      + ChannelList (functional):
+        * props: channel objects.
+        * onClick pushes new link to URL for channel show page.  
     - DirectMessagesContainer:
       + mapStateToProps: (from state.channels):
         * receives all private messages for current user (use 'selectAllPrivateChannels' selector)
