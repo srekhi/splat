@@ -1,7 +1,6 @@
 Component Hierarchy:
 ====================
-SessionFormContainer: 
----------------------
+###SessionFormContainer: 
   --mapStateToProps(from state.session):
     - receives loggedIn: represents whether currentUser logged in
     - errors (array) - list of errors from the state
@@ -12,8 +11,33 @@ SessionFormContainer:
     SessionForm:
       state: governed by user form details.
       props: processForm (invoke when user submits form), formType(used for displaying sign up/login on UI)
-Main Logged In View
-------------------
-### LeftNav
-    - ChannelList (
-      - ChannelListItem
+
+
+###Main Logged In View
+ + LeftNav
+    - Header Container:
+      -mapStateToProps (from state.session):
+       -receive currentUser name 
+      -mapDispatchToProps
+        -receive logout action creator 
+      -Header:
+        -props: username
+        -display username 
+        -display 'Spack'
+        -render logout form (passing in logout action creator as props) 
+        -Logout Form: 
+          - props: receive logout 
+          - renders button with onClick handler to logout.
+    - ChannelListContainer:
+      -mapStateToProps(from state.channels):
+        -receives all channels for current user (use 'selectAllChannels' selector to get objects)
+      - ChannelList (functional):
+        - props: channel objects.
+        - onClick pushes new link to URL for channel show page.  
+    - DirectMessagesContainer:
+      -mapStateToProps: (from state.channels):
+        - receives all private messages for current user (use 'selectAllPrivateChannels' selector)
+      -DirectMessages:
+        props: private messages 
+      
+        
