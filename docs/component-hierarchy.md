@@ -34,17 +34,6 @@
         + ChannelList (functional):
           * props: channel objects.
           * onClick pushes new link to URL for channel show page.  
-      - DirectMessagesContainer:
-        + mapStateToProps: (from state.channels):
-          * receives all private messages for current user (use 'selectAllPrivateChannels' selector)
-        + DirectMessages:
-          * props: private messages 
-      - DirectMessageFormContainer 
-        + mapDispatchToProps:
-          * receives new message action creator 
-          * DirectMessageForm
-            -  props: new message action creator
-            -  state: form details
     - MainChannelContainer
        - ChannelHeaderContainer
           - mapStateToProps
