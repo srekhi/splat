@@ -12,9 +12,11 @@ Sample State
   channels: {
     1: {
       name: "March Cohort App Academy"
+      private: false
     }
     2: {
       name: "How do I build slack"
+      private: true
     }
   }
   users: {
