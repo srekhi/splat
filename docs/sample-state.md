@@ -8,6 +8,7 @@ Sample State
       user: null,
       errors: []
      }
+  }
   channels: {
     1: {
       name: "March Cohort App Academy"
@@ -22,12 +23,13 @@ Sample State
       username: "Drake",
       email: "drake@ovo.com",
       avatar_url: "spack.io/user/drake/photo"
-  }
-  2: { 
-    id: 2,
-    username: "Kendrick Lamar",
-    email: "kendrick@kdot.com",
-    avatar_url: "spack.io/user/kendrick/photo"
+    }
+    2: { 
+     id: 2,
+     username: "Kendrick Lamar",
+     email: "kendrick@kdot.com",
+     avatar_url: "spack.io/user/kendrick/photo"
+    }
   }
   messages: {
     1: {
@@ -43,7 +45,5 @@ Sample State
       content: "what's up yall"
      }
   }
-}
-  
 }
 ```
