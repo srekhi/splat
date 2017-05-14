@@ -54,6 +54,11 @@ Main Logged In View
       -props: channel_messages 
       ChannelMessageItem
         -props: channelMessage
+   -NewMessageContainer
+    -mapDispatchToProps
+      -receive new message action creator 
+    -NewMessage
+      -props: newMessage action creator for onSubmit click handler.
     
       
         
