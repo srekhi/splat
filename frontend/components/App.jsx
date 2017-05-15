@@ -1,19 +1,11 @@
 import React from 'react';
-import SessionFormContainer from './session_form/session_form_container';
-import {
-  Route,
-  Redirect,
-  Switch,
-  Link,
-  HashRouter
-} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import HomeContainer from '../components/home/home_container.jsx';
-
+import HomeContainer from './home/home_container.jsx';
+import SplashPage from './splash_page/splash_page';
 const App = () => (
   <div>
-    <AuthRoute path="/signup" component={SessionFormContainer} />
-    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SplashPage} />
+    <AuthRoute path="/login" component={SplashPage} />
     <ProtectedRoute exact path="/" component={ HomeContainer } />
   </div>
 );
