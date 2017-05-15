@@ -21,13 +21,10 @@
        + mapDispatchToProps
           * receive logout action creator 
        + Header:
-          * props: username
+          * props: username, logout action creator
           * display username 
           * display 'Spack'
-          * render logout form (passing in logout action creator as props) 
-          * Logout Form: 
-            - props: receive logout 
-            - renders button with onClick handler to logout.
+          * logout button 
       - ChannelListContainer:
         + mapStateToProps(from state.channels):
           * receives all channels for current user (use 'selectAllChannels' selector to get objects)
