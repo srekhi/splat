@@ -26,7 +26,6 @@
 
 ### Messages
 - `GET /api/messages` - retrieve all messages
-- `GET /api/users/:user_id/messages` - retrieve all messages of a user
 - `GET /api/channels/:channel_id/messages` - retrieve all messages of a channel
 - `POST /api/messages/` - create a message
 - `PATCH /api/messages/:id` - update a message
