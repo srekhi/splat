@@ -35,7 +35,7 @@
               * onClick pushes new link to URL for channel show page.
       - DirectMessagesListContainer:
         + mapStateToProps(from state.channels):
-          * receives all private channels for current user (use 'selectAllPublicChannels' selector to get direct messages)
+          * receives all private channels for current user (use 'selectAllPrivateChannels' selector to get direct messages)
             - DirectMessagesList 
               + props: direct messages 
                 * DirectMessageComponent
