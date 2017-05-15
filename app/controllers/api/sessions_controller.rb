@@ -20,7 +20,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout!(@user)
-      render "api/shared/user"
+      render json: {} 
     else
       render(
         json: ["Nobody signed in"],

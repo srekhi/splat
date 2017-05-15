@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.session-form {
+  background-color: gray;
+  margin: 0 auto;
+}
