@@ -38,7 +38,7 @@
           * receives all private channels for current user (use 'selectAllPublicChannels' selector to get direct messages)
             - DirectMessagesList 
               + props: direct messages 
-                * DirectMessage
+                * DirectMessageComponent
                   - props: direct message 
     - MainChannelContainer
        - ChannelHeaderContainer
