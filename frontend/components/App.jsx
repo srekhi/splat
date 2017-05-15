@@ -7,13 +7,14 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 const App = () => (
   <div>
     <header>
       <h1>Sp</h1>
     </header>
-    <Route path="/signup" component={SessionFormContainer} />
-    <Route path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
+    <AuthRoute path="/login" component={SessionFormContainer} />
   </div>
 
 );

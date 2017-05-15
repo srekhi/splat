@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(user_params[:username], user_params[:password])
     if @user
       login!(@user)
-      render "api/shared/user"
+      render "api/users/show"
     else
       render(
         json: ["Invalid username/password combination"],
