@@ -44,7 +44,7 @@
        - ChannelMessagesContainer
          + mapStateToProps (from state.messages)
             * receive channel from state.channels[id] (id comes from URL params)
-            * receive all messages for this channel (use selector fetchAllMessages(channelId))
+            * receive all messages for this channel (use selector selectAllMessages(channelId))
          + ChannelMessages
             * props: channel_messages 
             * ChannelMessageItem
@@ -57,8 +57,10 @@
      - NewChannelFormContainer
         + mapDispatchToProps
             * receive new channel action creator 
+        + mapStateToProps
+            * get all users from state (use selector selectAllUsers)
         + NewChannelForm
-            * props: new channel action creator 
+            * props: new channel action creator, users 
             * state: form inputs
     
 ## Routes
