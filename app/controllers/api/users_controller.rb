@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.valid?
+      @user.save
       login!(@user)
       render "api/shared/user"
     else
