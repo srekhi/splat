@@ -44,9 +44,9 @@
        - ChannelHeaderContainer
           - mapStateToProps
             + receive channel from state.channels[id] (id comes from URL params)
-        - ChannelHeader
-          + props: channel name 
-          + props: count of users
+          - ChannelHeader
+            + props: channel name 
+            + (optional prop): count of users for this channel
        - ChannelMessagesContainer
          + mapStateToProps (from state.messages + state.users)
             * receive channel from state.channels[id] (id comes from URL params)
