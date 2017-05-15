@@ -39,13 +39,16 @@
           + props: channel name 
           + props: count of users
        - ChannelMessagesContainer
-         + mapStateToProps (from state.messages)
+         + mapStateToProps (from state.messages + state.users)
             * receive channel from state.channels[id] (id comes from URL params)
-            * receive all messages for this channel (use selector selectAllMessages(channelId))
+            * receive all messages for this channel (use selector selectAllMessages(channelId)) 
          + ChannelMessages
             * props: channel_messages 
-            * ChannelMessageItem
-              - props: channelMessage
+            * ChannelMessageItemContainer 
+              - ownProps = channelMessage
+              - mapStateToProps(from state.users):
+                + grab user associated with this message 
+                  *  ChannelMessageItem
        - NewMessageContainer
           + mapDispatchToProps
             * receive new message action creator 
