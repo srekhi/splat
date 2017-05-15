@@ -27,10 +27,19 @@
           * logout button 
       - ChannelListContainer:
         + mapStateToProps(from state.channels):
-          * receives all channels for current user (use 'selectAllChannels' selector to get objects)
-        + ChannelList (functional):
+          * receives all public channels for current user (use 'selectAllPublicChannels' selector to get channels)
+        + ChannelList:
           * props: channel objects.
-          * onClick pushes new link to URL for channel show page.  
+            - ChannelListItem
+              + props: channel
+              * onClick pushes new link to URL for channel show page.
+      - DirectMessagesListContainer:
+        + mapStateToProps(from state.channels):
+          * receives all private channels for current user (use 'selectAllPublicChannels' selector to get direct messages)
+            - DirectMessagesList 
+              + props: direct messages 
+                * DirectMessage
+                  - props: direct message 
     - MainChannelContainer
        - ChannelHeaderContainer
           - mapStateToProps
