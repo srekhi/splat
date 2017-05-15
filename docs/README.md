@@ -4,7 +4,7 @@
 [Trello link][trello]
 
 [heroku]: https://spack.herokuapp.com/
-[trello]: https://trello.com
+[trello]: https://trello.com/b/mw37jk12/spack
 
 ## Minimum Viable Product
 Spack is a web application inspired by Slack built using Ruby on Rails and React/Redux. By the end of Week 9, this app will, at a minimum, satisfy the following criteria with smooth, bug-free navigation, adequate seed data and sufficient CSS styling:
