@@ -1,6 +1,6 @@
 class Api::ChannelsController < ApplicationController
   def index #grab the channels for a specific user
-    user_id = params[:user_id]
+    user_id = current_user.id 
     user = User.find_by(id: user_id)
     @channels = user.channels
     render "api/channels/index"
@@ -20,7 +20,7 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.find_by(id: params[:id])
     if @channel
       @channel.destroy
-      render json: {}
+      render json: @channel.id
     else
       render(
         json: ["Channel not found"],
