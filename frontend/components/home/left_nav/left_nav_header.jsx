@@ -18,7 +18,7 @@ class LeftNavHeader extends React.Component {
         <h2 id="company-name"><b>Splat</b></h2>
         <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true">
           <ul id="fa-bars-dropdown">
-            <li><button onClick={this.logoutUser} Logout></button></li>
+            <li><button onClick={this.logoutUser}>Logout</button></li>
           </ul>
         </i>
         <div id ="left-nav-username-display">

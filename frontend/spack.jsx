@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.store = store;
       const root = document.getElementById('root');
   }
-  window.ChannelApiUtil = ChannelApiUtil;
   ReactDOM.render(<Root store={store} />, root);
 });
+window.ChannelApiUtil = ChannelApiUtil;
