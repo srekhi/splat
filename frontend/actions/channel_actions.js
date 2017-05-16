@@ -25,7 +25,7 @@ export const createChannel = channel => dispatch => (
 );
 
 export const receiveChannels = channels => ({
-  type: RECEIVE_CHANNEL,
+  type: RECEIVE_CHANNELS,
   channels
 });
 

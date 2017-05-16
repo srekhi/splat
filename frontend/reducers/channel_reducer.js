@@ -5,7 +5,7 @@ import {
   RECEIVE_ERRORS,
   RECEIVE_CHANNELS,
   DELETE_CHANNEL
-} from '../actions/session_actions';
+} from '../actions/channel_actions';
 
 const defaultState = {};
 

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as ChannelActions from './actions/channel_actions';
+import * as ChannelApiUtil from './util/channel_api_util';
+import { selectAllPublicChannels } from './reducers/selectors/channel_selectors';
 document.addEventListener('DOMContentLoaded', () => {
     let store;
     if (window.currentUser) {
@@ -19,3 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.ChannelActions = ChannelActions;
+window.ChannelApiUtil = ChannelApiUtil;
+window.selectAllPublicChannels = selectAllPublicChannels;
