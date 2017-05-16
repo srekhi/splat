@@ -1,31 +1,75 @@
 .left-nav {
   position: relative;
-  background-color: #4D394B;
-  color: #ffffff;
-  transition: all 0.3s ease 0s;
   min-width: 220px;
   width: 220px;
   position: relative;
   background-color: #4D394B;
-  color: #ffffff;
   transition: all 0.3s ease 0s;
 }
 
+.left-nav:hover {
+  position: relative;
+  min-width: 220px;
+  width: 220px;
+  position: relative;
+}
+
 #company-header {
-  background-color: #3E313C;
   cursor: pointer;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  height: 60px;
+  justify-content: space-between;
+  border: 1px solid #4D394B;
+  letter-spacing: 1px;
+}
+
+
+#company-header:hover {
+  background-color: #3e313c;
+  transition: all 0.3s ease 0s;
+}
+
+#company-header > h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-left: 8px;
+  margin-top: 14px;
 }
 
 #online-marker {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  margin-right: 7px;
   background-color: #4c9689;
+  margin-top: 2px;
+  vertical-align: -webkit-baseline-middle;
 }
 
 #current-user-name {
-    font-size: 14px;
-    font-weight: 300;
-    color: #AB9BA9;
+  font-size: 13px;
+  font-weight: 300;
+  color: white;
+}
+
+#left-nav-username-display {
+  margin-top: 0px;
+  display: flex;
+  margin-top: 14px;
+  margin-left: 10px;
+}
+
+.fa-bars {
+  margin-right: 5px;
+  font-size: 30px;
+}
+
+#fa-bars-dropdown{
+  font-size: 23px;
+  position: relative;
+  margin-top: 10px;
+  margin-right: 12px;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderContainer from './left_nav/header_container';
+import LeftNavHeaderContainer from './left_nav/left_nav_header_container';
 
 //eventually going to have LeftNav, Main, and Detail Component in here only.
 const HomeContainer = () => {
   return(
     <main className="left-nav">
-      <HeaderContainer />;
+      <LeftNavHeaderContainer />;
    </main>);
 };
 

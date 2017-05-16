@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, hashHistory } from 'react-router';
-class Header extends React.Component {
+class LeftNavHeader extends React.Component {
   constructor(props){
     super(props);
     this.username = this.props.username;
@@ -15,13 +15,15 @@ class Header extends React.Component {
   render() {
     return (
       <section id="company-header">
-        <p id="company-name"><b>Splat</b></p>
-        <div id="online-marker"></div>
-        <p id="current-user-name">{this.username}</p>
-        <i onClick={this.logoutUser} className="fa fa-bars" aria-hidden="true"></i>
+        <h2 id="company-name"><b>Splat</b></h2>
+        <i id="fa-bars-dropdown" onClick={this.logoutUser} className="fa fa-bars" aria-hidden="true"></i>
+        <div id ="left-nav-username-display">
+          <div id="online-marker"></div>
+          <p id="current-user-name">{this.username}</p>
+        </div>
       </section>
     );
   }
 }
 
-export default Header;
+export default LeftNavHeader;

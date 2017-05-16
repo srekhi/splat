@@ -1,6 +1,6 @@
 import React from 'react';
 import { logout } from '../../../actions/session_actions';
-import Header from './header';
+import LeftNavHeader from './left_nav_header';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
@@ -11,4 +11,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(LeftNavHeader);
