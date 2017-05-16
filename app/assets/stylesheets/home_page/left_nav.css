@@ -1,0 +1,31 @@
+.left-nav {
+  position: relative;
+  background-color: #4D394B;
+  color: #ffffff;
+  transition: all 0.3s ease 0s;
+  min-width: 220px;
+  width: 220px;
+  position: relative;
+  background-color: #4D394B;
+  color: #ffffff;
+  transition: all 0.3s ease 0s;
+}
+
+#company-header {
+  background-color: #3E313C;
+  cursor: pointer;
+  color: white;
+}
+
+#online-marker {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #4c9689;
+}
+
+#current-user-name {
+    font-size: 14px;
+    font-weight: 300;
+    color: #AB9BA9;
+}

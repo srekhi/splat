@@ -14,10 +14,11 @@ class Header extends React.Component {
 
   render() {
     return (
-      <section >
-        <p>Splat</p>
-        <p>Hi {this.username}</p>
-        <button onClick={this.logoutUser}>Logout</button>
+      <section id="company-header">
+        <p id="company-name"><b>Splat</b></p>
+        <div id="online-marker"></div>
+        <p id="current-user-name">{this.username}</p>
+        <i onClick={this.logoutUser} class="fa fa-bars" aria-hidden="true"></i>
       </section>
     );
   }
