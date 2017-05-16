@@ -157,7 +157,8 @@ body {
   border-radius: 7px;
   height: 40px;
   width: 70px;
-  margin-right: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
   font-size: 17px;
   cursor: pointer;
   padding: 0px;
@@ -166,7 +167,7 @@ body {
 }
 
 #session-control-container> button:last-of-type {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 
@@ -174,6 +175,7 @@ body {
   height: 50px;
   align-self: center;
   cursor: pointer;
+  margin-left: 15px;
 }
 #session-control-container {
   display: flex;
