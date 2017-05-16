@@ -11,6 +11,9 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,15 +28,25 @@ class SessionForm extends React.Component {
     });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit() {
+    event.preventDefault();
     const user = this.state;
     this.props.processForm(user);
   }
 
-  demoLogin(){
-    //setState to a saved user.
+  clearState() {
+    this.setState({username: "", password: ""});
   }
+
+  demoLogin(event) {
+    event.preventDefault();
+    this.clearState();
+    const savedUsername = "Drake";
+    const savedPassword = "password";
+    this.setState({username: savedUsername, password: savedPassword},
+      () => this.handleSubmit());
+   }
+
 
   navLink() {
     //USE THIS IN NAV BAR
@@ -65,6 +78,7 @@ class SessionForm extends React.Component {
 
   render() {
     let capitalizedFormType = this.props.formType.charAt(0).toUpperCase() + this.props.formType.slice(1);
+    if (capitalizedFormType === "Signup") capitalizedFormType = "Sign up";
     return (
       <div id="login-window">
         <form className="session-form" onSubmit={this.handleSubmit}>
@@ -81,7 +95,7 @@ class SessionForm extends React.Component {
               className="login-input"
             />
             <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
-            <p id="demo-login">Don't have an account? Try our <a href="">demo login</a></p>
+            <p id="demo-login">Don't have an account? Try our <a onClick={this.demoLogin} href="">demo login!</a></p>
             {this.renderErrors()}
         </form>
       </div>

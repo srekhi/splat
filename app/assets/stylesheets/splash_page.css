@@ -4,8 +4,16 @@ html, body, main, main div:first-of-type {
   position: relative;
 }
 
+html {
+  overflow: hidden;
+}
+
+
 body {
   opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 .session-form {
    margin: auto;
@@ -14,6 +22,7 @@ body {
    top: 25%;
    left: 25%;
    right: 25%;
+   bottom: 35%;
    background: rgb(255, 255, 255);
    border-radius: 4px;
    opacity: 1;
@@ -132,16 +141,16 @@ body {
   z-index: 10;
   height: 70px;
   width: 100%;
+  background-color: rgba(255,255,255,0.7);
   opacity: 0.98;
   font-size: 45px;
-  background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 #session-control-container > button {
-  background-color: #2ab27b;;
+  background-color: #2ab27b;
   border: 3px solid #2ab27b;;
   border-radius: 7px;
   height: 35px;
@@ -150,9 +159,33 @@ body {
   font-size: 14px;
   cursor: pointer;
   padding: 0px;
+  height: px;
+  color: white;
+}
 
+#session-control-container> button:last-of-type {
+  margin-right: 10px;
+}
+
+
+#splat-logo{
+  height: 50px;
+  align-self: center;
 }
 #session-control-container {
   display: flex;
   justify-content: flex-end;
+}
+
+#logo-container {
+  display: flex;
+}
+
+#landing-page-logo-link {
+  color: #2ab27b;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-top: -1px;
+  font-size: 40px;
+  align-self: center;
 }
