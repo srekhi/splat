@@ -29,6 +29,7 @@
 #company-header:hover {
   background-color: #3e313c;
   transition: all 0.3s ease 0s;
+  height: 79px;
 }
 
 #company-header > h2 {
@@ -67,9 +68,27 @@
   font-size: 30px;
 }
 
-#fa-bars-dropdown{
+#fa-bars-menu{
   font-size: 23px;
   position: relative;
   margin-top: 10px;
   margin-right: 12px;
+}
+
+#fa-bars-dropdown{
+  display: none;
+  width: 270px;
+  height: 130px;
+  position: absolute;
+  top: 54px;
+  left: 12px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #E0E0E0;
+  display: flex;
+  flex-direction: column;
+}
+
+#fa-bars-dropdown:click{
+  display: block;
 }

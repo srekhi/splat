@@ -16,7 +16,11 @@ class LeftNavHeader extends React.Component {
     return (
       <section id="company-header">
         <h2 id="company-name"><b>Splat</b></h2>
-        <i id="fa-bars-dropdown" onClick={this.logoutUser} className="fa fa-bars" aria-hidden="true"></i>
+        <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true">
+          <ul id="fa-bars-dropdown">
+            <li><button onClick={this.logoutUser} Logout></button></li>
+          </ul>
+        </i>
         <div id ="left-nav-username-display">
           <div id="online-marker"></div>
           <p id="current-user-name">{this.username}</p>
