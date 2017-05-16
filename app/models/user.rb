@@ -14,9 +14,13 @@
 
 class User < ApplicationRecord
   validates :username, :email, :password_digest, :session_token, presence: true
-  # TODO: Comment back in 
+  # TODO: Comment back in
   # validates :email, :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
+
+  has_many :memberships
+  has_many :channels, through: :memberships
+
   attr_reader :password
 
 
