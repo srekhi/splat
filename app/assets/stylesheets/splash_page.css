@@ -22,8 +22,8 @@ body {
    vertical-align: middle;
    position: absolute;
    top: 25%;
-   left: 25%;
-   right: 25%;
+   left: auto%;
+   right: auto%;
    bottom: 35%;
    background: rgb(255, 255, 255);
    border-radius: 8px;
