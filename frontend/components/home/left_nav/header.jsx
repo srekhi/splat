@@ -18,7 +18,7 @@ class Header extends React.Component {
         <p id="company-name"><b>Splat</b></p>
         <div id="online-marker"></div>
         <p id="current-user-name">{this.username}</p>
-        <i onClick={this.logoutUser} class="fa fa-bars" aria-hidden="true"></i>
+        <i onClick={this.logoutUser} className="fa fa-bars" aria-hidden="true"></i>
       </section>
     );
   }
