@@ -14,14 +14,18 @@ class Navbar extends React.Component {
       this.props.history.push("/signup");
     } else if (e.target.id === "demo") {
       //handle demo logic here.
+    } else if (e.target.id === "splat-logo") {
+      this.props.history.push("/");
     }
   }
   render(){
     return (
       <nav className="landing-page-nav">
         <section id="logo-container">
-          <img id="splat-logo" src={"http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg"}
-            alt="Splat logo" />
+          <img id="splat-logo"
+            src={"http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg"}
+            alt="Splat logo"
+            onClick={this.handleClick} />
           <Link id="landing-page-logo-link" to="/">Splat</Link>
         </section>
         <section id="session-control-container">
