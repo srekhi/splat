@@ -14,7 +14,7 @@ u3 = User.create(username: "demo-user3", password: "password3", email: "drake3@o
 
 
 Channel.destroy_all
-c1 = Channel.create(name: "test_channel1", private: false)
+c1 = Channel.create(name: "general", private: false)
 c2 = Channel.create(name: "test_channel2", private: false)
 c3 = Channel.create(name: "test_channel3", private: false)
 

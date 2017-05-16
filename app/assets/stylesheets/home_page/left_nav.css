@@ -7,19 +7,12 @@
   transition: all 0.3s ease 0s;
 }
 
-.left-nav:hover {
-  position: relative;
-  min-width: 220px;
-  width: 220px;
-  position: relative;
-}
-
 #company-header {
   cursor: pointer;
   color: white;
   display: flex;
   flex-wrap: wrap;
-  height: 60px;
+  height: 79px;
   justify-content: space-between;
   border: 1px solid #4D394B;
   letter-spacing: 1px;
@@ -29,7 +22,6 @@
 #company-header:hover {
   background-color: #3e313c;
   transition: all 0.3s ease 0s;
-  height: 79px;
 }
 
 #company-header > h2 {
@@ -59,8 +51,9 @@
 #left-nav-username-display {
   margin-top: 0px;
   display: flex;
-  margin-top: 14px;
+  margin-top: 0px;
   margin-left: 10px;
+  height: 0px;
 }
 
 .fa-bars {
@@ -89,9 +82,13 @@
   flex-direction: column;
 }
 
-#fa-bars-menu>button:first-child, ul:first-child, li:first-child {
+#fa-bars-menu>button:first-child, #fa-bars-menu>ul:first-child, #fa-bars-menu> li:first-child {
   position: absolute;
 }
+#fa-bars-menu>ul:first-child{
+  z-index: 1;
+}
+
 
 ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   position: absolute;
@@ -100,6 +97,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 #fa-bars-dropdown:click{
   display: block;
 }
+
+#fa-bars-menu >
 
 .hidden {
   display: none;
@@ -172,4 +171,55 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 #logout-box-logout-btn:hover {
     background-color: #4c9689;
     color: #fff;
+}
+
+#left-nav-channel-list {
+    max-height: calc(100% - 81px);
+    margin-top: 10px;
+    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+#left-nav-channel-list > li {
+    margin: 5px 0;
+    margin-left: 5px;
+    max-height: calc(100% - 81px);
+    margin-top: 10px;
+    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.left-nav-channel-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #AB9BA9;
+}
+
+#left-nav-channel-list > h2 {
+  color: #AB9BA9;
+  font-size: 12px;
+  margin-left: 7px;
+}
+
+#left-nav-channel-list  h5 {
+  color: #AB9BA9;
+  font-weight: 500;
+  margin-left: 10px;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  font-size:15px;
+
+}
+
+#left-nav-channel-list span:first-child {
+  color: #7C6A7A;
+  padding-left: 2px;
 }

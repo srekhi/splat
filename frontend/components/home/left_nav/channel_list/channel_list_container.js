@@ -1,5 +1,5 @@
 import { selectAllPublicChannels } from '../../../../reducers/selectors/channel_selectors';
-import { fetchChannels } from '../../../../actions/channel_actions';
+import { fetchChannels, createChannel } from '../../../../actions/channel_actions';
 import { connect } from 'react-redux';
 import ChannelList from './channel_list';
 
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchChannels: (userId) => dispatch(fetchChannels(userId))
-  //populate state with channels for this user
+  fetchChannels: (userId) => dispatch(fetchChannels(userId)),
+  createChannel: (channel) => dispatch(createChannel(channel))
 });
 
 

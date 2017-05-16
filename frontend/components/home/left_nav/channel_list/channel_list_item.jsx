@@ -7,10 +7,9 @@ class ChannelListItem extends React.Component {
 
   render(){
     return (
-      <li>
-        <h2>Test</h2>
-        <h5>{this.channel.name}</h5>
-      </li>
+      <div >
+        <h5 className="left-nav-channel-name"># {this.channel.name}</h5>
+      </div>
     );
   }
 }
