@@ -23,6 +23,7 @@
 - `POST /api/channels` - create a channel
 - `PATCH /api/channels/:id` - update a channel
 - `DELETE /api/channels/:id` - delete a channel
+- `GET  /api/users/:user_id/channels` - retrive channels for a user 
 
 ### Messages
 - `GET /api/messages` - retrieve all messages
