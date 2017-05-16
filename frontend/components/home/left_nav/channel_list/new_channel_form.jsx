@@ -84,7 +84,7 @@ class NewChannelForm extends React.Component {
             {userList}
           </ul>
           <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
-          {this.renderErrors}
+          {this.renderErrors()}
         </form>
       </div>
     );

@@ -1,7 +1,7 @@
 import * as APIUtil from '../util/channel_api_util';
 
 export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL'; //add channel to state;
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS'; //errors for channel creation
+export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS'; //errors for channel creation
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS'; //fetching all channels for user
 export const DELETE_CHANNEL = 'DELETE_CHANNEL'; //fetching all channels for user
 
@@ -11,8 +11,8 @@ export const receiveChannel = channel => ({
   channel
 });
 
-export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+export const receiveChannelErrors = errors => ({
+  type: RECEIVE_CHANNEL_ERRORS,
   errors
 });
 
@@ -20,7 +20,7 @@ export const createChannel = channel => dispatch => (
   APIUtil.createChannel(channel).then(createdChannel => (
     dispatch(receiveChannel(createdChannel))
   ), err => (
-    dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveChannelErrors(err.responseJSON))
   ))
 );
 

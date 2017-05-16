@@ -2,12 +2,12 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_CHANNEL,
-  RECEIVE_ERRORS,
+  RECEIVE_CHANNEL_ERRORS,
   RECEIVE_CHANNELS,
   DELETE_CHANNEL
 } from '../actions/channel_actions';
 
-const defaultState = {};
+const defaultState = {errors: []};
 
 const ChannelReducer = (state = defaultState, action) => {
   Object.freeze(state);
@@ -17,11 +17,12 @@ const ChannelReducer = (state = defaultState, action) => {
       const channel = action.channel;
       newState[channel.id] = channel;
       return newState;
-    case RECEIVE_ERRORS:
+    case RECEIVE_CHANNEL_ERRORS:
       newState['errors'] = action.errors;
       return newState;
     case RECEIVE_CHANNELS:
-      return action.channels;
+      newState['channels'] = action.channels;
+      return newState;
     case DELETE_CHANNEL:
       delete newState[action.id];
       return newState;
