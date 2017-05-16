@@ -13,7 +13,12 @@ class Navbar extends React.Component {
     } else if (e.target.id === "sign-up") {
       this.props.history.push("/signup");
     } else if (e.target.id === "demo") {
-      //handle demo logic here.
+      const savedUsername = "demo-user";
+      const savedPassword = "password";
+      const user = {username: savedUsername, password: savedPassword};
+      this.props.login(user);
+      this.props.history.push("/");
+      
     } else if (e.target.id === "splat-logo") {
       this.props.history.push("/");
     }
@@ -38,4 +43,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default withRouter(Navbar);
+export default Navbar;
