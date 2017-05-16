@@ -14,7 +14,6 @@ const Auth = ({component: Component, path, loggedIn}) => (
 
 // renders component if logged in, otherwise redirects to the login page
 const Protected = ({component: Component, path, loggedIn}) => {
-  debugger;
   return (
   <Route path={path} render={(props) => (
      loggedIn ? (

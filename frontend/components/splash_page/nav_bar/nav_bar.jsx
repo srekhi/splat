@@ -18,7 +18,7 @@ class Navbar extends React.Component {
       const user = {username: savedUsername, password: savedPassword};
       this.props.login(user);
       this.props.history.push("/");
-      
+
     } else if (e.target.id === "splat-logo") {
       this.props.history.push("/");
     }

@@ -75,7 +75,7 @@
   margin-right: 12px;
 }
 
-#fa-bars-dropdown{
+.fa-bars-dropdown{
   display: none;
   width: 270px;
   height: 130px;
@@ -91,4 +91,8 @@
 
 #fa-bars-dropdown:click{
   display: block;
+}
+
+.hidden {
+  display: none;
 }
