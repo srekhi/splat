@@ -7,7 +7,7 @@ import {
   DELETE_CHANNEL
 } from '../actions/channel_actions';
 
-const defaultState = {errors: []};
+const defaultState = {channels: {}, errors: []};
 
 const ChannelReducer = (state = defaultState, action) => {
   Object.freeze(state);

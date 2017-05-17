@@ -26,6 +26,7 @@ class ChannelList extends React.Component {
   }
   componentWillMount() {
     this.props.fetchChannels(this.props.user.id);
+    debugger;
   }
   componentWillReceiveProps(newProps) {
     this.publicChannels = newProps.publicChannels;
@@ -59,6 +60,7 @@ class ChannelList extends React.Component {
         </li>
       );
     });
+    debugger;
     return (
       <nav>
         {modal}
