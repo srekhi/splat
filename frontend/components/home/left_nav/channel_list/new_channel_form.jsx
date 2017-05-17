@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AlertContainer from 'react-alert';
 class NewChannelForm extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +10,14 @@ class NewChannelForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);
+    this.newChannelError = this.newChannelError.bind(this);
+    this.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 5000,
+      transition: 'scale'
+    };
   }
 
   componentDidMount() {
@@ -20,6 +28,16 @@ class NewChannelForm extends React.Component {
     this.allUsers = newProps.allUsers;
     // this.allUsers[0]
     // Object {username: "demo-user"}
+  }
+
+  newChannelError(err){
+    // this.props.errors should have the updated errors.
+    this.msg.show(err, {
+      time: 2000,
+      type: 'success',
+      icon: <img src="https://res.cloudinary.com/dwqeotsx5/image/upload/v1490042404/Slack-icon_rkfwqj.png" width="32px" height="32px"/>
+    });
+
   }
 
   update(field) {
@@ -42,29 +60,27 @@ class NewChannelForm extends React.Component {
   }
 
   renderErrors() {
-    let error_exclamation = "";
     if (this.props.errors.length > 0){
-      error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
+      this.props.errors.forEach((err)=> {
+        return this.showAlert(err);
+      });
     }
-    return(
-      <section className="errors">
-        <ul className="error-list">
-          <li>{error_exclamation}</li>
-          {this.props.errors.map((error, i) => (
-            <li key={`error-${i}`}>
-              {error}
-            </li>
-          ))}
-        </ul>
-      </section>
-    );
   }
+
+  showAlert(err) {
+    console.log(err);
+    msg.show('Title missing', {
+      time: 2000,
+      type: 'success',
+      icon: <img src="path/to/some/img/32x32.png" />
+  });
+}
 
   render() {
     if (this.props.allUsers === undefined) return <div></div>;
     let userList = this.props.allUsers.map((user) => {
       return(
-        <li className="new-channel-user-list-item">
+        <li onClick={this.selectUser} className="new-channel-user-list-item">
           {user.username}
         </li>
     );
@@ -84,8 +100,10 @@ class NewChannelForm extends React.Component {
             {userList}
           </ul>
           <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
+          <button onClick={this.showAlert} />
           {this.renderErrors()}
         </form>
+        <AlertContainer ref={(a) => global.msg = a} {...this.alertOptions} />
       </div>
     );
   }

@@ -176,6 +176,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 #left-nav-channel-list {
     max-height: calc(100% - 81px);
     margin-top: 10px;
+    margin-left: 5px;
     overflow: scroll;
     overflow-y: scroll;
     display: flex;
@@ -276,4 +277,9 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   margin-top: 4px;
   display: flex;
   flex-grow: 1;
+}
+
+
+#left-nav-channel-list i {
+  margin-left: 100px;
 }
