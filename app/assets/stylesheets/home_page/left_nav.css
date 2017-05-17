@@ -194,13 +194,23 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     margin: 5px 0;
     margin-left: 5px;
     max-height: calc(100% - 81px);
-    margin-top: 10px;
+    margin-top: 3px;
     overflow: scroll;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    display: inline-block;
+    width: 75%;
+    height: 20px;
+    padding: 2px 0;
+}
 
+#left-nav-channel-list > li:hover {
+  background-color: #3E313C;
+  border-radius: 0px 4px 4px 0px;
+  cursor: pointer;
+  padding-bottom: 2px;
 }
 
 .left-nav-channel-name {
@@ -213,6 +223,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   color: #AB9BA9;
   font-size: 12px;
   margin-left: 7px;
+  margin-bottom: 7px;
 }
 
 #left-nav-channel-list  h5 {
@@ -256,4 +267,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   color: #555459;
   margin-right: 10px;
   cursor: pointer;
+}
+
+.channel-show-link {
+  text-decoration: none;
 }
