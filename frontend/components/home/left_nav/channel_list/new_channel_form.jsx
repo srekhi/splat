@@ -102,8 +102,13 @@ class NewChannelForm extends React.Component {
 }
 
   render() {
+    let filteredUsers = this.props.allUsers.filter(
+      (user) => {
+        return user.username.indexOf(this.state.allUsers) !== -1;
+      }
+    );
     if (this.props.allUsers === undefined) return <div></div>;
-    let userList = this.props.allUsers.map((user) => {
+    let userList = filteredUsers.map((user) => {
       return(
         <li onClick={this.selectUser} className="new-channel-user-list-item">
           <img id="user-dropdown-logo" src={user.avatar_url} alt="avatar" />
