@@ -24,7 +24,8 @@ class LeftNavHeader extends React.Component {
       }
     };
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      className: ""
     };
     this.displayDropdown = this.displayDropdown.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -59,15 +60,14 @@ class LeftNavHeader extends React.Component {
         <h2 id="company-name"><b>Splat</b></h2>
         <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true" onClick={this.openModal}>
           <Modal
-              isOpen={this.state.modalOpen}
-              onRequestClose={this.closeModal}
-              style={this.modalStyle}
-              contentLabel="Logout">
-              <div id="exit-logout-dropdown" onClick={this.closeModal}>
-                <i className="fa fa-times fa-3x" aria-hidden="true"></i>
-              </div>
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.closeModal}
+            style={this.modalStyle}
+            contentLabel="Logout">
+            <div id="exit-logout-dropdown" onClick={this.closeModal}>
+              <i className="fa fa-times fa-3x" aria-hidden="true"></i>
               <ul>
-                <li>
+              <li>
                 <div className="logout-box">
                   <div id="logout-box-user-display">
                     <img src={this.user.avatar_url} />
@@ -77,7 +77,8 @@ class LeftNavHeader extends React.Component {
                   <span id="logout-box-logout-btn" onClick={this.logoutUser}>Logout</span>
                 </div>
               </li>
-              </ul>
+            </ul>
+            </div>
           </Modal>
         </i>
         <div id ="left-nav-username-display">

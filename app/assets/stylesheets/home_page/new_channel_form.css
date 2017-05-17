@@ -110,6 +110,10 @@ li.new-channel-user-list-item:hover {
     text-align: center;
   }
 
+  #exit-new-channel:hover{
+    background-color: #E8E8E8;
+  }
+
   #new-channel-window {
     max-height: 91%;
     margin-top: 9%;
@@ -127,4 +131,9 @@ li.new-channel-user-list-item:hover {
   #wrap-username-and-button {
     display: flex;
     align-items: center;
+  }
+  
+  .fa-3x {
+    font-size: 3em;
+    margin: 0 auto;
   }
