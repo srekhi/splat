@@ -8,14 +8,14 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      modalOpen: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearState = this.clearState.bind(this);
-  }
-
+}
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
       this.props.history.push('/');

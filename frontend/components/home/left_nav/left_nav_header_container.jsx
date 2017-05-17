@@ -4,7 +4,7 @@ import LeftNavHeader from './left_nav_header';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
-  username: state.session.currentUser.username
+  user: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({

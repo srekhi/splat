@@ -163,10 +163,15 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 #logout-box-logout-btn{
   border-radius: 5px;
   font-size: 15px;
+  margin-left: 96px;
   padding: 3px 8px;
   margin: 10px 15px;
   cursor: pointer;
   font-family: Lato, sans-serif;
+  margin-left: -6px;
+  margin-right: 39px;
+  width: 253px;
+  text-align: center;
 }
 #logout-box-logout-btn:hover {
     background-color: #4c9689;
@@ -245,4 +250,10 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   color: white;
   border-radius: 5px;
   transition: all 0.3s ease 0s;
+}
+
+#exit-logout-dropdown {
+  color: #555459;
+  margin-right: 10px;
+  cursor: pointer;
 }
