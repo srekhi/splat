@@ -68,7 +68,6 @@ class NewChannelForm extends React.Component {
   }
 
   showAlert(err) {
-    console.log(err);
     msg.show('Title missing', {
       time: 2000,
       type: 'success',
