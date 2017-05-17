@@ -21,7 +21,7 @@ const ChannelReducer = (state = defaultState, action) => {
       newState['errors'] = action.errors;
       return newState;
     case RECEIVE_CHANNELS:
-      newState['channels'] = action.channels;
+      newState['channels'] = action.channels; //TODO: now my state
       return newState;
     case DELETE_CHANNEL:
       delete newState[action.id];

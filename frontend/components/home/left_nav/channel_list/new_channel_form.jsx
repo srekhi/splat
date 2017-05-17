@@ -64,7 +64,7 @@ class NewChannelForm extends React.Component {
     if (this.props.allUsers === undefined) return <div></div>;
     let userList = this.props.allUsers.map((user) => {
       return(
-        <li>
+        <li className="new-channel-user-list-item">
           {user.username}
         </li>
     );
@@ -80,7 +80,7 @@ class NewChannelForm extends React.Component {
               className="new-channel-input"
               placeholder="Channel Title"
             />
-          <ul>
+          <ul id="new-channel-form-list">
             {userList}
           </ul>
           <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
