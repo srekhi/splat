@@ -8,6 +8,7 @@ class ChannelList extends React.Component {
     this.state = { modalOpen: false };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
     this.modalStyle = {
       content : {
         top                   : '50%',
@@ -46,7 +47,7 @@ class ChannelList extends React.Component {
         onRequestClose={this.closeModal}
         style={this.modalStyle}
         contentLabel="Channel">
-          <div id="exit-new-channel">
+          <div id="exit-new-channel" onClick={this.closeModal}>
             <i className="fa fa-times fa-3x" aria-hidden="true"></i>
           </div>
           <NewChannelForm createChannel={this.props.createChannel}

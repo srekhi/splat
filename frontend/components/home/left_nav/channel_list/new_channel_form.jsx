@@ -8,12 +8,14 @@ class NewChannelForm extends React.Component {
     this.state = {
       name: '',
       private: this.props.private,
-      allUsers: ""
+      allUsers: "",
+      selectedUsers: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);
     this.newChannelError = this.newChannelError.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.addUser = this.addUser.bind(this);
     this.alertOptions = {
       offset: 14,
       position: 'bottom left',
@@ -32,6 +34,10 @@ class NewChannelForm extends React.Component {
     this.allUsers = newProps.allUsers;
     // this.allUsers[0]
     // Object {username: "demo-user"}
+  }
+
+  addUser(e) {
+    
   }
 
   newChannelError(err){
@@ -102,6 +108,10 @@ class NewChannelForm extends React.Component {
 }
 
   render() {
+
+    let selectedUsers = this.state.selectedUsers.map((selectedUser) =>{
+      <li>{selectedUser.username}</li>
+    });
     let filteredUsers = this.props.allUsers.filter(
       (user) => {
         return user.username.indexOf(this.state.allUsers) !== -1;
@@ -137,6 +147,9 @@ class NewChannelForm extends React.Component {
             />
             <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
           </div>
+          <ul class="selected-users" onClick={this.addUser}>
+            { selectedUsers }
+          </ul>
           <ul id="new-channel-form-list">
             {userList}
           </ul>
