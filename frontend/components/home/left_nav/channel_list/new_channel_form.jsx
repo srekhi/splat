@@ -1,16 +1,19 @@
 import React from 'react';
 import AlertContainer from 'react-alert';
+import { createChannel } from '../../../../util/channel_api_util';
+import { hashHistory } from 'react-router';
 class NewChannelForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      name: '',
       private: this.props.private,
       allUsers: this.props.allUsers
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);
     this.newChannelError = this.newChannelError.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
     this.alertOptions = {
       offset: 14,
       position: 'bottom left',
@@ -25,6 +28,7 @@ class NewChannelForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+
     this.allUsers = newProps.allUsers;
     // this.allUsers[0]
     // Object {username: "demo-user"}
@@ -48,24 +52,46 @@ class NewChannelForm extends React.Component {
 
   handleSubmit() {
     event.preventDefault();
-  }
 
-  clearState() {
-    this.setState({username: "", password: ""});
   }
 
   createChannel() {
     let channel = this.state;
     this.props.createChannel(channel);
+    // createChannel(this.state).then(savedChannel => {
+    //   hashHistory.push(`/api/channels/${savedChannel.id}`);
+    // });
+
   }
 
+  // renderErrors() {
+  //   if (this.props.errors.length > 0){
+  //     this.props.errors.forEach((err)=> {
+  //       // return this.showAlert(err);
+  //
+  //     });
+  //   }
+  // }
+
   renderErrors() {
+    let error_exclamation = "";
     if (this.props.errors.length > 0){
-      this.props.errors.forEach((err)=> {
-        return this.showAlert(err);
-      });
+      error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
     }
+    return(
+      <section className="errors">
+        <ul className="error-list">
+          <li>{error_exclamation}</li>
+          {this.props.errors.map((error, i) => (
+            <li className="create-channel-error"  key={`error-${i}`}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
   }
+
 
   showAlert(err) {
     msg.show('Title missing', {
@@ -80,6 +106,7 @@ class NewChannelForm extends React.Component {
     let userList = this.props.allUsers.map((user) => {
       return(
         <li onClick={this.selectUser} className="new-channel-user-list-item">
+          <img id="user-dropdown-logo" src={user.avatar_url} alt="avatar" />
           {user.username}
         </li>
     );
@@ -87,19 +114,27 @@ class NewChannelForm extends React.Component {
     return (
       <div id="new-channel-window">
         <form className="channel-form" onSubmit={this.handleSubmit}>
-          <h1> New Channel </h1>
+          <h1>New Channel</h1>
             <input type="text"
               id="new-channel-title"
-              value={this.state.title}
-              onChange={this.update('title')}
+              value={this.state.name}
+              onChange={this.update('name')}
               className="new-channel-input"
-              placeholder="Channel Title"
+              placeholder="Channel Name"
             />
+          <div id="wrap-username-and-button">
+            <input type="text"
+              id="new-channel-add-users-input"
+              value={this.state.allUsers}
+              onChange={this.update('allUsers')}
+              className="new-channel-input"
+              placeholder="Add Users"
+            />
+            <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
+          </div>
           <ul id="new-channel-form-list">
             {userList}
           </ul>
-          <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
-          <button onClick={this.showAlert} />
           {this.renderErrors()}
         </form>
         <AlertContainer ref={(a) => global.msg = a} {...this.alertOptions} />

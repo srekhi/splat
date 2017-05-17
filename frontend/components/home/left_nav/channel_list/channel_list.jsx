@@ -16,8 +16,8 @@ class ChannelList extends React.Component {
         bottom                : 'auto',
         marginRight           : '-50%',
         transform             : 'translate(-50%, -50%)',
-        width                 : '75%',
-        height                : '75%'
+        width                 : '100%',
+        height                : '100%'
       },
       overlay: {
         zIndex                : '1000'
@@ -46,6 +46,9 @@ class ChannelList extends React.Component {
         onRequestClose={this.closeModal}
         style={this.modalStyle}
         contentLabel="Channel">
+          <div id="exit-new-channel">
+            <i className="fa fa-times fa-3x" aria-hidden="true"></i>
+          </div>
           <NewChannelForm createChannel={this.props.createChannel}
             errors={this.props.errors}
             allUsers={this.props.allUsers}
