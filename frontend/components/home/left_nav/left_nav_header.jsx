@@ -9,7 +9,9 @@ class LeftNavHeader extends React.Component {
     this.username = this.props.user.username;
     this.user = this.props.user;
     this.logout = this.props.logout;
+    this.toggleDropdown = this.toggleDropdown.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
+    this.displayDropdown = this.displayDropdown.bind(this);
     this.modalStyle = {
       content : {
         top                   : '25%',
@@ -28,9 +30,6 @@ class LeftNavHeader extends React.Component {
     this.state = {
       className: "hidden"
     };
-    this.displayDropdown = this.displayDropdown.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   logoutUser() {
@@ -45,22 +44,17 @@ class LeftNavHeader extends React.Component {
     this.setState({ modalOpen: true });
   }
 
+  toggleDropdown(){
+      document.getElementById("logout-dropdown").classList.toggle("hidden");
+      document.removeEventListener("click", this.toggleDropdown);
+    }
 
-  displayDropdown() {
-    const self = this;
-    debugger;
-    if (this.state.className === "hidden") {
-      debugger;
-      this.setState({className: ""});
-      debugger;
-      document.addEventListener("click", function(e) {
-         self.setState({className: "hidden"});
-      });
-    }
-    else {
-      this.setState({className: "hidden"});
-    }
+  displayDropdown(e) {
+    e.preventDefault();
+    this.toggleDropdown();
+    document.addEventListener("click", this.toggleDropdown);
   }
+
 
   render() {
     // <ul className={`${this.state.className}`}>
@@ -74,7 +68,7 @@ class LeftNavHeader extends React.Component {
       <section id="company-header">
         <h2 id="company-name"><b>Splat</b></h2>
         <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true" onClick={this.displayDropdown}>
-          <ul className={`${this.state.className}`}>
+          <ul id="logout-dropdown" className={`${this.state.className}`}>
             <li>
               <div className="logout-box">
                 <div id="logout-box-user-display">

@@ -50,7 +50,9 @@ class ChannelList extends React.Component {
           <div id="exit-new-channel" onClick={this.closeModal}>
             <i className="fa fa-times fa-3x" aria-hidden="true"></i>
           </div>
-          <NewChannelForm createChannel={this.props.createChannel}
+          <NewChannelForm
+            createChannel={this.props.createChannel}
+            currentUser={this.props.user}
             errors={this.props.errors}
             allUsers={this.props.allUsers}
             fetchUsers={this.props.fetchUsers}

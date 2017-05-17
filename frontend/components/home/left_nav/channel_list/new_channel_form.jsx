@@ -2,6 +2,8 @@ import React from 'react';
 import AlertContainer from 'react-alert';
 import { createChannel } from '../../../../util/channel_api_util';
 import { hashHistory } from 'react-router';
+import SelectedUsers from './selected_users';
+
 class NewChannelForm extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,7 @@ class NewChannelForm extends React.Component {
       time: 5000,
       transition: 'scale'
     };
+    this.selectUser = this.selectUser.bind(this);
   }
 
   componentDidMount() {
@@ -37,7 +40,7 @@ class NewChannelForm extends React.Component {
   }
 
   addUser(e) {
-    
+
   }
 
   newChannelError(err){
@@ -56,9 +59,16 @@ class NewChannelForm extends React.Component {
     });
   }
 
+  selectUser(user) {
+    debugger;
+    if (user !== this.props.currentUser) {
+      let currentSelectedUsers = this.state.selectedUsers;
+      currentSelectedUsers.push(user);
+      this.setState({selectedUsers: currentSelectedUsers});
+    }
+  }
   handleSubmit() {
     event.preventDefault();
-
   }
 
   createChannel() {
@@ -110,8 +120,9 @@ class NewChannelForm extends React.Component {
   render() {
 
     let selectedUsers = this.state.selectedUsers.map((selectedUser) =>{
-      <li>{selectedUser.username}</li>
+      return <li className="selected-user">{selectedUser.username}</li>;
     });
+
     let filteredUsers = this.props.allUsers.filter(
       (user) => {
         return user.username.indexOf(this.state.allUsers) !== -1;
@@ -120,7 +131,7 @@ class NewChannelForm extends React.Component {
     if (this.props.allUsers === undefined) return <div></div>;
     let userList = filteredUsers.map((user) => {
       return(
-        <li onClick={this.selectUser} className="new-channel-user-list-item">
+        <li onClick={() => this.selectUser(user)} className="new-channel-user-list-item">
           <img id="user-dropdown-logo" src={user.avatar_url} alt="avatar" />
           {user.username}
         </li>
@@ -145,12 +156,13 @@ class NewChannelForm extends React.Component {
               className="new-channel-input"
               placeholder="Add Users"
             />
+          <ul className="selected-user-list">
+            { selectedUsers }
+            <li>test</li>
+          </ul>
             <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
           </div>
-          <ul class="selected-users" onClick={this.addUser}>
-            { selectedUsers }
-          </ul>
-          <ul id="new-channel-form-list">
+          <ul id="new-channel-form-list" >
             {userList}
           </ul>
           {this.renderErrors()}
