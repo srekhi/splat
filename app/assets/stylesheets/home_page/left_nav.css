@@ -126,6 +126,12 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-weight: 900;
   font-size: 18px;
   font-family:  Lato, sans-serif;
+  margin-bottom: 9px;
+  margin-top: -31px;
+  margin-left: 13px;
+  color: #555459;
+  font-weight: 900;
+  font-size: 19px;
 }
 
 #logout-box-handle {
@@ -133,6 +139,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-size: 15px;
   font-family: Lato, sans-serif;
   font-weight: 300;
+  margin-left: 15px;
+  margin-top: -4px;
 }
 
 #logout-box-user-display {
@@ -151,8 +159,9 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 }
 
 #fa-bars-menu li:first-child {
-  right: -139px;
+  right: -148px;
   top: 17px;
+  left: 17px;
 }
 #fa-bars-menu button:first-child:hover {
   background-color: #4c9689;
@@ -165,17 +174,31 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-size: 15px;
   margin-left: 96px;
   padding: 3px 8px;
-  margin: 10px 15px;
+  margin: 9px 14px;
   cursor: pointer;
   font-family: Lato, sans-serif;
-  margin-left: -6px;
+  margin-left: 20px;
   margin-right: 39px;
-  width: 253px;
-  text-align: center;
+  width: 192px;
+  text-align: left;
+  display: block;
+  align-self: flex-start;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 3px 8px;
+  /* font-weight: 100; */
+  margin: 10px 15px;
+  cursor: pointer;
 }
 #logout-box-logout-btn:hover {
     background-color: #4c9689;
     color: #fff;
+    /* margin-left: -12px; */
+    font-size: 15px;
+    padding: 3px 8px;
+    font-weight: 300;
+    margin: 10px 15px;
+    cursor: pointer;
 }
 
 #left-nav-channel-list {
@@ -271,4 +294,18 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 
 .channel-show-link {
   text-decoration: none;
+}
+
+
+#logout-box-user-display > img {
+    align-self: left;
+    height: 42px;
+    margin-right: 4px;
+}
+
+
+#logout-box-user-details {
+  margin-left: 90px;
+  margin-bottom: -1px;
+  display: block;
 }
