@@ -3,7 +3,7 @@ import AlertContainer from 'react-alert';
 import { createChannel } from '../../../../util/channel_api_util';
 import { hashHistory } from 'react-router';
 import SelectedUsers from './selected_users';
-
+//actually creating a new membership.
 class NewChannelForm extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +26,7 @@ class NewChannelForm extends React.Component {
       transition: 'scale'
     };
     this.selectUser = this.selectUser.bind(this);
+    this.deselectUser = this.deselectUser.bind(this);
   }
 
   componentDidMount() {
@@ -60,15 +61,23 @@ class NewChannelForm extends React.Component {
   }
 
   selectUser(user) {
-    debugger;
-    if (user !== this.props.currentUser) {
+    if (user !== this.props.currentUser && !(this.state.selectedUsers.includes(user))) {
       let currentSelectedUsers = this.state.selectedUsers;
       currentSelectedUsers.push(user);
       this.setState({selectedUsers: currentSelectedUsers});
     }
   }
+
+  deselectUser(user) {
+    event.preventDefault();
+    let i = this.state.selectedUsers.indexOf(user);
+    let newSelectedUsers = this.state.selectedUsers.slice(0, i).concat(this.state.selectedUsers.slice(i+1));
+    this.setState({selectedUsers: newSelectedUsers});
+  }
   handleSubmit() {
     event.preventDefault();
+    const form = this.state;
+    createChannel(form);
   }
 
   createChannel() {
@@ -107,8 +116,6 @@ class NewChannelForm extends React.Component {
       </section>
     );
   }
-
-
   showAlert(err) {
     msg.show('Title missing', {
       time: 2000,
@@ -118,9 +125,13 @@ class NewChannelForm extends React.Component {
 }
 
   render() {
-
-    let selectedUsers = this.state.selectedUsers.map((selectedUser) =>{
-      return <li className="selected-user">{selectedUser.username}</li>;
+    const self = this;
+    let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
+      return <li  className="selected-user">
+         <img src={ selectedUser.avatar_url } />
+        {selectedUser.username}
+        <i id="delete-selected-user" className="fa fa-times-circle-o" aria-hidden="true" onClick={() => self.deselectUser(selectedUser)} ></i>
+      </li>;
     });
 
     let filteredUsers = this.props.allUsers.filter(
@@ -156,12 +167,13 @@ class NewChannelForm extends React.Component {
               className="new-channel-input"
               placeholder="Add Users"
             />
-          <ul className="selected-user-list">
-            { selectedUsers }
-            <li>test</li>
-          </ul>
             <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
           </div>
+          <section id="selected-users">
+            <ul id="selected-user-list">
+              { selectedUsers }
+            </ul>
+          </section>
           <ul id="new-channel-form-list" >
             {userList}
           </ul>

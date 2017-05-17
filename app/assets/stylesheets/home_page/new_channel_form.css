@@ -132,8 +132,36 @@ li.new-channel-user-list-item:hover {
     display: flex;
     align-items: center;
   }
-  
+
   .fa-3x {
     font-size: 3em;
     margin: 0 auto;
+  }
+
+  #selected-user-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #wrap-username-and-button{
+    position: relative;
+  }
+
+  .selected-user{
+    display: flex;
+    font-weight: 300;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    background-color: #4C9689;
+    color: white;
+    border-radius: 5px;
+    width: 140px;
+    transition: all 0.3s ease 0s;
+  }
+  #delete-selected-user {
+    cursor: pointer;
+    font-size: 19px
   }

@@ -13,6 +13,8 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
+    #get the users from here and create memberships accordingly.
+    
     if @channel.valid?
       @channel.save
       render "api/channels/show"
