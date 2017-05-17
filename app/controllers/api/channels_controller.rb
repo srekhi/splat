@@ -3,6 +3,7 @@ class Api::ChannelsController < ApplicationController
     user_id = current_user.id
     user = User.find_by(id: user_id)
     @channels = user.channels
+    debugger
     render "api/channels/index"
   end
 

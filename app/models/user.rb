@@ -27,6 +27,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
   has_many :memberships
   has_many :channels, through: :memberships
+  has_many :messages
 
   attr_reader :password
 

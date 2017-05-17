@@ -1,10 +1,20 @@
 import React from 'react';
-//eventually going to have LeftNav, Main, and Detail Component in here only.
 
 class MainHeader extends React.Component {
   //get the channel ID from the params.
+  constructor(props){
+    super(props);
+    this.channel = this.props.channel;
+  }
 
+  render(){
+    return (
+      <header>
+        {this.channel.name}
+     </header>
+  );
+  }
 
 }
 
-export default LeftNav;
+export default MainHeader;

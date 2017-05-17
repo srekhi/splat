@@ -46,3 +46,8 @@ Membership.create(user_id: User.last.id, channel_id: c2.id)
 # demo-user1 is part of test_channel1, 2
 # demo-user2 is part of test_channel2
 # demo-user3 is not part of a test_channel
+
+Message.destroy_all
+Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
+Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
+# both belong to the demo user Drake Graham
