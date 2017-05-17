@@ -1,9 +1,14 @@
 class Api::ChannelsController < ApplicationController
   def index #grab the channels for a specific user
-    user_id = current_user.id 
+    user_id = current_user.id
     user = User.find_by(id: user_id)
     @channels = user.channels
     render "api/channels/index"
+  end
+
+  def show
+    @channel = Channel.find_by(id: params[:id])
+    render "api/channels/show"
   end
 
   def create
