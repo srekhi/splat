@@ -71,7 +71,7 @@ class NewChannelForm extends React.Component {
     msg.show('Title missing', {
       time: 2000,
       type: 'success',
-      icon: <img src="path/to/some/img/32x32.png" />
+      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg" width="32px" height="32px"/>
   });
 }
 

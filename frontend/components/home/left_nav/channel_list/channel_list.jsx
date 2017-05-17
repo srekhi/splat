@@ -63,7 +63,6 @@ class ChannelList extends React.Component {
       <nav>
         {modal}
         <ul id="left-nav-channel-list">
-
           <h2>CHANNELS <span>({this.channelCount})</span>
             <i onClick={this.openModal} className="fa fa-plus-square" aria-hidden="true"></i>
           </h2>
