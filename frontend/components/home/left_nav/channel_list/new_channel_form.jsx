@@ -8,7 +8,7 @@ class NewChannelForm extends React.Component {
     this.state = {
       name: '',
       private: this.props.private,
-      allUsers: this.props.allUsers
+      allUsers: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);

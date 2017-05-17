@@ -4,7 +4,6 @@
 #
 #  id              :integer          not null, primary key
 #  username        :string           not null
-#  email           :string           not null
 #  avatar_url      :string
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -13,16 +12,15 @@
 #
 
 class User < ApplicationRecord
-  validates :username, :email, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token, presence: true
 
   DEFAULT_URLS = [
     "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/default_logo1_msxm8z.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494989557/Screen_Shot_2017-05-16_at_7.51.42_PM_isegcz.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494989557/Screen_Shot_2017-05-16_at_7.50.49_PM_kgz0gf.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/v1494875645/sample.jpg"
+    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
+    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
+    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
+    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
+    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1494875645/sample.jpg"
   ]
   # TODO: Comment back in
   # validates :email, :username, uniqueness: true
@@ -41,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def ensure_avatar_url
-    self.avatar_url ||= DEFAULT_URLS[0]
+    self.avatar_url ||= DEFAULT_URLS.sample
   end
 
   def is_password?(password)
