@@ -1,16 +1,19 @@
 import React from 'react';
 
 class MainHeader extends React.Component {
-  //get the channel ID from the params.
   constructor(props){
     super(props);
-    this.channel = this.props.channel;
+  }
+
+  componentWillMount(){
+    this.props.fetchChannels(this.props.user.id);
   }
 
   render(){
+    { if (this.props.channel === undefined) return <header></header>; }
     return (
       <header>
-        {this.channel.name}
+        {this.props.channel.name}
      </header>
   );
   }

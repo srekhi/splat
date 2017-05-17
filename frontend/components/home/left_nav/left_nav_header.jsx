@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, hashHistory } from 'react-router';
 import Modal from 'react-modal';
+import LogoutBox from './logout_box';
 class LeftNavHeader extends React.Component {
   constructor(props){
     super(props);
@@ -58,28 +59,10 @@ class LeftNavHeader extends React.Component {
     return (
       <section id="company-header">
         <h2 id="company-name"><b>Splat</b></h2>
-        <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true" onClick={this.openModal}>
-          <Modal
-            isOpen={this.state.modalOpen}
-            onRequestClose={this.closeModal}
-            style={this.modalStyle}
-            contentLabel="Logout">
-            <div id="exit-logout-dropdown" onClick={this.closeModal}>
-              <i className="fa fa-times fa-3x" aria-hidden="true"></i>
-              <ul>
-              <li>
-                <div className="logout-box">
-                  <div id="logout-box-user-display">
-                    <img src={this.user.avatar_url} />
-                    <p id="logout-box-username">{this.username}</p>
-                    <p id="logout-box-handle">@{this.username}</p>
-                  </div>
-                  <span id="logout-box-logout-btn" onClick={this.logoutUser}>Logout</span>
-                </div>
-              </li>
-            </ul>
-            </div>
-          </Modal>
+        <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true" onClick={this.displayDropdown}>
+          <ul className={`${this.state.className}`}>
+              <LogoutBox username={this.username} logoutUser={this.logoutUser} />
+          </ul>
         </i>
         <div id ="left-nav-username-display">
           <div id="online-marker"></div>
