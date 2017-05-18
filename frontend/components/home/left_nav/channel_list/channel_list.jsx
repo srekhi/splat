@@ -35,7 +35,6 @@ class ChannelList extends React.Component {
   }
   closeModal() {
     this.setState({ modalOpen: false });
-    this.props.removeChannelErrors();
   }
 
   openModal() {
@@ -59,7 +58,7 @@ class ChannelList extends React.Component {
             allUsers={this.props.allUsers}
             fetchUsers={this.props.fetchUsers}
             closeModal={this.closeModal}
-            removeErrors={this.props.removeErrors}
+            removeErrors={this.props.removeChannelErrors}
             fetchChannels={this.props.fetchChannels}
             />
       </Modal>;

@@ -8,6 +8,7 @@ class Api::ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find_by(id: params[:id])
+    @count = @channel.users.count
     render "api/channels/show"
   end
 

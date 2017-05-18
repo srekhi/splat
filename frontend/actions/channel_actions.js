@@ -52,11 +52,12 @@ export const receiveUserCount = userCount => ({
     userCount
 });
 
-export const fetchUserCount = channelId => dispatch => (
-  APIUtil.fetchUserCountForChannel(channelId).then(userCount => (
+export const fetchUserCount = channelId => dispatch => {
+  console.log(` about to fetch ${channelId}  `);
+  return APIUtil.fetchUserCountForChannel(channelId).then(userCount => (
     dispatch(receiveUserCount(userCount))
-  ))
-);
+  ));
+};
 
 export const removeChannelErrors = () => ({
   type: REMOVE_CHANNEL_ERRORS,
