@@ -3,30 +3,40 @@ class NewMessageForm extends React.Component {
   constructor(props){
     super(props);
     this.createMessage = this.createMessage.bind(this);
-    this.update = this.update.bind(this);
     this.state = {
-      channel_id: null,
+      channelId: null,
       userId: null,
-      content: ""
+      content: ''
     };
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.updateContent = this.updateContent.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState = {
-      channel_id: newProps.channel.id,
-      userId: newProps.userId,
-      content: ""
-    };
+    // this.setState = {
+    //   channel_id: newProps.channel.id,
+    //   userId: newProps.userId,
+    //   content: ""
+    // };
   }
 
   createMessage(){
     const msg = this.state;
+    console.log('created');
+    this.props.createMessage(msg);
   }
 
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.setState({userId: this.props.userId, channelId: this.props.channel} );
+      debugger;
+      this.createMessage();
+    }
+  }
+
+  updateContent(e) {
+    let content = e.currentTarget.value;
+    this.setState( {content} );
   }
 
   render(){
@@ -35,9 +45,9 @@ class NewMessageForm extends React.Component {
         <div className="new-message-input">
         <input
            id="message-content-input"
-           onChange={this.update('content')}
-           onClick={this.createMessage}
+           onChange={this.updateContent}
            type="text"
+           onKeyPress={this.handleKeyPress}
            placeholder={`Message #${this.props.channel.name}`}
             />
         </div>

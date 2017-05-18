@@ -9,7 +9,7 @@ import {
   REMOVE_CHANNEL_ERRORS
 } from '../actions/channel_actions';
 
-const defaultState = {channels: {}, errors: [], userCount: 1};
+const defaultState = {channels: {}, errors: [], userCount: {} };
 
 const ChannelReducer = (state = defaultState, action) => {
   Object.freeze(state);

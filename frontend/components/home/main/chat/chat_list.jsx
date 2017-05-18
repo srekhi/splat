@@ -40,6 +40,8 @@ class ChatList extends React.Component {
             <NewMessageForm
               channel={this.props.channel}
               userId={this.props.currentUser.id}
+              createMessage={this.props.createMessage}
+              currentUser={this.props.currentUser}
               />
           </footer>
         </section>

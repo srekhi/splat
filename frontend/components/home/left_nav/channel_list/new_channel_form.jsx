@@ -40,7 +40,7 @@ class NewChannelForm extends React.Component {
   }
 
   componentWillUnmount(){
-    debugger;
+
   }
 
   addUser(e) {
@@ -88,6 +88,7 @@ class NewChannelForm extends React.Component {
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
     this.props.createChannel(channel).then( res => {
       if (res.channel !== undefined) {
+        this.props.fetchChannels(this.props.currentUser.id);
         this.props.history.push(`/messages/${res.channel.id}`);
         this.props.closeModal();
         this.props.removeErrors();
@@ -122,16 +123,8 @@ class NewChannelForm extends React.Component {
       </section>
     );
   }
-  showAlert(err) {
-    msg.show('Title missing', {
-      time: 2000,
-      type: 'success',
-      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg" width="32px" height="32px"/>
-  });
-}
 
   render() {
-    console.log(this.props);
     const self = this;
     let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
       return <li  className="selected-user">
@@ -186,7 +179,6 @@ class NewChannelForm extends React.Component {
             {userList}
           </ul>
         </form>
-        <AlertContainer ref={(a) => global.msg = a} {...this.alertOptions} />
       </div>
     );
   }

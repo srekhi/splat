@@ -60,9 +60,10 @@ class ChannelList extends React.Component {
             fetchUsers={this.props.fetchUsers}
             closeModal={this.closeModal}
             removeErrors={this.props.removeErrors}
+            fetchChannels={this.props.fetchChannels}
             />
       </Modal>;
-    const channelItems = this.publicChannels.map((channel) => {
+    const channelItems = this.props.publicChannels.map((channel) => {
       return(
         <li key={channel.id}>
          <ChannelListItem channel={channel} private="false"/>
@@ -73,7 +74,7 @@ class ChannelList extends React.Component {
       <nav>
         {modal}
         <ul id="left-nav-channel-list">
-          <h2>CHANNELS <span>({this.channelCount})</span>
+          <h2>CHANNELS <span>({this.props.publicChannels.length})</span>
             <i onClick={this.openModal} className="fa fa-plus-square" aria-hidden="true"></i>
           </h2>
           {channelItems}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class MainHeader extends React.Component {
   constructor(props){
@@ -6,11 +7,19 @@ class MainHeader extends React.Component {
   }
 
   componentWillMount(){
+    const channelId = this.props.match.params.channelId;
     this.props.fetchChannels(this.props.user.id);
+    this.props.fetchUserCount(channelId);
+
+  }
+
+  componentWillReceiveProps(newProps){
+    if (this.props.channel !== undefined && this.props.channel.id !== newProps.channel.id) {
+      newProps.fetchUserCount(newProps.channel.id);
+    }
   }
 
   render(){
-    // return <h1>Test</h1>;
     if (this.props.channel === undefined) return <header>Loading..</header>;
       return (
         <header id="main-team-header">
@@ -26,4 +35,4 @@ class MainHeader extends React.Component {
 
 }
 
-export default MainHeader;
+export default withRouter(MainHeader);
