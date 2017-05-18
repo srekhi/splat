@@ -8,7 +8,8 @@ const mapStateToProps = (state, { match }) => {
   let channelId = match.params.channelId;
   return {
     user: state.session.currentUser,
-    channel: state.channels.channels[channelId]
+    channel: state.channels.channels[channelId],
+    messages: state.messages
   };
 
 };

@@ -8,11 +8,7 @@ const HomeContainer = () => {
   return(
     <main className="main-view">
       <LeftNav className="left-nav" />
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <Route path="/messages/:channelId" component={MainHeaderContainer} />;
+      <Route path="/messages/:channelId" component={MainHeaderContainer} />
    </main>);
 };
 

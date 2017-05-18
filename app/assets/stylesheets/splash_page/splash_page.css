@@ -106,7 +106,7 @@ body {
   border-radius: 4px;
   font-size: 20px;
   font-weight: 700;
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   color: #fff;
   cursor: pointer;
   outline-width: 0;

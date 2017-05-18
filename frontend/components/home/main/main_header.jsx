@@ -7,15 +7,17 @@ class MainHeader extends React.Component {
 
   componentWillMount(){
     this.props.fetchChannels(this.props.user.id);
+    
   }
 
   render(){
-    { if (this.props.channel === undefined) return <header></header>; }
-    return (
-      <header>
-        {this.props.channel.name}
-     </header>
-  );
+    // return <h1>Test</h1>;
+    if (this.props.channel === undefined) return <header>Loading..</header>;
+      return (
+        <header>
+          {this.props.channel.name}
+        </header>
+      );
   }
 
 }
