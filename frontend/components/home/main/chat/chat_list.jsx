@@ -8,13 +8,12 @@ class ChatList extends React.Component {
 
   componentWillMount(){
     const channelId = this.props.match.params.channelId;
-
+    this.props.fetchMessages(channelId);
   }
 
   componentWillReceiveProps(newProps){
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
       newProps.fetchMessages(newProps.match.params.channelId);
-      console.log("mounted");
     }
 
   }
@@ -38,7 +37,10 @@ class ChatList extends React.Component {
             { messages }
           </ul>
           <footer id="new-message-footer">
-            <NewMessageForm channel={this.props.channel} />
+            <NewMessageForm
+              channel={this.props.channel}
+              userId={this.props.currentUser.id}
+              />
           </footer>
         </section>
       );

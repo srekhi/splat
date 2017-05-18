@@ -9,13 +9,6 @@ class MainHeader extends React.Component {
     this.props.fetchChannels(this.props.user.id);
   }
 
-  componentWillReceiveProps(newProps){
-    //put a conditional for count.
-    if (this.props.userCount !== newProps.userCount) {
-      newProps.fetchUserCount(newProps.channel.id);
-    }
-  }
-
   render(){
     // return <h1>Test</h1>;
     if (this.props.channel === undefined) return <header>Loading..</header>;
