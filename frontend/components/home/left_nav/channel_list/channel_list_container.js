@@ -1,7 +1,7 @@
 import { selectAllPublicChannels } from '../../../../reducers/selectors/channel_selectors';
 import { selectAllUsers } from '../../../../reducers/selectors/user_selectors';
 
-import { fetchChannels, createChannel } from '../../../../actions/channel_actions';
+import { fetchChannels, createChannel, removeChannelErrors } from '../../../../actions/channel_actions';
 import { fetchUsers } from '../../../../actions/user_actions';
 
 import { connect } from 'react-redux';
@@ -18,7 +18,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchChannels: (userId) => dispatch(fetchChannels(userId)),
   createChannel: (channel) => dispatch(createChannel(channel)),
-  fetchUsers: () => dispatch(fetchUsers())
+  fetchUsers: () => dispatch(fetchUsers()),
+  removeChannelErrors: () => dispatch(removeChannelErrors())
 });
 
 

@@ -39,6 +39,10 @@ class NewChannelForm extends React.Component {
     // Object {username: "demo-user"}
   }
 
+  componentWillUnmount(){
+    debugger;
+  }
+
   addUser(e) {
 
   }
@@ -82,10 +86,11 @@ class NewChannelForm extends React.Component {
     }
     let channel = this.state;
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
-    this.props.createChannel(channel).then( (res) => {
+    this.props.createChannel(channel).then( res => {
       if (res.channel !== undefined) {
         this.props.history.push(`/messages/${res.channel.id}`);
         this.props.closeModal();
+        this.props.removeErrors();
       }
     });
   }

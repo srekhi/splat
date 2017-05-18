@@ -5,7 +5,7 @@ export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS'; //errors for cha
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS'; //fetching all channels for user
 export const DELETE_CHANNEL = 'DELETE_CHANNEL'; //fetching all channels for user
 export const RECEIVE_USER_COUNT = 'RECEIVE_USER_COUNT'; //fetching all channels for user
-
+export const REMOVE_CHANNEL_ERRORS = 'REMOVE_CHANNEL_ERRORS'; //fetching all channels for user
 
 export const receiveChannel = channel => ({
   type: RECEIVE_CHANNEL,
@@ -56,4 +56,12 @@ export const fetchUserCount = channelId => dispatch => (
   APIUtil.fetchUserCountForChannel(channelId).then(userCount => (
     dispatch(receiveUserCount(userCount))
   ))
+);
+
+export const removeChannelErrors = () => ({
+  type: REMOVE_CHANNEL_ERRORS,
+});
+
+export const clearErrors = () => dispatch => (
+  dispatch(removeChannelErrors())
 );

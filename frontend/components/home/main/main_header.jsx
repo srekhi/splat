@@ -10,6 +10,7 @@ class MainHeader extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+    debugger;
     newProps.fetchUserCount(newProps.channel.id);
   }
 
