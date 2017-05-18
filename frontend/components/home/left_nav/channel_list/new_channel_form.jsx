@@ -76,6 +76,10 @@ class NewChannelForm extends React.Component {
   }
   handleSubmit() {
     event.preventDefault();
+    if (!this.state.selectedUsers.include(this.props.currentUser)){
+      let newSelectedUsers = this.state.selectedUsers.push(this.props.currentUser);
+      this.state.selectedUsers = newSelectedUsers;
+    }
     const form = this.state;
     createChannel(form);
   }
