@@ -32,6 +32,7 @@
     "babel-preset-react": "^6.24.1",
     "react": "^15.5.4",
     "react-alert": "^2.0.1",
+    "react-alerts": "^0.3.0",
     "react-click-outside": "^2.3.1",
     "react-dom": "^15.5.4",
     "react-fontawesome": "^1.6.1",

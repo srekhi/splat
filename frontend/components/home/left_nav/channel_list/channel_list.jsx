@@ -28,6 +28,7 @@ class ChannelList extends React.Component {
   componentWillMount() {
     this.props.fetchChannels(this.props.user.id);
   }
+
   componentWillReceiveProps(newProps) {
     this.publicChannels = newProps.publicChannels;
     this.channelCount = this.publicChannels.length;

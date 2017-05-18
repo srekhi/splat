@@ -12,11 +12,12 @@ class Api::ChannelsController < ApplicationController
   end
 
   def create
-    @channel = Channel.new(channel_params)
     #get the users from here and create memberships accordingly.
-    
+    @channel = Channel.new(channel_params)
+    user_ids = params[:channel][:user_ids]
     if @channel.valid?
       @channel.save
+      user_ids.each { |user_id| Membership.create(channel_id: @channel.id, user_id: user_id) }
       render "api/channels/show"
     else
       render json: @channel.errors.full_messages, status: 422

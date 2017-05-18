@@ -1,7 +1,7 @@
 import React from 'react';
 import AlertContainer from 'react-alert';
 import { createChannel } from '../../../../util/channel_api_util';
-import { hashHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import SelectedUsers from './selected_users';
 //actually creating a new membership.
 class NewChannelForm extends React.Component {
@@ -11,7 +11,7 @@ class NewChannelForm extends React.Component {
       name: '',
       private: this.props.private,
       allUsers: "",
-      selectedUsers: []
+      selectedUsers: [this.props.currentUser],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);
@@ -61,7 +61,7 @@ class NewChannelForm extends React.Component {
   }
 
   selectUser(user) {
-    if (user !== this.props.currentUser && !(this.state.selectedUsers.includes(user))) {
+    if (user.username !== this.props.currentUser.username && !(this.state.selectedUsers.includes(user))) {
       let currentSelectedUsers = this.state.selectedUsers;
       currentSelectedUsers.push(user);
       this.setState({selectedUsers: currentSelectedUsers});
@@ -81,12 +81,11 @@ class NewChannelForm extends React.Component {
   }
 
   createChannel() {
+    event.preventDefault();
     let channel = this.state;
+    channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
     this.props.createChannel(channel);
-    // createChannel(this.state).then(savedChannel => {
-    //   hashHistory.push(`/api/channels/${savedChannel.id}`);
-    // });
-
+    this.props.history.push('/messages');
   }
 
   // renderErrors() {
@@ -109,7 +108,7 @@ class NewChannelForm extends React.Component {
           <li>{error_exclamation}</li>
           {this.props.errors.map((error, i) => (
             <li className="create-channel-error"  key={`error-${i}`}>
-              {error}
+                {error}
             </li>
           ))}
         </ul>
@@ -125,6 +124,7 @@ class NewChannelForm extends React.Component {
 }
 
   render() {
+    console.log(this.props);
     const self = this;
     let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
       return <li  className="selected-user">
@@ -150,7 +150,8 @@ class NewChannelForm extends React.Component {
     });
     return (
       <div id="new-channel-window">
-        <form className="channel-form" onSubmit={this.handleSubmit}>
+        <form className="channel-form">
+          {this.renderErrors()}
           <h1>New Channel</h1>
             <input type="text"
               id="new-channel-title"
@@ -165,7 +166,7 @@ class NewChannelForm extends React.Component {
               value={this.state.allUsers}
               onChange={this.update('allUsers')}
               className="new-channel-input"
-              placeholder="Add Users"
+              placeholder="Filter by user name"
             />
             <button onClick={this.createChannel} id="new-channel-button" type="submit" value="Submit">Go</button>
           </div>
@@ -177,11 +178,10 @@ class NewChannelForm extends React.Component {
           <ul id="new-channel-form-list" >
             {userList}
           </ul>
-          {this.renderErrors()}
         </form>
         <AlertContainer ref={(a) => global.msg = a} {...this.alertOptions} />
       </div>
     );
   }
 }
-export default NewChannelForm;
+export default withRouter(NewChannelForm);

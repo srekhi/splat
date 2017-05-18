@@ -32,8 +32,11 @@ class LeftNavHeader extends React.Component {
     };
   }
 
-  logoutUser() {
-    this.logout();
+  logoutUser(event) {
+    document.removeEventListener("click", this.toggleDropdown);
+    event.preventDefault();
+    event.stopPropagation();
+    this.props.logout();
   }
 
   closeModal() {
@@ -78,7 +81,7 @@ class LeftNavHeader extends React.Component {
                     <p id="logout-box-handle">@{this.props.user.username}</p>
                   </div>
                 </div>
-                <span id="logout-box-logout-btn" onClick={this.props.logoutUser}>Logout</span>
+                <span id="logout-box-logout-btn" onClick={this.logoutUser}>Logout</span>
               </div>
             </li>
           </ul>

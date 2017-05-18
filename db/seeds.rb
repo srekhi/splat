@@ -8,10 +8,10 @@
 
 
 User.destroy_all
-User.create(username: "Drake Graham", password: "password")
+User.create(username: "drake_graham", password: "password")
 30.times do |i|
   username = Faker::Name.name.to_s.split(" ").join("_").downcase
-  User.create(username: Faker::Name.name.to_s, password: "password")
+  User.create(username: username, password: "password")
 end
 
 # u2 = User.create(username: "demo-user2", password: "password2" )

@@ -165,3 +165,10 @@ li.new-channel-user-list-item:hover {
     cursor: pointer;
     font-size: 19px
   }
+
+  .errors > ul > li:first-of-type {
+    margin-bottom: -17px;
+    /* height: 13px; */
+    align-self: center;
+    display: inline-block;
+  }

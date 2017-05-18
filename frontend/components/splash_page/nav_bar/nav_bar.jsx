@@ -13,7 +13,7 @@ class Navbar extends React.Component {
     } else if (e.target.id === "sign-up") {
       this.props.history.push("/signup");
     } else if (e.target.id === "demo") {
-      const savedUsername = "Drake Graham";
+      const savedUsername = "drake_graham";
       const savedPassword = "password";
       const user = {username: savedUsername, password: savedPassword};
       this.props.login(user);
