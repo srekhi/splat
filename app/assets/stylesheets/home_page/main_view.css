@@ -36,3 +36,58 @@ div#main-header-content {
     font-weight: bold;
     margin-bottom: 1%;
   }
+
+.message-content{
+  margin-left: 10px;
+}
+
+.all-message-content {
+  display: flex;
+  padding: 3px 0px 3px 7px;
+}
+#message-time{
+  font-weight: 300;
+  color: #9e9ea6;
+  font-size: 12px;
+  vertical-align: bottom;
+  display: inline;
+  margin-left: 8px;
+  margin-top: 1px;
+  line-height: 19px;
+}
+
+.all-messages-container{
+  height: 100%;
+}
+
+.new-message-input {
+  display: inline-block;
+  width: 95%;
+  height:100%;
+  border-radius: 6px;
+  width: calc(100% - 220px);
+  height: 64px;
+  background-color: white;
+  margin: 0 auto 5px auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing:border-box;
+  border-radius: 6px;
+}
+#new-message-footer{
+  position: fixed;
+  display: flex;
+  bottom: 5px;
+  width: calc(100% - 220px);
+  height: 64px;
+  background-color: white;
+  margin: 0 auto 5px auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing:border-box;
+  border-radius: 6px;
+}
+#message-content-input{
+  width: 100%;
+  height: 100%;
+}

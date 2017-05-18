@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import NewMessageForm from './new_message';
 class ChatList extends React.Component {
   constructor(props){
     super(props);
@@ -14,14 +14,25 @@ class ChatList extends React.Component {
   render(){
     const messages = this.props.messages.map((message) => (
       <li className="chat-message">
-        {message.content}
+        <div className="all-message-content">
+          <img src={message.user.avatar_url} />
+          <div className="message-content">
+            {message.user.username} <span id="message-time">{message.created_at}</span>
+            <br />
+            {message.content}
+          </div>
+        </div>
       </li>
     ));
       return (
+        <section className="all-messages-container">
           <ul className="chat-message-list">
-            yo
             { messages }
           </ul>
+          <footer id="new-message-footer">
+            <NewMessageForm channel={this.props.channel} />
+          </footer>
+        </section>
       );
   }
 
