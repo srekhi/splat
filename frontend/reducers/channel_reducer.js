@@ -4,10 +4,11 @@ import {
   RECEIVE_CHANNEL,
   RECEIVE_CHANNEL_ERRORS,
   RECEIVE_CHANNELS,
-  DELETE_CHANNEL
+  DELETE_CHANNEL,
+  RECEIVE_USER_COUNT
 } from '../actions/channel_actions';
 
-const defaultState = {channels: {}, errors: []};
+const defaultState = {channels: {}, errors: [], userCount: 1};
 
 const ChannelReducer = (state = defaultState, action) => {
   Object.freeze(state);
@@ -26,6 +27,8 @@ const ChannelReducer = (state = defaultState, action) => {
     case DELETE_CHANNEL:
       delete newState[action.id];
       return newState;
+    case RECEIVE_USER_COUNT:
+      newState['userCount'] = action.userCount
     default:
       return state;
   }

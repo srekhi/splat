@@ -4,6 +4,7 @@ export const RECEIVE_CHANNEL = 'RECEIVE_CHANNEL'; //add channel to state;
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS'; //errors for channel creation
 export const RECEIVE_CHANNELS = 'RECEIVE_CHANNELS'; //fetching all channels for user
 export const DELETE_CHANNEL = 'DELETE_CHANNEL'; //fetching all channels for user
+export const RECEIVE_USER_COUNT = 'RECEIVE_USER_COUNT'; //fetching all channels for user
 
 
 export const receiveChannel = channel => ({
@@ -43,5 +44,16 @@ export const deleteChannel = channelId => dispatch => ({
 export const removeChannel = channelId => dispatch => (
   APIUtil.deleteChannel(channelId).then(deletedChannelId => (
     dispatch(deleteChannel(deletedChannelId))
+  ))
+);
+
+export const receiveUserCount = userCount => ({
+    type: RECEIVE_USER_COUNT,
+    userCount
+});
+
+export const fetchUserCount = channelId => dispatch => (
+  APIUtil.fetchUserCountForChannel(channelId).then(userCount => (
+    dispatch(receiveUserCount(userCount))
   ))
 );

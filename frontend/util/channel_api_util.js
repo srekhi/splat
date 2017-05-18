@@ -19,3 +19,10 @@ export const deleteChannel = (id) => (
     url: `/api/channels/${id}`
   })
 );
+
+export const fetchUserCountForChannel = channelId => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/channels/${channelId}`
+  })
+);

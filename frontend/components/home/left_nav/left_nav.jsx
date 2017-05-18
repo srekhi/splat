@@ -5,7 +5,7 @@ import ChannelListContainer from './channel_list/channel_list_container';
 const LeftNav = () => {
   return(
     <main className="left-nav">
-      <LeftNavHeaderContainer />;
+      <LeftNavHeaderContainer />
       <ChannelListContainer />
    </main>);
 };

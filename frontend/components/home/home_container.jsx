@@ -6,7 +6,7 @@ import { Route } from 'react-router';
 //eventually going to have LeftNav, Main, and Detail Component in here only.
 const HomeContainer = () => {
   return(
-    <main className="main-view">
+    <main className="overall-home-view">
       <LeftNav className="left-nav" />
       <Route path="/messages/:channelId" component={MainHeaderContainer} />
    </main>);

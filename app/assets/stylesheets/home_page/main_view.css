@@ -1,4 +1,32 @@
-.main-view {
+.overall-home-view {
   display:flex;
-  flex-direction:row;
 }
+
+#main-team-header {
+  min-height: 62px;
+  border-bottom: 1px solid #E8E8E8;
+  /* display: flex; */
+  background-color: #fff;
+  font-weight: 800;
+  color: #2C2D30;
+  width: 100%;
+  font-size: 18px;
+  display: inline-block;
+  height: 7%;
+}
+
+#channel-count-of-users {
+  font-size: 10px;
+  padding-right: 5px;
+  padding-bottom: 1px;
+  font-weight: normal;
+}
+
+div#main-header-content {
+    display: inline-block;
+    height: 73%;
+    margin-top: 1.5%;
+    margin-left: 2.8%;
+    font-size: 21px;
+    font-weight: bold;
+  }

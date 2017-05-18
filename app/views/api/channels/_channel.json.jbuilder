@@ -1,2 +1,3 @@
 json.extract! channel, :id, :name, :private
-json.users users 
+json.users users
+json.userCount count 
