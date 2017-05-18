@@ -13,6 +13,11 @@
   font-size: 18px;
   display: inline-block;
   height: 7%;
+  padding-bottom: 1%;
+}
+
+#main-view-container{
+  width: 100%;
 }
 
 #channel-count-of-users {
@@ -29,4 +34,5 @@ div#main-header-content {
     margin-left: 2.8%;
     font-size: 21px;
     font-weight: bold;
+    margin-bottom: 1%;
   }
