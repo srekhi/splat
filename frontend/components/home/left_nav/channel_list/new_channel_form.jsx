@@ -102,11 +102,11 @@ class NewChannelForm extends React.Component {
       error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
     }
     return(
-      <section className="errors">
-        <ul className="error-list">
-          <li>{error_exclamation}</li>
+      <section className="errors-new-channel">
+        <ul className="error-list-new-channel">
+          <li id="new-channel-error-fa">{error_exclamation}</li>
           {this.props.errors.map((error, i) => (
-            <li className="create-channel-error"  key={`error-${i}`}>
+            <li id="new-channel-error" className="create-channel-error"  key={`error-${i}`}>
                 {error}
             </li>
           ))}
