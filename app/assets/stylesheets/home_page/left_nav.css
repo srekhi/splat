@@ -119,7 +119,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 }
 
 #logout-box-username {
-  margin-bottom: 3px
+  margin-bottom: 3px;
   font-family: Lato, sans-serif;
   color: #555459;
   font-weight: 900;
