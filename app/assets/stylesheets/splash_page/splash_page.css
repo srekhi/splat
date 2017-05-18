@@ -194,3 +194,9 @@ body {
   font-size: 40px;
   align-self: center;
 }
+
+
+li#db-error-splash {
+    margin-top: 13px;
+    display: inline-block;
+}

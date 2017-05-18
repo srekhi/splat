@@ -22,6 +22,9 @@ class SessionForm extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    this.props.clearErrors();
+  }
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -70,7 +73,7 @@ class SessionForm extends React.Component {
         <ul className="error-list">
           <li>{error_exclamation}</li>
           {this.props.errors.map((error, i) => (
-            <li key={`error-${i}`}>
+            <li id="db-error-splash" key={`error-${i}`}>
               {error}
             </li>
           ))}
