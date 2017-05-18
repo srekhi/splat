@@ -10,8 +10,10 @@ class MainHeader extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    debugger;
-    newProps.fetchUserCount(newProps.channel.id);
+    //put a conditional for count.
+    if (this.props.userCount !== newProps.userCount) {
+      newProps.fetchUserCount(newProps.channel.id);
+    }
   }
 
   render(){
