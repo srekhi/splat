@@ -4,12 +4,13 @@ class NewMessageForm extends React.Component {
     super(props);
     this.createMessage = this.createMessage.bind(this);
     this.state = {
-      channelId: null,
-      userId: null,
+      channel_id: this.props.channel.id,
+      user_id: this.props.currentUser.id,
       content: ''
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateContent = this.updateContent.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -20,16 +21,20 @@ class NewMessageForm extends React.Component {
     // };
   }
 
+  clearState() {
+    this.setState({content: ""});
+  }
+
   createMessage(){
     const msg = this.state;
     console.log('created');
+    this.clearState();
     this.props.createMessage(msg);
   }
 
   handleKeyPress(e) {
     if (e.key === 'Enter') {
-      this.setState({userId: this.props.userId, channelId: this.props.channel} );
-      debugger;
+      this.setState({user_id: this.props.userId, channel_id: this.props.channel.id} );
       this.createMessage();
     }
   }
@@ -47,6 +52,7 @@ class NewMessageForm extends React.Component {
            id="message-content-input"
            onChange={this.updateContent}
            type="text"
+           value={this.state.content}
            onKeyPress={this.handleKeyPress}
            placeholder={`Message #${this.props.channel.name}`}
             />

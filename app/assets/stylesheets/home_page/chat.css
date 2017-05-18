@@ -3,3 +3,10 @@
   display: flex;
   flex-grow: 1;
 }
+
+
+ul.chat-message-list {
+    height: 81%;
+    overflow: hidden;
+    overflow-y: scroll;
+}

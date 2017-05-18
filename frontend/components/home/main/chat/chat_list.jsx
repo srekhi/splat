@@ -19,6 +19,7 @@ class ChatList extends React.Component {
   }
 
   render(){
+    if (this.props.channel === undefined) return <p>Loading..</p>;
     const messages = this.props.messages.map((message) => (
       <li className="chat-message">
         <div className="all-message-content">
