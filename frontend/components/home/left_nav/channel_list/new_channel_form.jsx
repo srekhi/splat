@@ -13,7 +13,6 @@ class NewChannelForm extends React.Component {
       allUsers: "",
       selectedUsers: [this.props.currentUser],
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.createChannel = this.createChannel.bind(this);
     this.newChannelError = this.newChannelError.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
@@ -74,21 +73,17 @@ class NewChannelForm extends React.Component {
     let newSelectedUsers = this.state.selectedUsers.slice(0, i).concat(this.state.selectedUsers.slice(i+1));
     this.setState({selectedUsers: newSelectedUsers});
   }
-  handleSubmit() {
-    event.preventDefault();
-    if (!this.state.selectedUsers.include(this.props.currentUser)){
-      let newSelectedUsers = this.state.selectedUsers.push(this.props.currentUser);
-      this.state.selectedUsers = newSelectedUsers;
-    }
-    const form = this.state;
-    createChannel(form);
-  }
 
   createChannel() {
     event.preventDefault();
+    if (!this.state.selectedUsers.includes(this.props.currentUser)){
+      let newSelectedUsers = this.state.selectedUsers.push(this.props.currentUser);
+      this.state.selectedUsers = newSelectedUsers;
+    }
     let channel = this.state;
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
     this.props.createChannel(channel).then(res => this.props.history.push(`/messages/${res.channel.id}`));
+    this.props.closeModal();
   }
 
   // renderErrors() {
