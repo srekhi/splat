@@ -158,12 +158,18 @@ li.new-channel-user-list-item:hover {
     background-color: #4C9689;
     color: white;
     border-radius: 5px;
-    width: 140px;
+    width: 176px;
     transition: all 0.3s ease 0s;
+    align-items: center;
+    justify-content: space-between;
   }
   #delete-selected-user {
     cursor: pointer;
-    font-size: 19px
+    font-size: 19px;
+    align-self: flex-start;
+    margin-left: 10px;
+    /* align-self: flex-start; */
+    margin-right: -3px;
   }
 
   .errors > ul > li:first-of-type {
@@ -172,3 +178,8 @@ li.new-channel-user-list-item:hover {
     align-self: center;
     display: inline-block;
   }
+
+
+.selected-user > img {
+    margin-right: 7px;
+}

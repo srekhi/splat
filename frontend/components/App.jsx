@@ -6,7 +6,8 @@ import SplashPage from './splash_page/splash_page';
 const App = () => (
   <div>
       <Switch>
-        <ProtectedRoute exact path="/" component={ HomeContainer } />
+        <ProtectedRoute exact path="/" component={HomeContainer} />
+        <ProtectedRoute path="/messages/:messageId" component={HomeContainer} />
         <Route component={SplashPage} />
       </Switch>
   </div>

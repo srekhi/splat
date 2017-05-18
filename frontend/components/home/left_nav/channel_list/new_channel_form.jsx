@@ -84,8 +84,7 @@ class NewChannelForm extends React.Component {
     event.preventDefault();
     let channel = this.state;
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
-    this.props.createChannel(channel);
-    this.props.history.push('/messages');
+    this.props.createChannel(channel).then(res => this.props.history.push(`/messages/${res.channel.id}`));
   }
 
   // renderErrors() {
