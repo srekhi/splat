@@ -10,3 +10,12 @@ ul.chat-message-list {
     overflow: hidden;
     overflow-y: scroll;
 }
+
+
+span#message-author {
+    font-weight: bold;
+}
+
+p#message-text {
+    padding-top: 2px;
+}
