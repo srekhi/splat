@@ -41,7 +41,7 @@ end
 
 Channel.destroy_all
 c1 = Channel.create(name: "general", private: false)
-c2 = Channel.create(name: "test_channel2", private: false)
+c2 = Channel.create(name: "harry_potter_quotes", private: false)
 c3 = Channel.create(name: "test_channel3", private: false)
 
 d1 = Channel.create(name: "private_channel1", private: true)
@@ -55,9 +55,11 @@ Membership.create(user_id: User.first.id, channel_id: c1.id)
 Membership.create(user_id: User.first.id, channel_id: c2.id)
 Membership.create(user_id: User.last.id, channel_id: c2.id)
 
+Membership.create(user_id: User.last.id, channel_id: d1.id)
 Membership.create(user_id: User.first.id, channel_id: d1.id)
+
 Membership.create(user_id: User.first.id, channel_id: d2.id)
-Membership.create(user_id: User.last.id, channel_id: d2.id)
+Membership.create(user_id: users.sample.id, channel_id: d2.id)
 
 
 
@@ -71,5 +73,5 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first m
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham
 30.times do
-  Message.create(user_id: users.sample.id, channel_id: c1.id, content: Faker::HarryPotter.quote )
+  Message.create(user_id: users.sample.id, channel_id: c2.id, content: Faker::HarryPotter.quote )
 end

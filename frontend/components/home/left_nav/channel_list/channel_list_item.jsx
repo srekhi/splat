@@ -11,7 +11,10 @@ class ChannelListItem extends React.Component {
     let dmPersonCount = "";
     if (this.props.private === "true") {
         let usernames = this.channel.users.map((user) => {
-          return user.username;
+          // if (user.username != this.props.currentUser.username) {
+            // return user.username;
+          // }
+          return user.username; 
         });
         usernames[0] = "@" + usernames[0];
         if (usernames.join(" ").length > 30) {

@@ -59,7 +59,7 @@ class DMList extends React.Component {
     const channelItems = this.props.privateChannels.map((channel) => {
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="true" channel={channel}/>
+         <ChannelListItem channel={channel} private="true" channel={channel} currentUser={this.props.user}/>
         </li>
       );
     });
