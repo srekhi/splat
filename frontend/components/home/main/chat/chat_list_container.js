@@ -2,6 +2,8 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import ChatList from './chat_list';
 import { fetchMessages, createMessage } from '../../../../../frontend/actions/message_actions';
+import { receiveMessage } from '../../../../../frontend/actions/message_actions';
+
 
 const mapStateToProps = (state, {match}) => {
   return {
@@ -13,7 +15,8 @@ const mapStateToProps = (state, {match}) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMessages: (channelId) => dispatch(fetchMessages(channelId)),
-  createMessage: (msg) => dispatch(createMessage(msg))
+  createMessage: (msg) => dispatch(createMessage(msg)),
+  receiveMessage: (msg) => dispatch(receiveMessage(msg))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatList));

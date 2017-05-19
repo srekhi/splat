@@ -8,8 +8,9 @@
 
 
 User.destroy_all
-User.create(username: "drake", password: "password")
-users = [];
+
+users = []
+
 30.times do |i|
   username = Faker::Name.first_name.to_s.split(" ").join("_").downcase
   u = User.create(username: username, password: "password")
@@ -72,8 +73,19 @@ Message.destroy_all
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham
-30.times do
-  sample_user_id = users.sample.id
-  Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
-  Membership.create(user_id: sample_user_id, channel_id: c2.id)
-end
+
+# TODO:COMMENT THIS BACK IN. taking it out bc a bit slow.
+# 30.times do
+#   sample_user_id = users.sample.id
+#   Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
+#   Membership.create(user_id: sample_user_id, channel_id: c2.id)
+# end
+
+# Details for live chat test
+u1 = User.create(username: "drake", password: "password")
+u2 = User.create(username: "test", password: "password2")
+
+m1 = Membership.create(user_id: u1.id, channel_id: c1.id)
+m2 = Membership.create(user_id: u2.id, channel_id: c1.id)
+
+# now both drake and test are subscribed to general channel

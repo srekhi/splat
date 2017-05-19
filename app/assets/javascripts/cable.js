@@ -11,3 +11,5 @@
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+//allows you to subscribe the user.
+//window.App comes from here--allows you to affect this subscription from any component.

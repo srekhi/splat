@@ -5,16 +5,25 @@ class ChatList extends React.Component {
   constructor(props){
     super(props);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.setSocket = this.setSocket.bind(this);
+    this.addSocket = this.addSocket.bind(this);
+    this.removeSocket = this.removeSocket.bind(this);
   }
 
   componentWillMount(){
+    //subscription to be created here
     const channelId = this.props.match.params.channelId;
     this.props.fetchMessages(channelId);
+
+    const channel = this.props.channel;
+    this.setSocket(this.props.channel.id);
   }
 
   componentWillReceiveProps(newProps){
+    //subscription to be created here as well
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
       newProps.fetchMessages(newProps.match.params.channelId);
+      this.setSocket(newProps.channel.id);
     }
 
   }
@@ -22,6 +31,34 @@ class ChatList extends React.Component {
   scrollToBottom(){
     let height = this.refs.chatMessages.scrollHeight;
     this.refs.chatMessages.scrollTop = height;
+  }
+
+  setSocket(channelId) {
+  if (window.App.channel) {
+    this.removeSocket();
+  }
+    this.addSocket(channelId);
+  }
+
+  removeSocket(){
+    window.App.cable.subscriptions.remove(window.App.channel);
+  }
+
+
+  addSocket(channelId) {
+    //add the channel as a property of the App on window.
+    window.App.channel = window.App.cable.subscriptions.create({
+      channel: 'RoomChannel',
+      channel_id: channelId //set params for subscription in room_channel (passes to server side)
+    }, {
+      connected: () => {},
+      disconnected: () => {},
+      received: (data) => {
+        console.log("data received from backend");
+        // this.props.createMessage(data.message);
+        this.props.receiveMessage(data.message);
+      }
+    });
   }
 
   render(){
