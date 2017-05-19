@@ -33,7 +33,8 @@ class NewMessageForm extends React.Component {
     console.log('created');
     this.clearState();
     this.props.createMessage(msg);
-    $("#chat-message-list").scrollTop = $("#chat-message-list").scrollHeight;
+    this.props.scrollToBottom();
+    // window.scrollTo( 0, 500 );
   }
 
   handleKeyPress(e) {

@@ -4,6 +4,7 @@ import NewMessageForm from './new_message';
 class ChatList extends React.Component {
   constructor(props){
     super(props);
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   componentWillMount(){
@@ -16,6 +17,11 @@ class ChatList extends React.Component {
       newProps.fetchMessages(newProps.match.params.channelId);
     }
 
+  }
+
+  scrollToBottom(){
+    let height = this.refs.chatMessages.scrollHeight;
+    this.refs.chatMessages.scrollTop = height;
   }
 
   render(){
@@ -35,7 +41,7 @@ class ChatList extends React.Component {
     });
       return (
         <section className="all-messages-container">
-          <ul className="chat-message-list">
+          <ul ref="chatMessages" className="chat-message-list">
             { messages }
           </ul>
           <footer id="new-message-footer">
@@ -44,6 +50,7 @@ class ChatList extends React.Component {
               userId={this.props.currentUser.id}
               createMessage={this.props.createMessage}
               currentUser={this.props.currentUser}
+              scrollToBottom={this.scrollToBottom}
               />
           </footer>
         </section>
