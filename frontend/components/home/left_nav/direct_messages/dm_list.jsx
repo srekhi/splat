@@ -59,11 +59,11 @@ class DMList extends React.Component {
     const channelItems = this.props.privateChannels.map((channel) => {
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="true"/>
+         <ChannelListItem channel={channel} private="true" channel={channel}/>
         </li>
       );
     });
-    //the modal is the plus sign that opens up to what we need.
+    //the {modal} is the plus sign that opens up to what we need.
     return (
       <nav>
         {modal}

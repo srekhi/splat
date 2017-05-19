@@ -223,7 +223,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     flex-direction: column;
     justify-content: space-between;
     display: inline-block;
-    width: 75%;
+    width: 91%;
     height: 20px;
     padding: 2px 0;
 }
@@ -332,7 +332,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     flex-direction: column;
     justify-content: space-between;
     display: inline-block;
-    width: 75%;
+    width: 91%;
     height: 20px;
     padding: 2px 0;
 }
@@ -357,7 +357,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-size: 20px;
   text-overflow: ellipsis;
   font-size:15px;
-
+  overflow: hidden;
 }
 
 #left-nav-dm-list span:first-child {
@@ -367,4 +367,10 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 
 #left-nav-dm-list > h2 > i {
   margin-left: 73px;
+}
+
+
+#channel-list-item{
+  white-space: nowrap;
+  overflow-x: ellipsis;
 }
