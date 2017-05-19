@@ -25,11 +25,14 @@ class NewMessageForm extends React.Component {
     this.setState({content: ""});
   }
 
+
+
   createMessage(){
     const msg = this.state;
     console.log('created');
     this.clearState();
     this.props.createMessage(msg);
+    $("#chat-message-list").scrollTop = $("#chat-message-list").scrollHeight;
   }
 
   handleKeyPress(e) {

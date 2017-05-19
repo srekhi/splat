@@ -63,6 +63,7 @@ class ChannelList extends React.Component {
             closeModal={this.closeModal}
             removeErrors={this.props.removeChannelErrors}
             fetchChannels={this.props.fetchChannels}
+            private="false"
             />
       </Modal>;
     const channelItems = this.props.publicChannels.map((channel) => {

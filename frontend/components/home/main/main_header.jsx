@@ -23,10 +23,21 @@ class MainHeader extends React.Component {
 
   render(){
     if (this.props.channel === undefined) return <header>Loading..</header>;
+    let channelName = "#" + this.props.channel.name;
+    if (this.props.channel.private === true ) {
+      let usernames = this.props.channel.users.map((user) => {
+        // if (user.username != this.props.currentUser.username) {
+          // return user.username;
+        // }
+        return user.username;
+      });
+      usernames[0] = "@" + usernames[0];
+      channelName = usernames.join(", ");
+      }
       return (
         <header id="main-team-header">
           <div id="main-header-content">
-            #{this.props.channel.name}
+            {channelName}
             <br />
             <i id="channel-count-of-users" className="fa fa-user-o" aria-hidden="true"></i>
             <span id="channel-count-of-users">{this.props.channel.userCount}</span>

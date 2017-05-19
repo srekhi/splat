@@ -125,7 +125,20 @@ class NewChannelForm extends React.Component {
 
   render() {
     let header;
+    let renderChannelNameInput;
+    let channelNameInput = "";
     header = (this.props.private === "true" ? "New Direct Message" : "New Channel");
+    renderChannelNameInput = (this.props.private === "true" ? false : true);
+    // if (renderChannelTitleInput) {
+    //   channelNameInput = (<div id="wrap-username-and-button">
+    //               <input type="text"
+    //                 id="new-channel-add-users-input"
+    //                 value={this.state.allUsers}
+    //                 onChange={this.update('allUsers')}
+    //                 className="new-channel-input"
+    //                 placeholder="Filter by user name"
+    //               />)
+    // }
     const self = this;
     let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
       return (<li className="selected-user">
