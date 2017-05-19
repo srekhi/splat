@@ -9,10 +9,14 @@
 
 User.destroy_all
 User.create(username: "drake", password: "password")
+users = [];
 30.times do |i|
   username = Faker::Name.first_name.to_s.split(" ").join("_").downcase
-  User.create(username: username, password: "password")
+  u = User.create(username: username, password: "password")
+  users.push(u)
 end
+
+
 
 # u2 = User.create(username: "demo-user2", password: "password2" )
 # u3 = User.create(username: "demo-user3", password: "password3" )
@@ -44,6 +48,7 @@ d1 = Channel.create(name: "private_channel1", private: true)
 d2 = Channel.create(name: "private_channel2", private: true)
 d3 = Channel.create(name: "private_channel3", private: true)
 
+channel_ids = [c1.id, c2.id, c3.id, d1.id, d2.id, d3.id]
 
 Membership.destroy_all
 Membership.create(user_id: User.first.id, channel_id: c1.id)
@@ -65,3 +70,6 @@ Message.destroy_all
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham
+30.times do
+  Message.create(user_id: users.sample.id, channel_id: c1.id, content: Faker::HarryPotter.quote )
+end
