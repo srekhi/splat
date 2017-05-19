@@ -37,6 +37,7 @@ class ChannelList extends React.Component {
   }
   closeModal() {
     this.setState({ modalOpen: false });
+    this.props.removeChannelErrors();
   }
 
   openModal() {
