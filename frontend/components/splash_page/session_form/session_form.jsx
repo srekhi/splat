@@ -66,7 +66,7 @@ class SessionForm extends React.Component {
   renderErrors() {
     let error_exclamation = "";
     if (this.props.errors.length > 0){
-      error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
+      error_exclamation = <i id="splash-page-error-fa" className="fa fa-exclamation" aria-hidden="true"></i>;
     }
     return(
       <section className="errors">
