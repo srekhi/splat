@@ -5,7 +5,7 @@ import { fetchMessages, createMessage } from '../../../../../frontend/actions/me
 
 const mapStateToProps = (state, {match}) => {
   return {
-    messages: Object.values(state.messages),
+    messages: state.messages.map(function(value) { return state.messages[value];}),
     channel: state.channels.channels[match.params.channelId],
     currentUser: state.session.currentUser
   };
