@@ -17,6 +17,7 @@ class ChatList extends React.Component {
 
     const channel = this.props.channel;
     this.setSocket(this.props.channel.id);
+    // this.scrollToBottom();
   }
 
   componentWillReceiveProps(newProps){
@@ -24,6 +25,7 @@ class ChatList extends React.Component {
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
       newProps.fetchMessages(newProps.match.params.channelId);
       this.setSocket(newProps.channel.id);
+      this.scrollToBottom();
     }
 
   }
@@ -54,8 +56,6 @@ class ChatList extends React.Component {
       connected: () => {},
       disconnected: () => {},
       received: (data) => {
-        console.log("data received from backend");
-        // this.props.createMessage(data.message);
         this.props.receiveMessage(data.message);
       }
     });

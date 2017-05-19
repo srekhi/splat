@@ -6,7 +6,6 @@ class MessageBroadcastJob < ApplicationJob
       partial: 'api/messages/message',
       locals: { message: message }
     )
-    # debugger
     ActionCable.server.broadcast("channel_#{channel.id}",
                                  message: JSON.parse(message))
   end
