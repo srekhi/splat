@@ -11,6 +11,7 @@ class NewMessageForm extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.formatUsers = this.formatUsers.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -47,7 +48,27 @@ class NewMessageForm extends React.Component {
     this.setState( {content} );
   }
 
+  formatUsers(){
+    let usernames = [];
+      for (var i = 0; i < this.props.channel.users.length; i++) {
+        let user = this.props.channel.users[i];
+        if (user.username === this.props.currentUser.username && this.props.channel.users.length !== 1) {
+          continue;
+        }
+        usernames.push(user.username);
+      }
+      usernames[0] = "@" + usernames[0];
+      return usernames;
+  }
+
   render(){
+    let placeholder;
+    if (this.props.channel.private) {
+      let usernames = this.formatUsers();
+      placeholder = `Message ${usernames}`;
+    } else{
+      placeholder = `Message #${this.props.channel.name}`;
+    }
     if (this.props.channel === undefined) return <p></p>;
       return (
         <div className="new-message-input">
@@ -57,7 +78,7 @@ class NewMessageForm extends React.Component {
            type="text"
            value={this.state.content}
            onKeyPress={this.handleKeyPress}
-           placeholder={`Message #${this.props.channel.name}`}
+           placeholder={placeholder}
             />
         </div>
     );
