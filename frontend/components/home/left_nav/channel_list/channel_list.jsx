@@ -13,7 +13,7 @@ class ChannelList extends React.Component {
 
     this.modalStyle = {
       content : {
-        top                   : '50%',
+        top                   : '42%',
         left                  : '50%',
         right                 : 'auto',
         bottom                : 'auto',
