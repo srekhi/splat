@@ -2,7 +2,6 @@ import React from 'react';
 import AlertContainer from 'react-alert';
 import { createChannel } from '../../../../util/channel_api_util';
 import { withRouter } from 'react-router-dom';
-import SelectedUsers from './selected_users';
 //actually creating a new membership.
 class NewChannelForm extends React.Component {
   constructor(props) {
@@ -81,11 +80,11 @@ class NewChannelForm extends React.Component {
   createChannel() {
     event.preventDefault();
     if (!this.state.selectedUsers.includes(this.props.currentUser)){
-      let newSelectedUsers = this.state.selectedUsers.push(this.props.currentUser);
-      this.state.selectedUsers = newSelectedUsers;
+      this.state.selectedUsers.push(this.props.currentUser);
     }
     let channel = this.state;
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
+    //channel variable created to be posted to rails s
     this.props.createChannel(channel).then( res => {
       if (res.channel !== undefined) {
         this.props.fetchChannels(this.props.currentUser.id);
@@ -129,11 +128,11 @@ class NewChannelForm extends React.Component {
     header = (this.props.private === "true" ? "New Direct Message" : "New Channel");
     const self = this;
     let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
-      return <li className="selected-user">
+      return (<li className="selected-user">
          <img src={ selectedUser.avatar_url } />
         {selectedUser.username}
         <i id="delete-selected-user" className="fa fa-times-circle-o" aria-hidden="true" onClick={() => self.deselectUser(selectedUser)} ></i>
-      </li>;
+      </li>);
     });
 
     let filteredUsers = this.props.allUsers.filter(

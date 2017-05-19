@@ -73,5 +73,7 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first m
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham
 30.times do
-  Message.create(user_id: users.sample.id, channel_id: c2.id, content: Faker::HarryPotter.quote )
+  sample_user_id = users.sample.id
+  Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
+  Membership.create(user_id: sample_user_id, channel_id: c2.id)
 end
