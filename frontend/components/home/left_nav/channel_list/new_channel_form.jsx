@@ -125,9 +125,11 @@ class NewChannelForm extends React.Component {
   }
 
   render() {
+    let header;
+    header = (this.props.private === "true" ? "New Direct Message" : "New Channel");
     const self = this;
     let selectedUsers = this.state.selectedUsers.map((selectedUser) => {
-      return <li  className="selected-user">
+      return <li className="selected-user">
          <img src={ selectedUser.avatar_url } />
         {selectedUser.username}
         <i id="delete-selected-user" className="fa fa-times-circle-o" aria-hidden="true" onClick={() => self.deselectUser(selectedUser)} ></i>
@@ -152,7 +154,7 @@ class NewChannelForm extends React.Component {
       <div id="new-channel-window">
         <form className="channel-form">
           {this.renderErrors()}
-          <h1>New Channel</h1>
+          <h1>{header}</h1>
             <input type="text"
               id="new-channel-title"
               value={this.state.name}

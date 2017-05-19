@@ -6,3 +6,8 @@ export const selectAllPublicChannels = (state) => {
 export const selectChannelById = (state, channelId) => {
   return (state.channels.channels[channelId]);
 };
+
+export const selectAllPrivateChannels = (state) => {
+  let channels = Object.values(state.channels.channels);
+  return channels.filter(channel => channel.private === true);
+};

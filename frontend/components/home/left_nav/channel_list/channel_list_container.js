@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
   //this grabs the public channels from the state which is already unique for the user.
   user: state.session.currentUser,
   allUsers: selectAllUsers(state),
-  errors: state.channels.errors
+  errors: state.channels.errors,
 });
 
 const mapDispatchToProps = (dispatch) => ({

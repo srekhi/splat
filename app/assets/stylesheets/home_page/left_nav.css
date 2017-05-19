@@ -308,3 +308,63 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   margin-bottom: -1px;
   display: block;
 }
+
+
+#left-nav-dm-list {
+    max-height: calc(100% - 81px);
+    margin-top: 10px;
+    margin-left: 5px;
+    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#left-nav-dm-list > li {
+    margin: 5px 0;
+    margin-left: 5px;
+    max-height: calc(100% - 81px);
+    margin-top: 3px;
+    overflow: scroll;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: inline-block;
+    width: 75%;
+    height: 20px;
+    padding: 2px 0;
+}
+
+#left-nav-dm-list > li:hover {
+  background-color: #3E313C;
+  border-radius: 0px 4px 4px 0px;
+  cursor: pointer;
+}
+
+#left-nav-dm-list > h2 {
+  color: #AB9BA9;
+  font-size: 12px;
+  margin-left: 7px;
+  margin-bottom: 7px;
+}
+
+#left-nav-dm-list  h5 {
+  color: #AB9BA9;
+  font-weight: 500;
+  margin-left: 10px;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  font-size:15px;
+
+}
+
+#left-nav-dm-list span:first-child {
+  color: #7C6A7A;
+  padding-left: 2px;
+}
+
+#left-nav-dm-list > h2 > i {
+  margin-left: 73px;
+}

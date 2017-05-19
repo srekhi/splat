@@ -1,10 +1,8 @@
 import React from 'react';
-import ChannelListItem from './channel_list_item';
 import Modal from 'react-modal';
-import NewChannelForm from './new_channel_form';
-import DMListContainer from '../direct_messages/dm_list_container';
-
-class ChannelList extends React.Component {
+import NewChannelForm from '../channel_list/new_channel_form';
+import ChannelListItem from '../channel_list/channel_list_item';
+class DMList extends React.Component {
   constructor(props){
     super(props);
     this.state = { modalOpen: false };
@@ -27,14 +25,7 @@ class ChannelList extends React.Component {
       }
     };
   }
-  componentWillMount() {
-    this.props.fetchChannels(this.props.user.id);
-  }
 
-  componentWillReceiveProps(newProps) {
-    this.publicChannels = newProps.publicChannels;
-    this.channelCount = this.publicChannels.length;
-  }
   closeModal() {
     this.setState({ modalOpen: false });
   }
@@ -44,7 +35,7 @@ class ChannelList extends React.Component {
   }
 
   render(){
-    if (this.publicChannels === undefined) return <ul></ul>;
+    if (this.props.privateChannels === undefined) return <ul></ul>;
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
@@ -62,28 +53,29 @@ class ChannelList extends React.Component {
             closeModal={this.closeModal}
             removeErrors={this.props.removeChannelErrors}
             fetchChannels={this.props.fetchChannels}
+            private="true"
             />
       </Modal>;
-    const channelItems = this.props.publicChannels.map((channel) => {
+    const channelItems = this.props.privateChannels.map((channel) => {
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="false"/>
+         <ChannelListItem channel={channel} private="true"/>
         </li>
       );
     });
+    //the modal is the plus sign that opens up to what we need.
     return (
       <nav>
         {modal}
-        <ul id="left-nav-channel-list">
-          <h2>CHANNELS <span>({this.props.publicChannels.length})</span>
+        <ul id="left-nav-dm-list">
+          <h2>DIRECT MESSAGES
             <i onClick={this.openModal} className="fa fa-plus-square" aria-hidden="true"></i>
           </h2>
           {channelItems}
         </ul>
-        <DMListContainer />
       </nav>
     );
   }
 }
 
-export default ChannelList;
+export default DMList;
