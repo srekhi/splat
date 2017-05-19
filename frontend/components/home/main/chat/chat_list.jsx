@@ -20,6 +20,10 @@ class ChatList extends React.Component {
     // this.scrollToBottom();
   }
 
+  componentDidMount(){
+    setTimeout(this.scrollToBottom.bind(this), 500);
+  }
+
   componentWillReceiveProps(newProps){
     //subscription to be created here as well
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
