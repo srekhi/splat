@@ -82,6 +82,8 @@ class NewChannelForm extends React.Component {
     if (!this.state.selectedUsers.includes(this.props.currentUser)){
       this.state.selectedUsers.push(this.props.currentUser);
     }
+    if (this.props.name !== undefined) { this.state.name = this.props.name; }
+
     let channel = this.state;
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
     //channel variable created to be posted to rails s

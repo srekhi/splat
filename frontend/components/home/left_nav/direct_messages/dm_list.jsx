@@ -55,6 +55,7 @@ class DMList extends React.Component {
             removeErrors={this.props.removeChannelErrors}
             fetchChannels={this.props.fetchChannels}
             private="true"
+            name="dm"
             />
       </Modal>;
     const channelItems = this.props.privateChannels.map((channel) => {
