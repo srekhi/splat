@@ -24,16 +24,18 @@ class MainHeader extends React.Component {
   render(){
     if (this.props.channel === undefined) return <header>Loading..</header>;
     let channelName = "#" + this.props.channel.name;
+    let usernames = [];
     if (this.props.channel.private === true ) {
-      let usernames = this.props.channel.users.map((user) => {
-        // if (user.username != this.props.currentUser.username) {
-          // return user.username;
-        // }
-        return user.username;
-      });
+      for (var i = 0; i < this.props.channel.users.length; i++) {
+        let user = this.props.channel.users[i];
+        if (user.username === this.props.user.username && this.props.channel.users.length !== 1) {
+          continue;
+        }
+        usernames.push(user.username);
+      }
       usernames[0] = "@" + usernames[0];
       channelName = usernames.join(", ");
-      }
+    }
       return (
         <header id="main-team-header">
           <div id="main-header-content">
