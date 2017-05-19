@@ -173,7 +173,7 @@ li.new-channel-user-list-item:hover {
   }
 
   .errors-new-channel > ul > li:first-of-type {
-    margin-bottom: -17px;
+    margin-bottom: -22px;
     /* height: 13px; */
     align-self: center;
     display: inline-block;
@@ -196,4 +196,5 @@ ul.error-list-new-channel {
     margin-bottom: 32px;
     font-size: 21px;
     color: red;
+    margin-right: 60px;
 }
