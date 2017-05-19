@@ -32,8 +32,8 @@ class NewMessageForm extends React.Component {
     const msg = this.state;
     console.log('created');
     this.clearState();
-    this.props.createMessage(msg);
-    this.props.scrollToBottom();
+    this.props.createMessage(msg).then(this.props.scrollToBottom);
+    // this.props.scrollToBottom();
     // window.scrollTo( 0, 500 );
   }
 
