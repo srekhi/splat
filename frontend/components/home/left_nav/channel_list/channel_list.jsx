@@ -3,7 +3,7 @@ import ChannelListItem from './channel_list_item';
 import Modal from 'react-modal';
 import NewChannelForm from './new_channel_form';
 import DMListContainer from '../direct_messages/dm_list_container';
-
+import FAClose from 'react-icons/lib/fa/close';
 class ChannelList extends React.Component {
   constructor(props){
     super(props);
@@ -46,14 +46,18 @@ class ChannelList extends React.Component {
 
   render(){
     if (this.publicChannels === undefined) return <ul></ul>;
+      // <div id="exit-new-channel" onClick={this.closeModal}>
+      //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
+      // </div>
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
         style={this.modalStyle}
         contentLabel="Channel">
           <div id="exit-new-channel" onClick={this.closeModal}>
-            <i className="fa fa-times fa-3x" aria-hidden="true"></i>
+              <FAClose className="fa fa-times fa-3x" aria-hidden="true"/>
           </div>
+
           <NewChannelForm
             createChannel={this.props.createChannel}
             currentUser={this.props.user}

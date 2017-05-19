@@ -130,8 +130,8 @@ class NewChannelForm extends React.Component {
     let renderChannelNameInput;
     let channelNameInput;
     header = (this.props.private === "true" ? "New Direct Message" : "New Channel");
-    renderChannelNameInput = (this.props.private === "true" ? false : true);
-    if (renderChannelNameInput) {
+    renderChannelNameInput = (this.props.private === "true" ? "false" : "true");
+    if (renderChannelNameInput === "true") {
       channelNameInput = (
         <input type="text"
           id="new-channel-title"
@@ -170,8 +170,8 @@ class NewChannelForm extends React.Component {
         <form className="channel-form">
           {this.renderErrors()}
           <h1>{header}</h1>
-
-          <div id="wrap-username-and-button">
+            { channelNameInput }
+            <div id="wrap-username-and-button">
             <input type="text"
               id="new-channel-add-users-input"
               value={this.state.allUsers}
