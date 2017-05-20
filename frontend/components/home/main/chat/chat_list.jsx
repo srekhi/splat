@@ -15,8 +15,10 @@ class ChatList extends React.Component {
     const channelId = this.props.match.params.channelId;
     this.props.fetchMessages(channelId);
 
-    const channel = this.props.channel;
-    this.setSocket(this.props.channel.id);
+    setTimeout(() => {
+      const channel = this.props.channel;
+      this.setSocket(this.props.channel.id);
+    }, 1);
     // this.scrollToBottom();
   }
 
