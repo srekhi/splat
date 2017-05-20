@@ -71,12 +71,12 @@ class ChatList extends React.Component {
   render(){
     if (this.props.channel === undefined) return <p>Loading..</p>;
     const messages = this.props.messages.map((message) => {
-      let messageDate = message.created_at.split("T")[0];
+      // let messageDate = message.created_at.split("T")[0];
       return (<li className="chat-message">
         <div className="all-message-content">
           <img src={message.user.avatar_url} />
           <div className="message-content">
-            <span id="message-author">{message.user.username}</span> <span id="message-time">{messageDate}</span>
+            <span id="message-author">{message.user.username}</span> <span id="message-time">{message.created_at}</span>
             <br />
             <p id="message-text">{message.content}</p>
           </div>
