@@ -9,6 +9,7 @@ const App = () => (
       <Switch>
         <ProtectedRoute exact path="/" component={HomeContainer} />
         <ProtectedRoute path="/messages/:messageId" component={HomeContainer} />
+
         <Route component={SplashPage} />
       </Switch>
   </div>
