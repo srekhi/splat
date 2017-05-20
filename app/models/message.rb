@@ -13,7 +13,7 @@
 class Message < ApplicationRecord
   # need to add an after create hook so that when message is created, it is
   # sent to the appropriate subscriberes.
-  after_create_commit { MessageBroadcastJob.perform_later(self, self.channel) }
+  after_commit { MessageBroadcastJob.perform_later(self, self.channel) }
   validates :user, :channel, :content, presence: true
   belongs_to :user
   belongs_to :channel

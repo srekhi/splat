@@ -29,10 +29,10 @@ class ChatList extends React.Component {
   componentWillReceiveProps(newProps){
     //subscription to be created here as well
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
-      newProps.fetchMessages(newProps.match.params.channelId);
-
+      // debugger;
       this.setSocket(newProps.match.params.channelId); ////changed this ;
-      this.scrollToBottom();
+      newProps.fetchMessages(newProps.match.params.channelId).then(this.scrollToBottom.bind(this));
+      // setTimeout(this.scrollToBottom.bind(this), 50);
     }
 
   }

@@ -46,7 +46,7 @@ end
 Channel.destroy_all
 c1 = Channel.create(name: "general", private: false)
 c2 = Channel.create(name: "harry_potter_quotes", private: false)
-c3 = Channel.create(name: "test_channel3", private: false)
+c3 = Channel.create(name: "chuck_norris_programs", private: false)
 
 d1 = Channel.create(name: "private_channel1", private: true)
 d2 = Channel.create(name: "private_channel2", private: true)
@@ -57,6 +57,8 @@ channel_ids = [c1.id, c2.id, c3.id, d1.id, d2.id, d3.id]
 Membership.destroy_all
 Membership.create(user_id: User.first.id, channel_id: c1.id)
 Membership.create(user_id: User.first.id, channel_id: c2.id)
+Membership.create(user_id: User.first.id, channel_id: c3.id)
+
 Membership.create(user_id: User.last.id, channel_id: c2.id)
 
 Membership.create(user_id: User.last.id, channel_id: d1.id)
@@ -81,6 +83,12 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second messa
   sample_user_id = users.sample.id
   Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
   Membership.create(user_id: sample_user_id, channel_id: c2.id)
+end
+
+30.times do
+  sample_user_id = users.sample.id
+  Message.create(user_id: sample_user_id, channel_id: c3.id, content: Faker::ChuckNorris.fact )
+  Membership.create(user_id: sample_user_id, channel_id: c3.id)
 end
 
 m1 = Membership.create(user_id: u1.id, channel_id: c1.id)
