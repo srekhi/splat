@@ -13,9 +13,16 @@
 class Message < ApplicationRecord
   # need to add an after create hook so that when message is created, it is
   # sent to the appropriate subscriberes.
+  after_create :format_created_at
   after_commit { MessageBroadcastJob.perform_later(self, self.channel) }
   validates :user, :channel, :content, presence: true
   belongs_to :user
   belongs_to :channel
+
+
+
+  def format_created_at
+    self.created_at = self.created_at.localtime.created_at.localtime.strftime("%I:%M %p")
+  end
 
 end
