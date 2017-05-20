@@ -91,6 +91,7 @@ class NewChannelForm extends React.Component {
       if (res.channel !== undefined) {
         this.props.fetchChannels(this.props.currentUser.id);
         this.props.history.push(`/messages/${res.channel.id}`);
+        // debugger;
         this.props.closeModal();
         this.props.removeErrors();
       }

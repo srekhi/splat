@@ -15,10 +15,10 @@ class ChatList extends React.Component {
     const channelId = this.props.match.params.channelId;
     this.props.fetchMessages(channelId);
 
-    setTimeout(() => {
+    setTimeout(() => { //allows for state to be populated before running this.
       const channel = this.props.channel;
-      this.setSocket(this.props.channel.id);
-    }, 1);
+      this.setSocket(channelId); //changed this as well. because channel id === channelId. i think.
+    }, 100);
     // this.scrollToBottom();
   }
 
@@ -30,7 +30,8 @@ class ChatList extends React.Component {
     //subscription to be created here as well
     if (this.props.match.params.channelId != newProps.match.params.channelId) {
       newProps.fetchMessages(newProps.match.params.channelId);
-      this.setSocket(newProps.channel.id);
+
+      this.setSocket(newProps.match.params.channelId); ////changed this ;
       this.scrollToBottom();
     }
 
