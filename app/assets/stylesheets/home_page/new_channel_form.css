@@ -108,6 +108,7 @@ li.new-channel-user-list-item:hover {
     display: flex;
     align-items: center;
     text-align: center;
+    z-index: 100;
   }
 
   #exit-new-channel:hover{

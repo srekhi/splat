@@ -77,8 +77,8 @@ class NewChannelForm extends React.Component {
     this.setState({selectedUsers: newSelectedUsers});
   }
 
-  createChannel() {
-    event.preventDefault();
+  createChannel(e) {
+    e.preventDefault();
     if (!this.state.selectedUsers.includes(this.props.currentUser)){
       this.state.selectedUsers.push(this.props.currentUser);
     }
