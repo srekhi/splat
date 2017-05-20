@@ -3,13 +3,13 @@ import { withRouter } from 'react-router';
 class MainHeader extends React.Component {
   constructor(props){
     super(props);
+    this.toggleDetailView = this.toggleDetailView.bind(this);
   }
 
   componentWillMount(){
     const channelId = this.props.match.params.channelId;
     this.props.fetchChannels(this.props.user.id);
     // this.props.fetchUserCount(channelId);
-
   }
 
   componentWillReceiveProps(newProps){
@@ -20,8 +20,20 @@ class MainHeader extends React.Component {
     //   }
     }
 
+  toggleDetailView() {
+      let detailLink;
+      let channelId = this.props.match.params.channelId;
+      detailLink = `/messages/${channelId}/details`;
+      if (this.props.location.pathname.endsWith("details")) {
+        this.props.history.push(`/messages/${channelId}`);
+      } else {
+        this.props.history.push(detailLink);
+      }
+  }
+
   render(){
     if (this.props.channel === undefined) return <header>Loading..</header>;
+
     let channelName = "#" + this.props.channel.name;
     let usernames = [];
     if (this.props.channel.private === true ) {
@@ -40,8 +52,10 @@ class MainHeader extends React.Component {
           <div id="main-header-content">
             {channelName}
             <br />
-            <i id="channel-count-of-users" className="fa fa-user-o" aria-hidden="true"></i>
-            <span id="channel-count-of-users">{this.props.channel.userCount}</span>
+            <span onClick={this.toggleDetailView}>
+              <i id="channel-count-of-users" className="fa fa-user-o" aria-hidden="true"></i>
+              <span id="channel-count-of-users" >{this.props.channel.userCount}</span>
+            </span>
           </div>
         </header>
       );
