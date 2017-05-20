@@ -11,8 +11,8 @@ const HomeContainer = () => {
     <main className="overall-home-view">
       <LeftNav className="left-nav" />
       <Route path="/messages/:channelId" component={MainView} />
-      <Route exact path="/messages/:channelId/details" component={DetailViewContainer} />
    </main>);
 };
 
+// <Route exact path="/messages/:channelId/details" component={DetailViewContainer} />
 export default HomeContainer;

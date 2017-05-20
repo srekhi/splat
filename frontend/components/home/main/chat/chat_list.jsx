@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Route } from 'react-router';
 import NewMessageForm from './new_message';
+import DetailViewContainer from '../detail/detail_view_container';
+
 class ChatList extends React.Component {
   constructor(props){
     super(props);
@@ -85,9 +88,12 @@ class ChatList extends React.Component {
     });
       return (
         <section className="all-messages-container">
-          <ul ref="chatMessages" className="chat-message-list">
-            { messages }
-          </ul>
+          <div id="chat-list-and-detail-container">
+            <ul ref="chatMessages" className="chat-message-list">
+              { messages }
+            </ul>
+            <Route exact path="/messages/:channelId/details" component={DetailViewContainer} />
+          </div>
           <footer id="new-message-footer">
             <NewMessageForm
               channel={this.props.channel}

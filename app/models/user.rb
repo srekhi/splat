@@ -20,7 +20,6 @@ class User < ApplicationRecord
     "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
     "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
     "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1494875645/sample.jpg",
   ]
   # TODO: Comment back in
   # validates :email, :username, uniqueness: true

@@ -10,18 +10,27 @@ class DetailView extends React.Component{
       const userCount = this.props.channel.users.length;
       const users = this.props.channel.users;
       let userList = users.map((user) => (
-        <li>
+        <li id="details-user-list-item">
           <img src={user.avatar_url} />
-          {user.username}
+          <span id="detail-view-username">{user.username}</span>
         </li>
       ));
       return (
-        <section>
-          <h2>{name}</h2>
-          <h3>{userCount} members</h3>
-          <ul>
-            {userList}
-          </ul>
+        <section id="detail-view">
+          <div id="detail-view-header">
+            <h2>About {name}</h2>
+              <i id="detail-view-exit" className="fa fa-times" aria-hidden="true"></i>
+          </div>
+          <div id="detail-user-info">
+            <div id="detail-user-count-header">
+              <h3> <i id="detail-fa" className="fa fa-user-o" aria-hidden="true"></i>
+                {userCount} members
+              </h3>
+            </div>
+            <ul id="detail-user-list">
+              {userList}
+            </ul>
+          </div>
         </section>
       );
     }

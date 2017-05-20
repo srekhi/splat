@@ -1,0 +1,88 @@
+#detail-view {
+  max-height: 100%;
+  /* margin-top: 1%; */
+  display: flex;
+  flex-direction: column;
+  min-width: 364px;
+  max-width: 364px;
+  /* border-left: 1px solid #E8E8E8; */
+  z-index: 1;
+  padding-top: 0px;
+  /*position: absolute;*/
+}
+
+#detail-view-header{
+  display: flex;
+  font-size: 18px;
+  font-weight: 800;
+  align-items: center;
+  padding-left: 12px;
+  background-color: #F7F7F7;
+  height: 72px;
+  /* margin-top: 71px; */
+  color: #2C2D30;
+  justify-content: space-between;
+  /* border-bottom: 2px solid #E8E8E8; */
+}
+
+
+#detail-user-list{
+
+  padding-left: 13px;
+  margin: 0;
+  color: #555459;
+  font-weight: 300;
+  overflow: scroll;
+  overflow:hidden;
+  overflow-y: scroll;
+}
+
+
+#detail-user-count-header {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: #555459;
+  cursor: pointer;
+}
+
+#detail-user-info {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  max-height: 100%;
+  border-left: 1px solid #E8E8E8;
+}
+#details-user-list-item{
+  display: flex;
+  margin-bottom: 5px;
+  display: flex;
+  justify-items: center;
+}
+#detail-view-username{
+  margin-left: 10px;
+  text-align: center;
+  align-self: center;
+}
+
+#detail-fa {
+  margin-right: 6px;
+  color: #8BCD99;
+  margin-left: 5px;
+}
+
+#detail-view-exit{
+
+}
+
+#detail-view-header{
+  align-items: space-between;
+}
+
+#chat-list-and-detail-container{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
