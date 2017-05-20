@@ -76,7 +76,7 @@ class ChatList extends React.Component {
         <div className="all-message-content">
           <img src={message.user.avatar_url} />
           <div className="message-content">
-            <span id="message-author">{message.user.username}</span> <span id="message-time">{message.created_at}</span>
+            <span id="message-author">{message.user.username}</span> <span id="message-time">{message.chat_time}</span>
             <br />
             <p id="message-text">{message.content}</p>
           </div>

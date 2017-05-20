@@ -1,2 +1,1 @@
-json.extract! @message, :id, :user_id, :channel_id, :content, :user
-json.created_at @message.created_at.localtime.strftime("%I:%M %p")
+json.extract! @message, :id, :user_id, :channel_id, :content, :user, :chat_time
