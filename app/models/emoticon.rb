@@ -1,0 +1,3 @@
+class Emoticon < ApplicationRecord
+
+end
