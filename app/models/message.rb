@@ -20,6 +20,7 @@ class Message < ApplicationRecord
   validates :user, :channel, :content, presence: true
   belongs_to :user
   belongs_to :channel
+  has_many :emoticons
   #
   # def format_created_at
   #   self.created_at = self.created_at.localtime.strftime("%I:%M %p")

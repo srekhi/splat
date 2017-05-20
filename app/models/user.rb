@@ -28,6 +28,7 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :channels, through: :memberships
   has_many :messages
+  has_many :emoticons
 
   attr_reader :password
 
