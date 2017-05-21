@@ -35,3 +35,7 @@ p#message-text {
   transition: color .05s, background-color .05s, border-color .05s;
   cursor: pointer;
 }
+
+#message-avatar {
+  align-self: baseline;
+}

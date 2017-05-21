@@ -1,0 +1,18 @@
+#gif-message{
+  margin-left: 10px;
+  border-radius: 3px;
+  max-height: 200px;
+  max-width: 249px;
+}
+
+#left-gif-bar{
+  width: 4px;
+  background-color: #E8E8E8;
+  height: 200px;
+}
+
+
+#gif-container{
+  margin-top: 10px;
+  display: flex;
+}

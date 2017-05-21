@@ -66,7 +66,6 @@ class NewMessageForm extends React.Component {
 
   toggleGiphySearch(e) {
     e.preventDefault();
-    console.log("yo");
     this.setState({ giphyIsOpen: !this.state.giphyIsOpen });
   }
 
@@ -87,9 +86,8 @@ class NewMessageForm extends React.Component {
         giphyDisplay = (
           <GiphySearchContainer
             addGiphy={this.addGiphy.bind(this)}
-            toggleGiphySearch={this.toggleGiphySearch}/>
+            toggleGiphySearch={this.toggleGiphySearch.bind(this)}/>
         );
-        // <p>YO</p>
     }
     if (this.props.channel.private) {
       let usernames = this.formatUsers();

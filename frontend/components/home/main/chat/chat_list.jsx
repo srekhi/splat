@@ -74,17 +74,34 @@ class ChatList extends React.Component {
   render(){
     if (this.props.channel === undefined) return <p>Loading..</p>;
     const messages = this.props.messages.map((message) => {
+      let messageContent =  <p id="message-text">{message.content}</p>;
       // let messageDate = message.created_at.split("T")[0];
       //here, i can do the logic for if message content begins with "giphy",
       //then render img src{message.content}, else render <p> msg. content</p>
       //
+      if (message.content.startsWith("giphy")) {
+        let messageGif = message.content.slice(6);
+        let endOfImageUrl = message.content.indexOf("gif") + 3;
+        let gifCaption = message.content.slice(endOfImageUrl);
+        messageContent = (
+          <div>
+            <p id="message-text">{gifCaption}</p>
+              <div id="gif-container">
+                <div id="left-gif-bar"></div>
+                <img
+                  id="gif-message"
+                  src={messageGif} />
+              </div>
+          </div>
+      );
+      }
       return (<li className="chat-message">
         <div className="all-message-content">
-          <img src={message.user.avatar_url} />
+          <img id="message-avatar" src={message.user.avatar_url} />
           <div className="message-content">
             <span id="message-author">{message.user.username}</span> <span id="message-time">{message.created_at}</span>
             <br />
-            <p id="message-text">{message.content}</p>
+            {messageContent}
           </div>
         </div>
       </li>);

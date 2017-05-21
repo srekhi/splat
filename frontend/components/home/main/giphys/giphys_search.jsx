@@ -23,12 +23,14 @@ class GiphysSearch extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let searchTerm = this.state.searchTerm.split(' ').join('+');
-    this.props.fetchSearchGiphys(searchTerm);
+    this.props.fetchSearchGiphys(searchTerm).then(() => {
+      debugger;
+    });
   }
 
   selectGiphy(giphy){
     this.props.addGiphy(giphy);
-    this.props.toggleGiphysSearch();
+    this.props.toggleGiphySearch();
   }
 
   giphysContainer(){ //box around the resulting gifs.
@@ -38,15 +40,7 @@ class GiphysSearch extends React.Component {
                  selectGiphy={this.selectGiphy}/>);
     return (
       <div>
-        <ul>
-          { giphys.slice(0, 3) }
-        </ul>
-        <ul>
-          { giphys.slice(3, 6) }
-        </ul>
-        <ul>
-          { giphys.slice(6, 9) }
-        </ul>
+        {giphys}
       </div>
     );
   }
@@ -66,11 +60,11 @@ class GiphysSearch extends React.Component {
     );
   }
   render() {
-    let { giphys } = this.props;
+    let giphys = this.props.giphys;
 
     return (
       <div>
-        <form className="search-bar">
+        <form>
           <input value={this.state.searchTerm} onChange={this.handleChange} />
           <button type="submit" onClick={this.handleSubmit}>Search Giphy</button>
         </form>
