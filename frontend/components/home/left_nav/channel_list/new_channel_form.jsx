@@ -88,7 +88,7 @@ class NewChannelForm extends React.Component {
     channel['user_ids'] = this.state.selectedUsers.map(user => user.id);
     //channel variable created to be posted to rails s
     this.props.createChannel(channel).then( res => {
-      debugger;
+      // debugger;
       if (res.channel !== undefined) {
         this.props.fetchChannels(this.props.currentUser.id);
         this.props.history.push(`/messages/${res.channel.id}`);
@@ -110,6 +110,7 @@ class NewChannelForm extends React.Component {
 
   renderErrors() {
     let error_exclamation = "";
+    if (this.props.errors === undefined) return <p></p>;
     if (this.props.errors.length > 0){
       error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
     }

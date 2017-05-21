@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import GiphySearchContainer from '../giphys/giphys_search_container';
 
 class NewMessageForm extends React.Component {
   constructor(props){
@@ -8,12 +9,16 @@ class NewMessageForm extends React.Component {
     this.state = {
       channel_id: this.props.channel.id,
       user_id: this.props.currentUser.id,
-      content: ''
+      content: '',
+      giphyIsOpen: false,
+
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.clearState = this.clearState.bind(this);
     this.formatUsers = this.formatUsers.bind(this);
+    this.toggleGiphySearch = this.toggleGiphySearch.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -27,8 +32,6 @@ class NewMessageForm extends React.Component {
   clearState() {
     this.setState({content: ""});
   }
-
-
 
   createMessage(){
     const msg = this.state;
@@ -62,8 +65,30 @@ class NewMessageForm extends React.Component {
       return usernames;
   }
 
+  toggleGiphySearch(e) {
+    e.preventDefault();
+    this.setState({ giphysOpen: !this.state.giphysOpen });
+  }
+
+  addGiphy (giphy) {
+    this.clearState();
+    this.setState({ content: `giphy:${giphy}` });
+  }
+
+  clearState(){
+    this.setState({content: "" });
+  }
+  
   render(){
+    let giphyDisplay = "";
     let placeholder;
+    if (this.state.giphyIsOpen) {
+        giphyDisplay = (
+          <GiphySearchContainer
+            addGiphy={this.addGiphy}
+            toggleGiphySearch={this.toggleGiphySearch}/>
+        );
+    }
     if (this.props.channel.private) {
       let usernames = this.formatUsers();
       placeholder = `Message ${usernames}`;
@@ -73,14 +98,18 @@ class NewMessageForm extends React.Component {
     if (this.props.channel === undefined) return <p></p>;
       return (
         <div className="new-message-input">
-        <input
-           id="message-content-input"
-           onChange={this.updateContent}
-           type="text"
-           value={this.state.content}
-           onKeyPress={this.handleKeyPress}
-           placeholder={placeholder}
-            />
+          <div id="new-message-giphy" onClick={this.toggleGiphySearch}>
+            <i className="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <input
+             id="message-content-input"
+             onChange={this.updateContent}
+             type="text"
+             value={this.state.content}
+             onKeyPress={this.handleKeyPress}
+             placeholder={placeholder}
+              />
+            {giphyDisplay}
         </div>
     );
 
