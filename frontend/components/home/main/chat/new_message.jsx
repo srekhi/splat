@@ -97,7 +97,7 @@ class NewMessageForm extends React.Component {
     }
     if (this.props.channel === undefined) return <p></p>;
       return (
-        <div className="new-message-input">
+        <div id="new-message-input">
           <div id="new-message-giphy" onClick={this.toggleGiphySearch}>
             <i className="fa fa-plus" aria-hidden="true"></i>
           </div>
@@ -107,8 +107,7 @@ class NewMessageForm extends React.Component {
              type="text"
              value={this.state.content}
              onKeyPress={this.handleKeyPress}
-             placeholder={placeholder}
-              />
+             placeholder={placeholder} />
             {giphyDisplay}
         </div>
     );
