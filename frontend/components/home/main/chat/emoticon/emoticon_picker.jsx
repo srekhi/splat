@@ -6,19 +6,21 @@ import emojiMap from 'react-emoji-picker/lib/emojiMap';
 class MyEmojiInput extends React.Component {
   constructor(){
     super();
-    var emojiPickerStyles = {
-      position: 'absolute',
-      left: 0, top: '3.9rem',
-      backgroundColor: 'white',
-      width: '100%',
-      padding: '.3em .6em',
-      border: '1px solid #0074d9',
-      borderTop: 'none',
-      zIndex: '2'
+    this.emojiPickerStyles = {
+        position: 'absolute',
+        right: '30px',
+        bottom: '70px',
+        backgroundColor: 'white',
+        width: '344px',
+        height: '270px',
+        padding: '.3em .7em',
+        border: '1px solid silver',
+        zIndex: '2',
+        borderRadius: '5px',
+        overflow: 'hidden'
     };
     this.state = {
         emoji: null,
-        showEmojiPicker: false,
       };
 
     this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
@@ -29,11 +31,11 @@ class MyEmojiInput extends React.Component {
     this.emojiPicker = this.emojiPicker.bind(this);
     }
   componentDidMount() {
-    document.addEventListener('click', this.toggleEmojiPicker, false);
+    document.addEventListener('click', this.props.toggleEmojiDisplay, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.toggleEmojiPicker, false);
+    document.removeEventListener('click', this.props.toggleEmojiDisplay, false);
   }
 
   toggleEmojiPicker(e) {
@@ -63,6 +65,7 @@ class MyEmojiInput extends React.Component {
     this.setState({emoji: emoji});
     // debugger;
     this.props.addEmoticon(emoji);
+    this.props.toggleEmojiDisplay();
     // $("#message-content-input").val(emoji);
     //here I need to do the logic of populating text input with that value.
   }
@@ -75,23 +78,20 @@ class MyEmojiInput extends React.Component {
   }
 
   emojiPicker() {
-    if(this.state.showEmojiPicker) {
-      return (
-        <EmojiPicker
-          style={this.emojiPickerStyles} onSelect={this.setEmoji}
-          query={this.state.emoji}
-        />
-    );
+    return (
+      <EmojiPicker
+        style={this.emojiPickerStyles} onSelect={this.setEmoji}
+        query={this.state.emoji}
+      />);
     }
-  }
 
   render() {
+    // <label htmlFor="emoji">Search emojis</label>
+    // <input name="emoji" id="emoji" value={this.state.emoji} autoComplete="off"
+    //   type={this.state.showEmojiPicker ? "search" : "text"}
+    //   onChange={this.updateState} onKeyDown={this.grabKeyPress}/>
     return (
       <form ref="emoji" className="emoji-form">
-        <label htmlFor="emoji">Emoji</label>
-        <input name="emoji" id="emoji" value={this.state.emoji} autoComplete="off"
-          type={this.state.showEmojiPicker ? "search" : "text"}
-          onChange={this.updateState} onKeyDown={this.grabKeyPress}/>
         {this.emojiPicker()}
       </form>
     );

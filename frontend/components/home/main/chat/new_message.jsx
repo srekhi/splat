@@ -87,14 +87,16 @@ class NewMessageForm extends React.Component {
   }
 
   addEmoticon(emoticon){
-    this.setState({content: emoticon});
+    this.setState({content: this.state.content+ " "+ emoticon});
   }
 
 
   render(){
     let emojiDisplay = "";
     if (this.state.emoticonPickerOpen) {
-      emojiDisplay = <MyEmojiInput addEmoticon={this.addEmoticon} />;
+      emojiDisplay = <MyEmojiInput
+        addEmoticon={this.addEmoticon}
+        toggleEmojiDisplay={this.toggleEmojiDisplay} />;
     }
 
     let giphyDisplay = "";
