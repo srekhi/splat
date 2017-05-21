@@ -3,6 +3,9 @@ import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router';
 import NewMessageForm from './new_message';
 import DetailViewContainer from '../detail/detail_view_container';
+import MyEmojiInput from './emoticon/emoticon_picker';
+import ReactEmoji from 'react-emoji';
+
 
 class ChatList extends React.Component {
   constructor(props){
@@ -74,7 +77,7 @@ class ChatList extends React.Component {
   render(){
     if (this.props.channel === undefined) return <p>Loading..</p>;
     const messages = this.props.messages.map((message) => {
-      let messageContent =  <p id="message-text">{message.content}</p>;
+      let messageContent =  <p id="message-text">{ReactEmoji.emojify(message.content)}</p>;
       // let messageDate = message.created_at.split("T")[0];
       //here, i can do the logic for if message content begins with "giphy",
       //then render img src{message.content}, else render <p> msg. content</p>

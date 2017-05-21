@@ -1,0 +1,12 @@
+#emoji-toggle {
+  position: relative;
+}
+
+.emoji-form{
+  position: absolute;
+  top: -150px;
+  right: 150px;
+  background: white;
+  border: 1px solid black;
+  z-index: 100;
+}

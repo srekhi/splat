@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import GiphySearchContainer from '../giphys/giphys_search_container';
+import MyEmojiInput from './emoticon/emoticon_picker';
+import ReactEmoji from 'react-emoji';
 
 class NewMessageForm extends React.Component {
   constructor(props){
@@ -11,13 +13,15 @@ class NewMessageForm extends React.Component {
       user_id: this.props.currentUser.id,
       content: '',
       giphyIsOpen: false,
-
+      emoticonPickerOpen: false
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.formatUsers = this.formatUsers.bind(this);
     this.toggleGiphySearch = this.toggleGiphySearch.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
+    this.addEmoticon = this.addEmoticon.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -78,8 +82,21 @@ class NewMessageForm extends React.Component {
     this.setState({ content: `giphy:${giphy}` });
   }
 
+  toggleEmojiDisplay(){
+    this.setState({ emoticonPickerOpen: !this.state.emoticonPickerOpen });
+  }
+
+  addEmoticon(emoticon){
+    this.setState({content: emoticon});
+  }
+
 
   render(){
+    let emojiDisplay = "";
+    if (this.state.emoticonPickerOpen) {
+      emojiDisplay = <MyEmojiInput addEmoticon={this.addEmoticon} />;
+    }
+
     let giphyDisplay = "";
     let placeholder;
     if (this.state.giphyIsOpen) {
@@ -108,6 +125,11 @@ class NewMessageForm extends React.Component {
              value={this.state.content}
              onKeyPress={this.handleKeyPress}
              placeholder={placeholder} />
+           <div id="emoji-toggle">
+             { emojiDisplay }
+             <i className="fa fa-smile-o" aria-hidden="true" onClick={this.toggleEmojiDisplay}></i>
+           </div>
+
             {giphyDisplay}
         </div>
     );

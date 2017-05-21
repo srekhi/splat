@@ -1,52 +1,101 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-import { Picker } from 'emoji-mart';
+import EmojiPicker from 'react-emoji-picker';
+import emojiMap from 'react-emoji-picker/lib/emojiMap';
 
-class EmoticonPicker extends React.Component {
-  constructor(props) {
-    super(props);
+// styles for the emoji picker wrapper
+class MyEmojiInput extends React.Component {
+  constructor(){
+    super();
+    var emojiPickerStyles = {
+      position: 'absolute',
+      left: 0, top: '3.9rem',
+      backgroundColor: 'white',
+      width: '100%',
+      padding: '.3em .6em',
+      border: '1px solid #0074d9',
+      borderTop: 'none',
+      zIndex: '2'
+    };
+    this.state = {
+        emoji: null,
+        showEmojiPicker: false,
+      };
 
-    this.addEmoticon = this.addEmoticon.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentWillMount() { //called when press face on message
-    document.addEventListener('click', this.handleClick);
+    this.toggleEmojiPicker = this.toggleEmojiPicker.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.setEmoji = this.setEmoji.bind(this);
+    this.validateEmoji = this.validateEmoji.bind(this);
+    this.grabKeyPress = this.grabKeyPress.bind(this);
+    this.emojiPicker = this.emojiPicker.bind(this);
+    }
+  componentDidMount() {
+    document.addEventListener('click', this.toggleEmojiPicker, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.handleClick);
+    document.removeEventListener('click', this.toggleEmojiPicker, false);
   }
 
-  handleClick(e) {
-    if(e.target.className != "emoji-picker") {
-      this.props.closeEmoticonPicker();
+  toggleEmojiPicker(e) {
+    if(this.refs.emoji.contains(e.target)) {
+      this.setState({showEmojiPicker: true});
+    } else {
+      setTimeout(this.validateEmoji, 10);
+      this.setState({showEmojiPicker: false});
     }
   }
 
-  addEmoticon(event) {
-    const emoticon = {
-      user_id: this.props.userId,
-      message_id: this.props.messageId,
-      icon: event.id
-    };
+  validateEmoji() { //filters based on emoji text
+    var matched = emojiMap.filter(function(emoji) {
+      return `:${emoji.name}:` === this.state.emoji;
+    });
 
-    this.props.addEmoticon(emoticon);
+    if(matched.length === 0) {
+      this.setState({emoji: null});
+    }
+  }
+
+  updateState (e) {
+    this.setState({emoji: e.target.value});
+  }
+
+  setEmoji(emoji) {
+    this.setState({emoji: emoji});
+    // debugger;
+    this.props.addEmoticon(emoji);
+    // $("#message-content-input").val(emoji);
+    //here I need to do the logic of populating text input with that value.
+  }
+
+  // allows selecting first emoji by pressing "Enter" without submitting form
+  grabKeyPress(e) {
+    if(e.keyCode === 13) {
+      e.preventDefault();
+    }
+  }
+
+  emojiPicker() {
+    if(this.state.showEmojiPicker) {
+      return (
+        <EmojiPicker
+          style={this.emojiPickerStyles} onSelect={this.setEmoji}
+          query={this.state.emoji}
+        />
+    );
+    }
   }
 
   render() {
-    if (this.props.emoticonPicker
-        && this.props.messageId === this.props.pickerMsgId) {
-      return (
-        <div className='emojiPickerContainer'>
-          <Picker onClick={ this.addEmoticon }/>
-        </div>
-      );
-    } else {
-      return (
-        <div></div>
-      );
-    }
+    return (
+      <form ref="emoji" className="emoji-form">
+        <label htmlFor="emoji">Emoji</label>
+        <input name="emoji" id="emoji" value={this.state.emoji} autoComplete="off"
+          type={this.state.showEmojiPicker ? "search" : "text"}
+          onChange={this.updateState} onKeyDown={this.grabKeyPress}/>
+        {this.emojiPicker()}
+      </form>
+    );
   }
 }
+
+export default MyEmojiInput;
