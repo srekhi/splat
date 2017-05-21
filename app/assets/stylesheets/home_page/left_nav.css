@@ -204,7 +204,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     max-height: calc(100% - 81px);
     margin-top: 10px;
     margin-left: 5px;
-    overflow: scroll-webkit-overflow-scrolling: touch;;
+    overflow: scroll; -webkit-overflow-scrolling: touch;
     overflow-y: scroll; -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
@@ -217,7 +217,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     margin-left: 5px;
     max-height: calc(100% - 81px);
     margin-top: 3px;
-    overflow: scroll-webkit-overflow-scrolling: touch;;
+    overflow: scroll; -webkit-overflow-scrolling: touch;;
     overflow-y: scroll; -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
@@ -314,7 +314,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     max-height: calc(100% - 81px);
     margin-top: 10px;
     margin-left: 5px;
-    overflow: scroll-webkit-overflow-scrolling: touch;;
+    overflow: scroll-webkit; -overflow-scrolling: touch;;
     overflow-y: scroll; -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
@@ -326,7 +326,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     margin-left: 5px;
     max-height: calc(100% - 81px);
     margin-top: 3px;
-    overflow: scroll-webkit-overflow-scrolling: touch;;
+    overflow: scroll; -webkit-overflow-scrolling: touch;;
     overflow-y: scroll; -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;

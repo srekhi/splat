@@ -15,7 +15,6 @@ class NewMessageForm extends React.Component {
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateContent = this.updateContent.bind(this);
-    this.clearState = this.clearState.bind(this);
     this.formatUsers = this.formatUsers.bind(this);
     this.toggleGiphySearch = this.toggleGiphySearch.bind(this);
     this.clearState = this.clearState.bind(this);
@@ -67,27 +66,30 @@ class NewMessageForm extends React.Component {
 
   toggleGiphySearch(e) {
     e.preventDefault();
-    this.setState({ giphysOpen: !this.state.giphysOpen });
-  }
-
-  addGiphy (giphy) {
-    this.clearState();
-    this.setState({ content: `giphy:${giphy}` });
+    console.log("yo");
+    this.setState({ giphyIsOpen: !this.state.giphyIsOpen });
   }
 
   clearState(){
     this.setState({content: "" });
   }
-  
+
+  addGiphy(giphy) {
+    this.clearState();
+    this.setState({ content: `giphy:${giphy}` });
+  }
+
+
   render(){
     let giphyDisplay = "";
     let placeholder;
     if (this.state.giphyIsOpen) {
         giphyDisplay = (
           <GiphySearchContainer
-            addGiphy={this.addGiphy}
+            addGiphy={this.addGiphy.bind(this)}
             toggleGiphySearch={this.toggleGiphySearch}/>
         );
+        // <p>YO</p>
     }
     if (this.props.channel.private) {
       let usernames = this.formatUsers();
