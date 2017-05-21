@@ -79,7 +79,7 @@ div#main-header-content {
   position: fixed;
   display: flex;
   bottom: 5px;
-  width: calc(100% - 220px);
+  width: calc(100% - 250px);
   height: 64px;
   background-color: white;
   margin: 0 auto -19px auto;
