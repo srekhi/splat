@@ -14,6 +14,7 @@ class ChatList extends React.Component {
     this.setSocket = this.setSocket.bind(this);
     this.addSocket = this.addSocket.bind(this);
     this.removeSocket = this.removeSocket.bind(this);
+    this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
   }
 
   componentWillMount(){
@@ -41,6 +42,10 @@ class ChatList extends React.Component {
       // setTimeout(this.scrollToBottom.bind(this), 50);
     }
 
+  }
+
+  toggleEmojiDisplay(){
+    this.setState({ emoticonPickerOpen: !this.state.emoticonPickerOpen });
   }
 
   scrollToBottom(){
@@ -106,9 +111,26 @@ class ChatList extends React.Component {
             <br />
             {messageContent}
           </div>
+          <div className="message-buttons hidden">
+
+            <div id="message-button">
+              <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
+            </div>
+
+            <div id="message-button">
+              <i className="fa fa-pencil-square-o fa-6" aria-hidden="true"></i>
+            </div>
+
+            <div id="message-button">
+              <i className="fa fa-times-circle-o fa-6" aria-hidden="true"></i>
+            </div>
+
+          </div>
         </div>
       </li>);
-    });
+    }
+
+  );
       return (
         <section className="all-messages-container">
           <div id="chat-list-and-detail-container">

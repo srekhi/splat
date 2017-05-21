@@ -82,3 +82,39 @@ p#message-text {
   justify-content: space-around;
   width: 40px;
 }
+
+.message-buttons{
+  width: 99px;
+  height: 31px;
+  border-radius: 7px;
+  border: 1px solid #E0E0E0;
+  background-color: white;
+  justify-content: space-around;
+  color: #555459;
+  display: flex;
+  margin-right: 16px;
+}
+
+#message-button{
+  font-size: 17px;
+  width: 33px;
+  height: 31px;
+  display: flex;
+  margin: 0 auto;
+  align-self: center;
+  align-items: center;
+  /* justify-items: center; */
+  justify-content: center;
+  cursor: pointer;
+  vertical-align: center;
+}
+
+#message-button:nth-of-type(2){
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
+}
+
+
+.chat-message:hover{
+  background-color: #F9F9F9;
+}
