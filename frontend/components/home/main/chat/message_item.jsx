@@ -2,6 +2,7 @@ import React from 'react';
 import MyEmojiInput from './emoticon/emoticon_picker';
 import ReactEmoji from 'react-emoji';
 import AlertContainer from 'react-alert';
+import { addEmojiToMessage } from '../../../../util/emoticon_api_util';
 
 class MessageItem extends React.Component{
   constructor(props){
@@ -13,15 +14,16 @@ class MessageItem extends React.Component{
     this.updateContent = this.updateContent.bind(this);
     this.createEditForm = this.createEditForm.bind(this);
     this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
-
+    this.addEmoticon = this.addEmoticon.bind(this);
     this.state = {
       id: this.message.id,
       user_id: this.message.user_id,
       channel_id: this.message.channel_id,
       showEditForm: false,
       content: this.message.content,
-      emoticonPickerOpen: false
-
+      emoticonPickerOpen: false,
+      icon: "",
+      message_id: this.message.id
     };
   }
 
@@ -30,7 +32,19 @@ class MessageItem extends React.Component{
   }
 
   addEmoticon(emoticon){
-    this.setState({content: this.state.content+ " "+ emoticon});
+    this.setState({
+      content: this.state.content+ " "+ emoticon,
+      icon: emoticon
+    });
+
+    let newState = this.state;
+    newState['icon'] = emoticon;
+
+    addEmojiToMessage(newState);
+    // here i need to add the emoji to the list of message reactions
+    //fire off an ajax request to save the emoji string.
+    //on the frontend i can iterate through the reactions and call React.Emojify.
+
   }
 
   updateContent(e) {
@@ -109,20 +123,29 @@ class MessageItem extends React.Component{
       this.props.editMessage(this.state);
     }
   }
+
   render(){
     let emojiDisplay = "";
+    let reactions;
+
+    //handle logic here for multiple of the same thing.
+    reactions = this.props.message.emoticons.map(emoticon =>{
+      return ReactEmoji.emojify(emoticon.icon);
+    });
     if (this.state.emoticonPickerOpen) {
       emojiDisplay = <MyEmojiInput
         addEmoticon={this.addEmoticon}
-        toggleEmojiDisplay={this.toggleEmojiDisplay} />;
+        toggleEmojiDisplay={this.toggleEmojiDisplay}
+        />;
     }
 
-    let messageContent =  <p id="message-text">{ReactEmoji.emojify(this.message.content)}</p>;
+
+    let messageContent =  <p id="message-text">{ReactEmoji.emojify(this.props.message.content)}</p>;
     //this logic exists to set variables for rendering further down.
-    if (this.message.content.startsWith("giphy")) {
-      let messageGif = this.message.content.slice(6);
-      let endOfImageUrl = this.message.content.indexOf("gif") + 3;
-      let gifCaption = this.message.content.slice(endOfImageUrl);
+    if (this.props.message.content.startsWith("giphy")) {
+      let messageGif = this.props.message.content.slice(6);
+      let endOfImageUrl = this.props.message.content.indexOf("gif") + 3;
+      let gifCaption = this.props.message.content.slice(endOfImageUrl);
       messageContent = (
         <div>
           <p id="message-text">{gifCaption}</p>
@@ -144,6 +167,7 @@ class MessageItem extends React.Component{
           <span id="message-author">{this.message.user.username}</span> <span id="message-time">{this.message.created_at}</span>
           <br />
           {messageContent}
+          {reactions}
         </div>
         <div className="message-buttons hidden">
 

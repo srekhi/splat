@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       resources :messages, only: [:index]
     end
     resources :messages, except: [:index]
+    resources :emoticons, except: [:new, :edit]
+
+    resources :channels, only: [:show] do #display emoticons for a specific channel
+      resources :emoticons, only: [:index]
+    end
     resource :session
   end
 
