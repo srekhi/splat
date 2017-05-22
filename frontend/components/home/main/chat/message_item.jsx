@@ -35,10 +35,12 @@ class MessageItem extends React.Component{
   addEmoticon(emoticon){
     this.setState({
       content: this.state.content+ " "+ emoticon,
-      icon: emoticon
+      icon: emoticon,
     });
 
     let newState = this.state;
+    newState['user_id'] = this.props.currentUser.id;
+    newState['message_id'] = this.props.message.id;
     newState['icon'] = emoticon;
 
     addEmojiToMessage(newState);
@@ -150,7 +152,7 @@ class MessageItem extends React.Component{
     //need a way to compress the array into duplicates with the number of their dups.
     reactions = Object.keys(reactions).map((icon => {
       return (
-        <div id="reaction">
+        <div id="reaction" onClick={() => this.addEmoticon(icon)}>
           {ReactEmoji.emojify(icon)}
           {reactions[icon]}
       </div>);
