@@ -90,6 +90,7 @@ class ChatList extends React.Component {
             removeMessage={this.props.removeMessage}
             currentUser={this.props.currentUser}
             editMessage={this.props.editMessage}
+            updateMessage={this.props.updateMessage}
             />;
     }
 

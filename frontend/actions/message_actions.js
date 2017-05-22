@@ -49,5 +49,5 @@ export const editMessage = message => dispatch => (
 
 export const updateMessage = message => ({
   type: UPDATE_MESSAGE,
-  message 
+  message
 });

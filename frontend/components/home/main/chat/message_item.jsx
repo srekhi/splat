@@ -4,6 +4,7 @@ import ReactEmoji from 'react-emoji';
 import AlertContainer from 'react-alert';
 import { addEmojiToMessage } from '../../../../util/emoticon_api_util';
 
+
 class MessageItem extends React.Component{
   constructor(props){
     super(props);
@@ -42,8 +43,13 @@ class MessageItem extends React.Component{
     newState['user_id'] = this.props.currentUser.id;
     newState['message_id'] = this.props.message.id;
     newState['icon'] = emoticon;
-
-    addEmojiToMessage(newState);
+    //need to add emojis
+    addEmojiToMessage(newState).then(responseEmoticon => {
+      debugger;
+      let message = responseEmoticon.message;
+      
+      return this.props.updateMessage(message);
+    });
     // here i need to add the emoji to the list of message reactions
     //fire off an ajax request to save the emoji string.
     //on the frontend i can iterate through the reactions and call React.Emojify.

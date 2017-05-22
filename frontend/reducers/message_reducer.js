@@ -23,6 +23,7 @@ const MessageReducer = (state = defaultState, action) => {
       delete newState[action.messageId];
       return newState;
     case UPDATE_MESSAGE:
+      debugger;
       newState[action.message.id] = action.message;
       return newState;
     default:

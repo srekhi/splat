@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import ChatList from './chat_list';
-import { fetchMessages, createMessage, removeMessage, editMessage} from '../../../../../frontend/actions/message_actions';
+import { fetchMessages, createMessage, removeMessage, editMessage, updateMessage} from '../../../../../frontend/actions/message_actions';
 import { receiveMessage } from '../../../../../frontend/actions/message_actions';
 
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch) => ({
   createMessage: (msg) => dispatch(createMessage(msg)),
   receiveMessage: (msg) => dispatch(receiveMessage(msg)),
   removeMessage: (messageId) => dispatch(removeMessage(messageId)),
-  editMessage: (message) => dispatch(editMessage(message))
+  editMessage: (message) => dispatch(editMessage(message)),
+  updateMessage: (msg) => dispatch(updateMessage(msg))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatList));
