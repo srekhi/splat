@@ -7,7 +7,13 @@ class Api::NotificationsController < ApplicationController
   end
 
   def create
-    @notification = Notification.new(notification_params)
+    channel_id = params[:channel_id]
+    user_id = params[:user_id]
+    # debugger
+    @notification = Notification.new
+    @notification.user_id = user_id
+    @notification.channel_id = channel_id
+    # debugger
     if @notification.valid?
       @notification.save
       render 'api/notifications/show'
@@ -17,13 +23,16 @@ class Api::NotificationsController < ApplicationController
   end
 
   def destroy
-    @notification = Notification.find_by(id: params[:id])
-    if @notification
-      @notification.destroy
-      render json: @notification.id
+    # /here I need to get rid of all notifications on this channel that belong to current user
+    current_user_id = current_user.id
+    channel_id = params[:channel_id]
+    @notifications = Notification.where(user_id: current_user_id).where(channel_id: channel_id)
+    if @notifications
+      @notifications.each { |notification| notification.destroy }
+      render json: @notifications
     else
       render(
-        json: ["Notification not found"],
+        json: ["Notifications not found"],
         status: 404
         )
     end

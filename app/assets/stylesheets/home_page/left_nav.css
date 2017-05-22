@@ -374,3 +374,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   white-space: nowrap;
   overflow-x: ellipsis;
 }
+
+#notification-count{
+  background-color: black;
+}

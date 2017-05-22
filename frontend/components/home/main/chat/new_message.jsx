@@ -22,6 +22,8 @@ class NewMessageForm extends React.Component {
     this.clearState = this.clearState.bind(this);
     this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
     this.addEmoticon = this.addEmoticon.bind(this);
+    this.sendNotifications = this.sendNotifications.bind(this);
+
   }
 
   componentWillReceiveProps(newProps) {
@@ -40,6 +42,7 @@ class NewMessageForm extends React.Component {
     const msg = this.state;
     this.state.channel_id = this.props.match.params.channelId;
     this.props.createMessage(msg).then(this.props.scrollToBottom);
+    this.sendNotifications();
     this.clearState();
   }
 
@@ -71,6 +74,15 @@ class NewMessageForm extends React.Component {
   toggleGiphySearch(e) {
     e.preventDefault();
     this.setState({ giphyIsOpen: !this.state.giphyIsOpen });
+  }
+
+  sendNotifications(){
+    // debugger;
+    this.props.channel.users.forEach((user) => {
+      if (user.id !== this.props.userId) {
+        this.props.createNotification(this.props.channel.id, user.id);
+      }
+    });
   }
 
   clearState(){

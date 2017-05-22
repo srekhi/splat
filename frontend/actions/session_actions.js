@@ -4,6 +4,8 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const REMOVE_SESSION_ERRORS = 'REMOVE_ERRORS';
 export const RECEIVE_NOTIFICATIONS = 'RECEIVE_NOTIFICATIONS';
+export const RECEIVE_NOTIFICATION = 'RECEIVE_NOTIFICATION';
+export const REMOVE_NOTIFICATION = 'REMOVE_NOTIFICATION';
 
 
 export const receiveCurrentUser = currentUser => ({
@@ -56,5 +58,28 @@ export const receiveNotifications = (notifications) => ({
 export const fetchNotifications = (userId) => dispatch => (
   APIUtil.fetchNotifications(userId).then(notifications => (
     dispatch(receiveNotifications(notifications))
+  ))
+);
+
+// --------------------------------------------------------
+export const receiveNotification = (notification) => ({
+  type: RECEIVE_NOTIFICATION,
+  notification
+});
+
+export const createNotification = (channelId, userId) => dispatch => (
+  APIUtil.createNotification(channelId, userId).then(notification => (
+    dispatch(receiveNotification(notification))
+  ))
+);
+// -----------------------------------------------------------
+export const removeNotifications = (channel_id) => ({
+  type: REMOVE_NOTIFICATION,
+  channel_id
+});
+
+export const deleteNotifications = channelId => dispatch => (
+  APIUtil.removeNotifications(channelId).then(notification => (
+    dispatch(receiveNotification(notification))
   ))
 );

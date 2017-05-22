@@ -3,7 +3,9 @@ import merge from 'lodash/merge';
 import { RECEIVE_CURRENT_USER,
   RECEIVE_ERRORS,
   REMOVE_SESSION_ERRORS,
-  RECEIVE_NOTIFICATIONS
+  RECEIVE_NOTIFICATIONS,
+  RECEIVE_NOTIFICATION,
+  REMOVE_NOTIFICATION
 } from '../actions/session_actions';
 
 const defaultState = Object.freeze({
@@ -39,6 +41,16 @@ const SessionReducer = (state = defaultState, action) => {
       notifications: []
     });
       newState['notifications'].push(action.notifications);
+      return newState;
+    case RECEIVE_NOTIFICATION:
+      newState = merge({}, state);
+      newState['notifications'].push(action.notification);
+      return newState;
+    case REMOVE_NOTIFICATION:
+      newState = merge({}, state);
+      newState.notifications = state.notifications.filter(notification =>(
+        notification.channel_id = action.channel_id
+      ));
       return newState;
     default:
       return state;

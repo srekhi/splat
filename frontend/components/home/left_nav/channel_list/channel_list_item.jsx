@@ -12,7 +12,7 @@ class ChannelListItem extends React.Component {
     let usernames = [];
     let notificationDisplay = "";
     if (this.props.notifications.length > 0){
-      notificationDisplay = <div>this.props.notifications.length</div>;
+      notificationDisplay = <div id="notification-count">{this.props.notifications.length}</div>;
     }
     if (this.props.private === "true") {
         // let usernames = this.channel.users.map((user) => {
