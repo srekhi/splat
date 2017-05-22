@@ -118,19 +118,31 @@ class MessageItem extends React.Component{
     e.preventDefault();
     if (this.props.currentUser.id !== this.message.user_id) {
       console.log("you aren't the author of this message-cant edit");
+      //insert a react alert here.
     } else{
       this.toggleEditForm();
       this.props.editMessage(this.state);
     }
   }
 
+  compressEmoticons(emoticons){
+    let counts = {};
+    emoticons.forEach((emoticon) => {
+      let icon = emoticon.icon;
+      counts[icon] = (counts[icon] || 0) +1;
+    });
+
+    return counts;
+  }
+
   render(){
     let emojiDisplay = "";
     let reactions;
-
+    // reactions = this.compressEmoticons()
     //handle logic here for multiple of the same thing.
+    //need a way to compress the array into duplicates with the number of their dups.
     reactions = this.props.message.emoticons.map(emoticon =>{
-      return ReactEmoji.emojify(emoticon.icon);
+      return <div id="reaction">{ReactEmoji.emojify(emoticon.icon)}</div>;
     });
     if (this.state.emoticonPickerOpen) {
       emojiDisplay = <MyEmojiInput
@@ -167,7 +179,9 @@ class MessageItem extends React.Component{
           <span id="message-author">{this.message.user.username}</span> <span id="message-time">{this.message.created_at}</span>
           <br />
           {messageContent}
-          {reactions}
+          <div id="reaction-list">
+            {reactions}
+          </div>
         </div>
         <div className="message-buttons hidden">
 
