@@ -12,6 +12,10 @@ class MainHeader extends React.Component {
     // this.props.fetchUserCount(channelId);
   }
 
+  componentDidMount(){
+    this.props.history.push()
+  }
+
   componentWillReceiveProps(newProps){
     // console.log(newProps.channel);
     // console.log(this.props.channel);

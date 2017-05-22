@@ -40,10 +40,18 @@ class LeftNavHeader extends React.Component {
     this.props.logout();
   }
 
-  componentDidMount(){
-    //push the url for the first channel
-    this.props.history.push(`/messages/${this.props.firstChannel.id}`);
+  componentWillMount(){
+    this.props.fetchChannels(this.props.user.id);
+    // debugger;
   }
+
+  componentWillReceiveProps(newProps){
+    if (this.props.match.params.messageId === undefined) {
+      newProps.history.push(`/messages/${newProps.firstChannel.id}`);
+    }
+
+  }
+
 
   closeModal() {
     this.setState({ modalOpen: false });

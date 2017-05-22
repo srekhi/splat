@@ -3,6 +3,7 @@ import MainHeader from './main_header';
 import { selectChannelById } from '../../../reducers/selectors/channel_selectors';
 import { connect } from 'react-redux';
 import { fetchChannels, fetchUserCount } from '../../../actions/channel_actions';
+import { selectAllPublicChannels } from '../../../reducers/selectors/channel_selectors';
 
 const mapStateToProps = (state, { match }) => {
   let channelId = match.params.channelId;
