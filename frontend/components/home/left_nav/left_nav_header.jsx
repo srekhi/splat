@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, hashHistory } from 'react-router';
 import Modal from 'react-modal';
 import LogoutBox from './logout_box';
+import { withRouter } from 'react-router';
 
 class LeftNavHeader extends React.Component {
   constructor(props){
@@ -37,6 +38,11 @@ class LeftNavHeader extends React.Component {
     event.preventDefault();
     event.stopPropagation();
     this.props.logout();
+  }
+
+  componentDidMount(){
+    //push the url for the first channel
+    this.props.history.push(`/messages/${this.props.firstChannel.id}`);
   }
 
   closeModal() {
@@ -95,4 +101,4 @@ class LeftNavHeader extends React.Component {
   }
 }
 
-export default LeftNavHeader;
+export default withRouter(LeftNavHeader);
