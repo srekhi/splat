@@ -84,8 +84,9 @@ class ChatList extends React.Component {
     if (this.props.channel === undefined) return <p>Loading..</p>;
 
 
-    const messages = this.props.messages.map((message) => {
+    const messages = this.props.messages.map((message, idx) => {
       return <MessageItem
+            key={message.id}
             message={message}
             removeMessage={this.props.removeMessage}
             currentUser={this.props.currentUser}

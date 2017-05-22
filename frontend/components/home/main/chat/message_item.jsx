@@ -45,7 +45,6 @@ class MessageItem extends React.Component{
     newState['icon'] = emoticon;
     //need to add emojis
     addEmojiToMessage(newState).then(responseEmoticon => {
-      debugger;
       let message = responseEmoticon.message;
       return this.props.updateMessage(message);
     });
@@ -62,6 +61,7 @@ class MessageItem extends React.Component{
 
 
   createEditForm(){
+    // this.setState({content: this.props.message.content});
     return (
       <form onSubmit={ this.editMessage }>
         <input
@@ -190,7 +190,8 @@ class MessageItem extends React.Component{
   } else if (this.state.showEditForm) {
     messageContent = this.createEditForm();
   }
-    return (<li className="chat-message">
+    return (<li key={this.props.message.id} 
+      className="chat-message">
       <div className="all-message-content">
         <img id="message-avatar" src={this.message.user.avatar_url} />
         <div className="message-content">
