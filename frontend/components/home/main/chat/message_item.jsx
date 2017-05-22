@@ -47,7 +47,6 @@ class MessageItem extends React.Component{
     addEmojiToMessage(newState).then(responseEmoticon => {
       debugger;
       let message = responseEmoticon.message;
-      
       return this.props.updateMessage(message);
     });
     // here i need to add the emoji to the list of message reactions

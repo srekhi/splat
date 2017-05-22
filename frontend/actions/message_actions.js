@@ -28,7 +28,7 @@ export const fetchMessages = channelId => dispatch => (
   ))
 );
 
-export const deleteMessage = messageId => dispatch => ({
+export const deleteMessage = messageId => ({
     type: DELETE_MESSAGE,
     messageId
 });
