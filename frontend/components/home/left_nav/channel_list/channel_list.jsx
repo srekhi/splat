@@ -47,7 +47,7 @@ class ChannelList extends React.Component {
   }
 
   render(){
-    if (this.publicChannels === undefined) return <ul></ul>;
+    if (this.publicChannels === undefined || this.props.notifications === undefined) return <ul></ul>;
       // <div id="exit-new-channel" onClick={this.closeModal}>
       //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
       // </div>
@@ -72,9 +72,10 @@ class ChannelList extends React.Component {
             private="false"
             />
       </Modal>;
+    const self = this;
     const channelItems = this.props.publicChannels.map((channel) => {
       let channelNotifications;
-      channelNotifications = this.props.notifications.filter((notification) => (
+      channelNotifications = self.props.notifications.filter((notification) => (
         notification.channel_id === channel.id
       ));
       return(
