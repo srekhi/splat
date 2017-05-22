@@ -16,9 +16,6 @@ class Api::MessagesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @message = Message.find_by(id: params[:id])
     if @message.update_attributes(message_params)

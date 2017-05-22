@@ -8,7 +8,9 @@
 ul.chat-message-list {
     height: 81%;
     overflow: hidden;
-    overflow-y: scroll; -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
 }
 
 

@@ -4,11 +4,11 @@
   display: flex;
   flex-direction: column;
   min-width: 364px;
-  max-width: 364px;
+  max-width: 380px;
   /* border-left: 1px solid #E8E8E8; */
   z-index: 1;
   padding-top: 0px;
-  /*position: absolute;*/
+  /* position: absolute; */
 }
 
 #detail-view-header{
@@ -16,12 +16,13 @@
   font-size: 18px;
   font-weight: 800;
   align-items: center;
-  padding-left: 12px;
+  /* padding-left: 12px; */
   background-color: #F7F7F7;
   height: 72px;
   /* margin-top: 71px; */
   color: #2C2D30;
   justify-content: space-between;
+  width: 362px;
   /* border-bottom: 2px solid #E8E8E8; */
 }
 
@@ -82,7 +83,15 @@
 
 #chat-list-and-detail-container{
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  /* flex-direction: column; */
+  flex-wrap: nowrap;
   align-content: space-between;
+}
+
+#detail-view-exit{
+  margin-right: 10px;
+}
+
+#about-header {
+  margin-left: 10px;
 }

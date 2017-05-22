@@ -18,7 +18,7 @@ class DetailView extends React.Component{
       return (
         <section id="detail-view">
           <div id="detail-view-header">
-            <h2>About {name}</h2>
+            <h2 id="about-header">About {name}</h2>
               <i id="detail-view-exit" className="fa fa-times" aria-hidden="true"></i>
           </div>
           <div id="detail-user-info">

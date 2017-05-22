@@ -18,6 +18,7 @@ const ChannelReducer = (state = defaultState, action) => {
     case RECEIVE_CHANNEL:
       const channel = action.channel;
       newState[channel.id] = channel;
+      debugger;
       return newState;
     case RECEIVE_CHANNEL_ERRORS:
       newState['errors'] = action.errors;
