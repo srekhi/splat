@@ -4,7 +4,8 @@ import DetailView from './detail_view';
 const mapStateToProps = (state, { match }) => {
     const channelId = match.params.channelId;
     return {
-      channel: state.channels.channels[channelId]
+      channel: state.channels.channels[channelId],
+      channelId: match.params.channelId 
     };
 };
 

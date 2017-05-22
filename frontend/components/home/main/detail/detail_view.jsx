@@ -1,7 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 class DetailView extends React.Component{
     constructor(props){
       super(props);
+      this.closeDetailView = this.closeDetailView.bind(this);
+    }
+
+    closeDetailView(){
+      this.props.history.push(`/messages/${this.props.channelId}`);
     }
 
     render(){
@@ -15,11 +21,13 @@ class DetailView extends React.Component{
           <span id="detail-view-username">{user.username}</span>
         </li>
       ));
+
+
       return (
         <section id="detail-view">
           <div id="detail-view-header">
             <h2 id="about-header">About {name}</h2>
-              <i id="detail-view-exit" className="fa fa-times" aria-hidden="true"></i>
+            <i onClick={this.closeDetailView} id="detail-view-exit" className="fa fa-times" aria-hidden="true"></i>
           </div>
           <div id="detail-user-info">
             <div id="detail-user-count-header">
@@ -35,4 +43,4 @@ class DetailView extends React.Component{
       );
     }
 }
-export default DetailView;
+export default withRouter(DetailView);
