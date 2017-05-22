@@ -15,6 +15,7 @@ class MessageItem extends React.Component{
     this.createEditForm = this.createEditForm.bind(this);
     this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
     this.addEmoticon = this.addEmoticon.bind(this);
+    this.compressEmoticons = this.compressEmoticons.bind(this);
     this.state = {
       id: this.message.id,
       user_id: this.message.user_id,
@@ -126,6 +127,7 @@ class MessageItem extends React.Component{
   }
 
   compressEmoticons(emoticons){
+    if (emoticons.length === 0) { return {}; }
     let counts = {};
     emoticons.forEach((emoticon) => {
       let icon = emoticon.icon;
@@ -138,12 +140,21 @@ class MessageItem extends React.Component{
   render(){
     let emojiDisplay = "";
     let reactions;
-    // reactions = this.compressEmoticons()
+    reactions = this.compressEmoticons(this.props.message.emoticons);
+    if (this.props.message.emoticons.length > 0){
+      // debugger;
+    }
+    //reactions keys are each different emojis with their values = count of occurrences
+
     //handle logic here for multiple of the same thing.
     //need a way to compress the array into duplicates with the number of their dups.
-    reactions = this.props.message.emoticons.map(emoticon =>{
-      return <div id="reaction">{ReactEmoji.emojify(emoticon.icon)}</div>;
-    });
+    reactions = Object.keys(reactions).map((icon => {
+      return (
+        <div id="reaction">
+          {ReactEmoji.emojify(icon)}
+          {reactions[icon]}
+      </div>);
+    }));
     if (this.state.emoticonPickerOpen) {
       emojiDisplay = <MyEmojiInput
         addEmoticon={this.addEmoticon}
