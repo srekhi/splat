@@ -29,6 +29,8 @@ class ChannelList extends React.Component {
   }
   componentWillMount() {
     this.props.fetchChannels(this.props.user.id);
+    console.log('mounted');
+    this.props.fetchNotifications(this.props.user.id);
   }
 
   componentWillReceiveProps(newProps) {
@@ -71,9 +73,17 @@ class ChannelList extends React.Component {
             />
       </Modal>;
     const channelItems = this.props.publicChannels.map((channel) => {
+      let channelNotifications;
+      channelNotifications = this.props.notifications.filter((notification) => (
+        notification.channel_id === channel.id
+      ));
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="false"/>
+         <ChannelListItem
+           channel={channel}
+           private="false"
+           notifications={channelNotifications}
+           />
         </li>
       );
     });

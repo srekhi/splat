@@ -20,3 +20,10 @@ export const logout = () => (
     url: '/api/session'
   })
 );
+
+export const fetchNotifications = (user_id) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${user_id}/notifications`
+  })
+);

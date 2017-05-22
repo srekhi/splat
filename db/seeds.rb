@@ -82,7 +82,7 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second messa
 30.times do
   sample_user_id = users.sample.id
   mId= Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
-  Emoticon.create(user_id: sample_user_id, message_id: mId, icon: ":smile:")
+  # Emoticon.create(user_id: sample_user_id, message_id: mId, icon: ":smile:")
   Membership.create(user_id: sample_user_id, channel_id: c2.id)
 end
 
