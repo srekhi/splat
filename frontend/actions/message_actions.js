@@ -38,3 +38,16 @@ export const removeMessage = messageId => dispatch => (
     dispatch(deleteMessage(deletedMessageId))
   ))
 );
+
+// -----------------------------------------------------------
+
+export const editMessage = message => dispatch => (
+  APIUtil.updateMessage(message).then(updatedMessage => (
+    dispatch(updateMessage(updatedMessage))
+  ))
+);
+
+export const updateMessage = message => ({
+  type: UPDATE_MESSAGE,
+  message 
+});

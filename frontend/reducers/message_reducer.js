@@ -4,7 +4,7 @@ import {
   RECEIVE_MESSAGES,
   DELETE_MESSAGE,
   UPDATE_MESSAGE,
-  RECEIVE_MESSAGE
+  RECEIVE_MESSAGE,
 } from '../actions/message_actions';
 
 const defaultState = {};
@@ -20,7 +20,10 @@ const MessageReducer = (state = defaultState, action) => {
     case RECEIVE_MESSAGES:
       return action.messages;
     case DELETE_MESSAGE:
-      delete newState[action.id];
+      delete newState[action.messageId];
+      return newState;
+    case UPDATE_MESSAGE:
+      newState[action.message.id] = action.message;
       return newState;
     default:
       return state;

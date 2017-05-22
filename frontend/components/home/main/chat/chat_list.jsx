@@ -5,6 +5,7 @@ import NewMessageForm from './new_message';
 import DetailViewContainer from '../detail/detail_view_container';
 import MyEmojiInput from './emoticon/emoticon_picker';
 import ReactEmoji from 'react-emoji';
+import MessageItem from './message_item';
 
 
 class ChatList extends React.Component {
@@ -81,53 +82,15 @@ class ChatList extends React.Component {
 
   render(){
     if (this.props.channel === undefined) return <p>Loading..</p>;
+
+
     const messages = this.props.messages.map((message) => {
-      let messageContent =  <p id="message-text">{ReactEmoji.emojify(message.content)}</p>;
-      // let messageDate = message.created_at.split("T")[0];
-      //here, i can do the logic for if message content begins with "giphy",
-      //then render img src{message.content}, else render <p> msg. content</p>
-      //
-      if (message.content.startsWith("giphy")) {
-        let messageGif = message.content.slice(6);
-        let endOfImageUrl = message.content.indexOf("gif") + 3;
-        let gifCaption = message.content.slice(endOfImageUrl);
-        messageContent = (
-          <div>
-            <p id="message-text">{gifCaption}</p>
-              <div id="gif-container">
-                <div id="left-gif-bar"></div>
-                <img
-                  id="gif-message"
-                  src={messageGif} />
-              </div>
-          </div>
-      );
-      }
-      return (<li className="chat-message">
-        <div className="all-message-content">
-          <img id="message-avatar" src={message.user.avatar_url} />
-          <div className="message-content">
-            <span id="message-author">{message.user.username}</span> <span id="message-time">{message.created_at}</span>
-            <br />
-            {messageContent}
-          </div>
-          <div className="message-buttons hidden">
-
-            <div id="message-button">
-              <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
-            </div>
-
-            <div id="message-button">
-              <i className="fa fa-pencil-square-o fa-6" aria-hidden="true"></i>
-            </div>
-
-            <div id="message-button">
-              <i className="fa fa-times-circle-o fa-6" aria-hidden="true"></i>
-            </div>
-
-          </div>
-        </div>
-      </li>);
+      return <MessageItem
+            message={message}
+            removeMessage={this.props.removeMessage}
+            currentUser={this.props.currentUser}
+            editMessage={this.props.editMessage}
+            />;
     }
 
   );
