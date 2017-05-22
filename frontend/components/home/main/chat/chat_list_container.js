@@ -6,14 +6,12 @@ import { receiveMessage } from '../../../../../frontend/actions/message_actions'
 import { deleteNotifications, createNotification } from '../../../../../frontend/actions/session_actions';
 
 
-
-
-
 const mapStateToProps = (state, {match}) => {
   return {
     messages: Object.keys(state.messages).map(key => state.messages[key]),
     channel: state.channels.channels[match.params.channelId],
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    notifications: state.session.notifications.filter(notif => notif.channel_id === match.params.channelId)
   };
 };
 

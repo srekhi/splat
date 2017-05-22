@@ -36,6 +36,7 @@ class ChannelList extends React.Component {
   componentWillReceiveProps(newProps) {
     this.publicChannels = newProps.publicChannels;
     this.channelCount = this.publicChannels.length;
+    
   }
   closeModal() {
     this.setState({ modalOpen: false });

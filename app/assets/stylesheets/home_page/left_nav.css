@@ -376,5 +376,12 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 }
 
 #notification-count{
-  background-color: black;
+  background-color: #EB4D5C;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  margin-right: 3px;
 }
