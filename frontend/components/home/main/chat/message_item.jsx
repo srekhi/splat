@@ -3,7 +3,6 @@ import MyEmojiInput from './emoticon/emoticon_picker';
 import ReactEmoji from 'react-emoji';
 import AlertContainer from 'react-alert';
 
-
 class MessageItem extends React.Component{
   constructor(props){
     super(props);
@@ -13,17 +12,26 @@ class MessageItem extends React.Component{
     this.toggleEditForm = this.toggleEditForm.bind(this);
     this.updateContent = this.updateContent.bind(this);
     this.createEditForm = this.createEditForm.bind(this);
+    this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
 
     this.state = {
       id: this.message.id,
       user_id: this.message.user_id,
       channel_id: this.message.channel_id,
       showEditForm: false,
-      content: this.message.content
-    };
+      content: this.message.content,
+      emoticonPickerOpen: false
 
+    };
   }
 
+  toggleEmojiDisplay(){
+    this.setState({ emoticonPickerOpen: !this.state.emoticonPickerOpen });
+  }
+
+  addEmoticon(emoticon){
+    this.setState({content: this.state.content+ " "+ emoticon});
+  }
 
   updateContent(e) {
       let content = e.currentTarget.value;
@@ -61,9 +69,32 @@ class MessageItem extends React.Component{
     if (this.props.currentUser.id !== this.message.user_id) {
       console.log("you aren't the author of this message-cant delete");
     } else{
-      // this.props.removeMessage(this.message.id);
+      this.props.removeMessage(this.message.id);
     }
   }
+
+  // showAuthorAlert(){
+  //   msg.show('You are not the author of this message', {
+  //     time: 2000,
+  //     type: 'info',
+  //   });
+  // }
+  //
+  // buildAlert() {
+  //   const alertOptions = {
+  //     offset: 25,
+  //     position: 'bottom left',
+  //     theme: 'dark',
+  //     time: 2000,
+  //     transition: 'scale'
+  //   };
+  //   return(
+  //     <div>
+  //       <AlertContainer ref={(a) => global.msg = a} {...alertOptions} />
+  //     </div>
+  //   );
+  // }
+
 
   toggleEditForm(){
     this.setState({showEditForm: !this.state.showEditForm});
@@ -79,8 +110,14 @@ class MessageItem extends React.Component{
     }
   }
   render(){
-    let messageContent =  <p id="message-text">{ReactEmoji.emojify(this.message.content)}</p>;
+    let emojiDisplay = "";
+    if (this.state.emoticonPickerOpen) {
+      emojiDisplay = <MyEmojiInput
+        addEmoticon={this.addEmoticon}
+        toggleEmojiDisplay={this.toggleEmojiDisplay} />;
+    }
 
+    let messageContent =  <p id="message-text">{ReactEmoji.emojify(this.message.content)}</p>;
     //this logic exists to set variables for rendering further down.
     if (this.message.content.startsWith("giphy")) {
       let messageGif = this.message.content.slice(6);
@@ -110,9 +147,11 @@ class MessageItem extends React.Component{
         </div>
         <div className="message-buttons hidden">
 
-          <div id="message-button">
+          <div id="message-button" onClick={this.toggleEmojiDisplay}>
             <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
           </div>
+
+          {emojiDisplay}
 
           <div id="message-button" onClick={this.editMessage}>
             <i className="fa fa-pencil-square-o fa-6" aria-hidden="true"></i>
@@ -121,6 +160,8 @@ class MessageItem extends React.Component{
           <div id="message-button" onClick={this.deleteMessage}>
             <i className="fa fa-times-circle-o fa-6" aria-hidden="true"></i>
           </div>
+
+
 
         </div>
       </div>
