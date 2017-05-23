@@ -41,6 +41,7 @@ const SessionReducer = (state = defaultState, action) => {
       notifications: []
     });
       newState['notifications'].push(action.notifications);
+      debugger;
       return newState;
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);

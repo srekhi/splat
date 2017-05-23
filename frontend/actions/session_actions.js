@@ -61,6 +61,7 @@ export const fetchNotifications = (userId) => dispatch => (
   ))
 );
 
+
 // --------------------------------------------------------
 export const receiveNotification = (notification) => ({
   type: RECEIVE_NOTIFICATION,
