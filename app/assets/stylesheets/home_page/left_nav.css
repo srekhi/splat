@@ -378,3 +378,65 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   white-space: nowrap;
   overflow-x: ellipsis;
 }
+
+#about-logo{
+  width: 28px;
+  height: 28px;
+}
+
+#about-me-section{
+  color: white;
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-top: 1px solid gray;
+  background-color: #4D394B;
+  position: fixed;
+  bottom: 0px;
+  width: 220px;
+  color: white;
+  padding: 15px 15px 0px 15px;
+  font-weight: 300;
+}
+
+
+p#about-me-intro {
+    color: white;
+}
+
+#about-header{
+  color: white;
+  margin: 0px;
+  padding-left: 10px;
+  font-size: 17px;
+  font-weight: bold;
+
+}
+
+#about-me-links{
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.about-me-link{
+  color: #cdcdcd;
+  text-decoration: none;
+}
+
+.about-me-link:hover{
+  color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+}
+#about-me-description-container{
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#about-header-info{
+  display: flex;
+}
