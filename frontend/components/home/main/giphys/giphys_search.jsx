@@ -38,15 +38,23 @@ class GiphysSearch extends React.Component {
                  giphyUrl={giphy.images.fixed_height.url}
                  selectGiphy={this.selectGiphy}/>);
     return (
-      <div>
-        {giphys}
+      <div id="giphys-container">
+        <ul id="giphys-list">
+          { giphys.slice(0,6) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(6,12) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(12,18) }
+        </ul>
       </div>
     );
   }
 
   displayGiphysSearchBox(){
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form id="giphy-form" onSubmit={this.handleSubmit}>
         <img
           src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_112/v1495334300/Screen_Shot_2017-05-20_at_7.38.01_PM_hqseiu.png" />
         <input type="text"
@@ -63,10 +71,6 @@ class GiphysSearch extends React.Component {
 
     return (
       <div>
-        <form>
-          <input value={this.state.searchTerm} onChange={this.handleChange} />
-          <button type="submit" onClick={this.handleSubmit}>Search Giphy</button>
-        </form>
         {this.displayGiphysSearchBox()}
       </div>
     );

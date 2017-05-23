@@ -16,3 +16,41 @@
   margin-top: 10px;
   display: flex;
 }
+
+
+#giphys-container {
+  display: flex;
+  overflow: scroll;
+  flex-wrap: wrap;
+  height: 260px;
+}
+
+#giphys-list{
+  list-style: none;
+  padding-left: 0px;
+  max-height: 80%;
+  margin: 0px;
+}
+
+#giphy-form{
+  width: 312px;
+  height: 300px;
+  left: 22px;
+  bottom: 70px;
+  /*background-color: #000;*/
+  background-color: white;
+  position: absolute;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #9933FF;
+}
+
+#giphy-image{
+  height: auto;
+  width: 96px;
+  margin: 2px 4px;
+  padding: 0px;
+  cursor: pointer;
+}

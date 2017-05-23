@@ -90,7 +90,6 @@ class NewMessageForm extends React.Component {
     this.setState({content: this.state.content+ " "+ emoticon});
   }
 
-
   render(){
     let emojiDisplay = "";
     if (this.state.emoticonPickerOpen) {
@@ -98,14 +97,13 @@ class NewMessageForm extends React.Component {
         addEmoticon={this.addEmoticon}
         toggleEmojiDisplay={this.toggleEmojiDisplay} />;
     }
-
     let giphyDisplay = "";
     let placeholder;
     if (this.state.giphyIsOpen) {
         giphyDisplay = (
           <GiphySearchContainer
-            addGiphy={this.addGiphy.bind(this)}
-            toggleGiphySearch={this.toggleGiphySearch.bind(this)}/>
+            addGiphy={this.addGiphy}
+            toggleGiphySearch={this.toggleGiphySearch}/>
         );
     }
     if (this.props.channel.private) {
