@@ -39,7 +39,7 @@ class ChannelListItem extends React.Component {
       }
     return (
       <div id="channel-list-item">
-          <a className='channel-show-link' href={`/messages/${this.channel.id}`}>
+          <a className='channel-show-link' href={`#/messages/${this.props.channel.id}`}>
           <h5 className="left-nav-channel-name">{channelName}</h5>
           </a>
       </div>

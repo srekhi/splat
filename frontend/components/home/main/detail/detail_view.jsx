@@ -12,7 +12,11 @@ class DetailView extends React.Component{
 
     render(){
       if (this.props.channel === undefined) return <p>Loading..</p>;
-      const name = "#" + this.props.channel.name;
+      let name;
+      name = "#" + this.props.channel.name;
+      if (this.props.channel.private === true){
+          name = "this conversation";
+      }
       const userCount = this.props.channel.users.length;
       const users = this.props.channel.users;
       let userList = users.map((user) => (
