@@ -21,26 +21,21 @@ const SessionReducer = (state = defaultState, action) => {
     case RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
       return merge({}, state, {
-        currentUser,
-        notifications: []
+        currentUser
       });
     case RECEIVE_ERRORS:
       const errors = action.errors;
       return merge({}, state, {
-        errors,
-        notifications: []
+        errors
       });
     case REMOVE_SESSION_ERRORS:
       newState = merge({}, state, {
-        notifications: []
       });
       newState['errors'] = [];
       return newState;
     case RECEIVE_NOTIFICATIONS:
-      newState = merge({}, state, {
-      notifications: []
-    });
-      newState['notifications'].push(action.notifications);
+      newState = merge({}, state);
+      newState['notifications'] = action.notifications;
       return newState;
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);
@@ -50,9 +45,9 @@ const SessionReducer = (state = defaultState, action) => {
     case REMOVE_NOTIFICATIONS:
       newState = merge({}, state);
       // debugger;
-      newState.notifications = state.notifications.filter(notification =>(
-        notification.channel_id = action.channel_id
-      ));
+      // newState.notifications = state.notifications.filter(notification =>(
+      //   notification.channel_id === action.channel_id
+      // ));
       return newState;
     default:
       return state;

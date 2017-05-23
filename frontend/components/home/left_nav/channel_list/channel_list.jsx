@@ -31,6 +31,7 @@ class ChannelList extends React.Component {
   componentWillMount() {
     this.props.fetchChannels(this.props.user.id);
     this.props.fetchNotifications(this.props.user.id);
+    console.log("mounting");
   }
 
   componentWillReceiveProps(newProps) {

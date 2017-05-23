@@ -50,6 +50,7 @@ export const logout = () => dispatch => (
 
 //--------------------------------
 export const receiveNotifications = (notifications) => ({
+  junk: console.log("LKSDJFALJFLKSAJFLKDSFJAKLSF", notifications),
   type: RECEIVE_NOTIFICATIONS,
   notifications
 });

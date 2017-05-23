@@ -44,7 +44,7 @@ class NewMessageForm extends React.Component {
     const msg = this.state;
     this.state.channel_id = this.props.match.params.channelId;
     this.props.createMessage(msg).then(this.props.scrollToBottom);
-    this.sendNotifications();
+    // this.sendNotifications();
     this.clearState();
   }
 
