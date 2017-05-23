@@ -17,12 +17,23 @@ class GiphysSearch extends React.Component {
   componentDidMount() {
     console.log('giphy search mount');
     this.props.fetchSearchGiphys('');
-    document.addEventListener("click", this.props.toggleGiphySearch);
+    // document.addEventListener("click", (event) => {
+    //   // debugger;
+    //   if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form") {
+    //     console.log("something");
+    //     this.props.toggleGiphySearch();
+    //   }
+    // });
 
   }
 
   componentWillUnmount(){
-    document.removeEventListener("click", this.props.toggleGiphySearch);
+    // document.removeEventListener("click", (event) => {
+    //   if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form") {
+    //     console.log("something");
+    //     this.props.toggleGiphySearch();
+    //   }
+    // });
   }
 
   handleChange(e) {
@@ -71,13 +82,14 @@ class GiphysSearch extends React.Component {
     return (
       <form id="giphy-form" onSubmit={this.handleSubmit}>
         <img
-          src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_112/v1495334300/Screen_Shot_2017-05-20_at_7.38.01_PM_hqseiu.png" />
+          src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_112/v1495559212/Screen_Shot_2017-05-23_at_10.06.34_AM_yunwdx.png" />
+        {this.giphysContainer()}
         <input type="text"
+          id="search-giphy-box"
           onChange={this.handleChange}
           value={this.state.searchTerm}
           placeholder="Search for giphys"
           />
-        {this.giphysContainer()}
       </form>
     );
   }

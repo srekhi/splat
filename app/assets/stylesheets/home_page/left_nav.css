@@ -254,18 +254,20 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     margin-left: 5px;
     max-height: calc(100% - 81px);
     margin-top: 3px;
-    overflow: scroll; -webkit-overflow-scrolling: touch;;
-    overflow-y: scroll; -webkit-overflow-scrolling: touch;
+    /* overflow: scroll; */
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     display: inline-block;
     width: 91%;
     height: 20px;
@@ -438,7 +440,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 
 
 #channel-list-item{
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow-x: ellipsis;
 }
 
@@ -483,6 +485,7 @@ p#about-me-intro {
   padding-left: 10px;
   font-size: 17px;
   font-weight: bold;
+  margin-top: 3px;
 }
 
 #about-me-links{

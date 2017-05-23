@@ -17,7 +17,7 @@ class Navbar extends React.Component {
       let username;
       let password;
       // debugger;
-      if (e.target.textContent === "Guest Login 1") {
+      if (e.target.textContent === "Guest 1") {
         username = "drake";
         password = "password";
       } else{
@@ -43,8 +43,8 @@ class Navbar extends React.Component {
           <Link id="landing-page-logo-link" to="/">Splat</Link>
         </section>
         <section id="session-control-container">
-          <button onClick={this.handleClick} id="demo">Guest Login 1</button>
-          <button onClick={this.handleClick} id="demo">Guest Login 2</button>
+          <button onClick={this.handleClick} id="demo">Guest 1</button>
+          <button onClick={this.handleClick} id="demo">Guest 2</button>
           <button onClick={this.handleClick} id="login">Log in</button>
           <button onClick={this.handleClick} id="sign-up">Sign up</button>
         </section>
