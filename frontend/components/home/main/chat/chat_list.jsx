@@ -36,12 +36,19 @@ class ChatList extends React.Component {
 
   componentWillReceiveProps(newProps){
     //subscription to be created here as well
-    if (this.props.match.params.channelId != newProps.match.params.channelId) {
+    if (this.props.match.params.channelId !== newProps.match.params.channelId) {
       // debugger;
       this.setSocket(newProps.match.params.channelId); ////changed this ;
       newProps.fetchMessages(newProps.match.params.channelId).then(this.scrollToBottom.bind(this));
       // setTimeout(this.scrollToBottom.bind(this), 50);
+
+      //this:
+      // if (this.props.location.pathname.endsWith('details') && !newProps.location.pathname.endsWith('details')) {
+      //   let newUrl = newProps.location.pathname;
+      //   newProps.history.push(newUrl + '/details');
+      // }
     }
+
 
   }
 

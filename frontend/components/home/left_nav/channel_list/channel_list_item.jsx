@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 class ChannelListItem extends React.Component {
   constructor(props){
     super(props);
@@ -7,6 +8,8 @@ class ChannelListItem extends React.Component {
   }
 
   render(){
+    let showLink;
+    showLink = this.props.channel.id;
     let channelName = "#" + this.channel.name;
     let dmPersonCount = "";
     let usernames = [];
@@ -37,9 +40,14 @@ class ChannelListItem extends React.Component {
           channelName = usernames.join(", ");
         }
       }
+    // debugger;
+    if (this.props.location.pathname.endsWith('details')){
+      showLink = showLink + '/details/';
+    }
+
     return (
       <div id="channel-list-item">
-          <a className='channel-show-link' href={`#/messages/${this.props.channel.id}`}>
+          <a className='channel-show-link' href={`#/messages/${showLink}`}>
           <h5 className="left-nav-channel-name">{channelName}</h5>
           </a>
       </div>
@@ -47,4 +55,4 @@ class ChannelListItem extends React.Component {
   }
 }
 
-export default ChannelListItem;
+export default withRouter(ChannelListItem);
