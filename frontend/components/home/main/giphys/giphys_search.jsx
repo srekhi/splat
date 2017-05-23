@@ -10,6 +10,8 @@ class GiphysSearch extends React.Component {
     this.giphysContainer = this.giphysContainer.bind(this);
     this.displayGiphysSearchBox = this.displayGiphysSearchBox.bind(this);
     this.selectGiphy = this.selectGiphy.bind(this);
+    this.addGiphy = this.addGiphy.bind(this);
+
   }
 
   componentDidMount() {
@@ -27,7 +29,12 @@ class GiphysSearch extends React.Component {
     });
   }
 
+  addGiphy(giphy){
+    $("message-content-input").val(giphy);
+  }
+
   selectGiphy(giphy){
+    // this.props.addGiphy(giphy);
     this.props.addGiphy(giphy);
     this.props.toggleGiphySearch();
   }

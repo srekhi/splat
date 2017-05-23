@@ -22,6 +22,7 @@ class NewMessageForm extends React.Component {
     this.clearState = this.clearState.bind(this);
     this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
     this.addEmoticon = this.addEmoticon.bind(this);
+    this.addGiphy = this.addGiphy.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -68,8 +69,7 @@ class NewMessageForm extends React.Component {
       return usernames;
   }
 
-  toggleGiphySearch(e) {
-    e.preventDefault();
+  toggleGiphySearch() {
     this.setState({ giphyIsOpen: !this.state.giphyIsOpen });
   }
 

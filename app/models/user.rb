@@ -29,6 +29,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :emoticons
 
+
   attr_reader :password
 
   after_initialize :ensure_session_token, :ensure_avatar_url
