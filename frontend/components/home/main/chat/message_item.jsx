@@ -27,6 +27,13 @@ class MessageItem extends React.Component{
       icon: "",
       message_id: this.message.id
     };
+    this.alertOptions = {
+      offset: 14,
+      position: 'bottom left',
+      theme: 'dark',
+      time: 5000,
+      transition: 'scale'
+    };
   }
 
   toggleEmojiDisplay(){
@@ -89,7 +96,7 @@ class MessageItem extends React.Component{
   deleteMessage(e){
     e.preventDefault();
     if (this.props.currentUser.id !== this.message.user_id) {
-      console.log("you aren't the author of this message-cant delete");
+      this.showAlert("You are not the author of this message");
     } else{
       this.props.removeMessage(this.message.id);
     }
@@ -125,7 +132,7 @@ class MessageItem extends React.Component{
   editMessage(e){
     e.preventDefault();
     if (this.props.currentUser.id !== this.message.user_id) {
-      console.log("you aren't the author of this message-cant edit");
+      this.showAlert("You are not the author of this message");
       //insert a react alert here.
     } else{
       this.toggleEditForm();
@@ -142,6 +149,14 @@ class MessageItem extends React.Component{
     });
 
     return counts;
+  }
+
+  showAlert(text){
+    this.msg.show(text, {
+      time: 2000,
+      type: 'success',
+      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_32,w_32/v1494891230/slack_zawidf.svg" />
+    });
   }
 
   render(){
@@ -190,7 +205,7 @@ class MessageItem extends React.Component{
   } else if (this.state.showEditForm) {
     messageContent = this.createEditForm();
   }
-    return (<li key={this.props.message.id} 
+    return (<li key={this.props.message.id}
       className="chat-message">
       <div className="all-message-content">
         <img id="message-avatar" src={this.message.user.avatar_url} />
@@ -202,6 +217,7 @@ class MessageItem extends React.Component{
             {reactions}
           </div>
         </div>
+        <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
         <div className="message-buttons hidden">
 
           <div id="message-button" onClick={this.toggleEmojiDisplay}>
