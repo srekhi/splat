@@ -9,11 +9,9 @@ class Api::NotificationsController < ApplicationController
   def create
     channel_id = params[:channel_id]
     user_id = params[:user_id]
-    # debugger
     @notification = Notification.new
     @notification.user_id = user_id
     @notification.channel_id = channel_id
-    # debugger
     if @notification.valid?
       @notification.save
       render 'api/notifications/show'
