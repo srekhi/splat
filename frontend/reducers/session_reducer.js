@@ -41,11 +41,13 @@ const SessionReducer = (state = defaultState, action) => {
       notifications: []
     });
       newState['notifications'].push(action.notifications);
-      debugger;
       return newState;
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);
-      newState['notifications'].push(action.notification);
+      if (action.notification.user_id === state.session.currentUser.id){
+        console.log('notif received');
+        newState['notifications'].push(action.notification);
+      }
       return newState;
     case REMOVE_NOTIFICATIONS:
       newState = merge({}, state);

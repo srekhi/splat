@@ -500,6 +500,7 @@ p#about-me-intro {
 .about-me-link{
   color: #cdcdcd;
   text-decoration: none;
+  margin-bottom: 5px;
 }
 
 .about-me-link:hover{
@@ -539,4 +540,17 @@ aside#about-me-credits {
   margin-right: 3px;
 }
 
+}
+
+
+i#email-fa {}
+
+i#email-fa {}
+
+#email-fa {
+    margin-right: 4px;
+}
+
+i#github-fa {
+    margin-right: 4px;
 }

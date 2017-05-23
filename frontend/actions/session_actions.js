@@ -73,6 +73,7 @@ export const createNotification = (channelId, userId) => dispatch => (
     dispatch(receiveNotification(notification))
   ))
 );
+//for each of the notifications created between channel and user, dispatch an action..
 // -----------------------------------------------------------
 export const removeNotifications = (channel_id) => ({
   type: REMOVE_NOTIFICATIONS,

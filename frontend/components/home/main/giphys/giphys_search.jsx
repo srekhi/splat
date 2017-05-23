@@ -15,7 +15,14 @@ class GiphysSearch extends React.Component {
   }
 
   componentDidMount() {
+    console.log('giphy search mount');
     this.props.fetchSearchGiphys('');
+    document.addEventListener("click", this.props.toggleGiphySearch);
+
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("click", this.props.toggleGiphySearch);
   }
 
   handleChange(e) {
