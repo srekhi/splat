@@ -295,6 +295,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   text-decoration: none;
   color: #4D394B;
   background-color: #4D394B;
+  border-color: #4D394B;
+  text-decoration-color: #4D394B;
 }
 
 
