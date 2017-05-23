@@ -179,10 +179,10 @@ body {
 
 #session-control-container > button {
   background-color: #2ab27b;
-  border: 3px solid #2ab27b;;
+  border: 3px solid #2ab27b;
   border-radius: 7px;
-  height: 40px;
-  width: 70px;
+  height: 45px;
+  width: 75px;
   margin-right: 10px;
   margin-left: 10px;
   font-size: 17px;
