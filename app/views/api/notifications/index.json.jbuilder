@@ -1,3 +1,3 @@
-@notifications.each do |notification|
-    json.extract! notification, :id, :user_id, :channel_id
+json.array! @notifications do |notif|
+  json.extract! notif, :id, :channel_id, :user_id
 end
