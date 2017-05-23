@@ -87,6 +87,11 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second messa
   Membership.create(user_id: sample_user_id, channel_id: c2.id)
 end
 
+5.times do
+  Notification.create(user_id: u1.id, channel_id: c2.id)
+end
+
+
 30.times do
   sample_user_id = users.sample.id
   Message.create(user_id: sample_user_id, channel_id: c3.id, content: Faker::ChuckNorris.fact )

@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import Root from './components/root';
 import * as ChannelActions from './actions/channel_actions';
 import * as ChannelApiUtil from './util/channel_api_util';
+import * as SessionApiUtil from './util/session_api_util';
 
 import { selectAllPublicChannels } from './reducers/selectors/channel_selectors';
 import { selectAllUsers } from './reducers/selectors/user_selectors';
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store} />, root);
 });
 
+window.SessionApiUtil = SessionApiUtil;
 window.ChannelActions = ChannelActions;
 window.ChannelApiUtil = ChannelApiUtil;
 window.selectAllPublicChannels = selectAllPublicChannels;

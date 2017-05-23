@@ -13,6 +13,10 @@ class ChannelListItem extends React.Component {
     let channelName = "#" + this.channel.name;
     let dmPersonCount = "";
     let usernames = [];
+    let notificationDisplay = "";
+    if (this.props.notifications.length > 0){
+      notificationDisplay = <div id="notification-count">{this.props.notifications.length}</div>;
+    }
     if (this.props.private === "true") {
         // let usernames = this.channel.users.map((user) => {
         //   // if (user.username != this.props.currentUser.username) {
@@ -48,7 +52,7 @@ class ChannelListItem extends React.Component {
     return (
       <div id="channel-list-item">
           <a className='channel-show-link' href={`#/messages/${showLink}`}>
-          <h5 className="left-nav-channel-name">{channelName}</h5>
+          <h5 className="left-nav-channel-name">{channelName} {notificationDisplay}</h5>
           </a>
       </div>
     );

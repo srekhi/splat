@@ -26,6 +26,7 @@ class GiphysSearch extends React.Component {
     e.preventDefault();
     let searchTerm = this.state.searchTerm.split(' ').join('+');
     this.props.fetchSearchGiphys(searchTerm).then(() => {
+
     });
   }
 

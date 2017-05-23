@@ -37,7 +37,7 @@ class DMList extends React.Component {
   }
 
   render(){
-    if (this.props.privateChannels === undefined) return <Spinner />;
+    if (this.props.privateChannels === undefined || this.props.notifications === undefined) return <Spinner />;
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
@@ -59,10 +59,20 @@ class DMList extends React.Component {
             name="dm"
             />
       </Modal>;
+    const self = this;
     const channelItems = this.props.privateChannels.map((channel) => {
+      let channelNotifications;
+      channelNotifications = self.props.notifications.filter((notification) => (
+        notification.channel_id === channel.id
+      ));
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="true" channel={channel} currentUser={this.props.user}/>
+         <ChannelListItem channel={channel}
+           private="true"
+           channel={channel}
+           currentUser={this.props.user}
+           notifications={channelNotifications}
+           />
         </li>
       );
     });

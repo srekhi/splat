@@ -527,4 +527,16 @@ p#about-me-intro {
 aside#about-me-credits {
     font-size: 12px;
     margin-bottom: 6px;
+  }
+#notification-count{
+  background-color: #EB4D5C;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+  margin-right: 3px;
+}
+
 }

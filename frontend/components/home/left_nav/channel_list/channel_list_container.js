@@ -3,6 +3,8 @@ import { selectAllUsers } from '../../../../reducers/selectors/user_selectors';
 
 import { fetchChannels, createChannel, removeChannelErrors } from '../../../../actions/channel_actions';
 import { fetchUsers } from '../../../../actions/user_actions';
+import { fetchNotifications } from '../../../../actions/session_actions';
+
 
 import { connect } from 'react-redux';
 import ChannelList from './channel_list';
@@ -13,13 +15,15 @@ const mapStateToProps = (state) => ({
   user: state.session.currentUser,
   allUsers: selectAllUsers(state),
   errors: state.channels.errors,
+  notifications: state.session.notifications
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchChannels: (userId) => dispatch(fetchChannels(userId)),
   createChannel: (channel) => dispatch(createChannel(channel)),
   fetchUsers: () => dispatch(fetchUsers()),
-  removeChannelErrors: () => dispatch(removeChannelErrors())
+  removeChannelErrors: () => dispatch(removeChannelErrors()),
+  fetchNotifications: (userId) => dispatch(fetchNotifications(userId))
 });
 
 

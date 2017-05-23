@@ -118,6 +118,7 @@ class ChatList extends React.Component {
               createMessage={this.props.createMessage}
               currentUser={this.props.currentUser}
               scrollToBottom={this.scrollToBottom}
+              createNotification={this.props.createNotification}
               />
           </footer>
         </section>

@@ -30,11 +30,13 @@ class ChannelList extends React.Component {
   }
   componentWillMount() {
     this.props.fetchChannels(this.props.user.id);
+    this.props.fetchNotifications(this.props.user.id);
   }
 
   componentWillReceiveProps(newProps) {
     this.publicChannels = newProps.publicChannels;
     this.channelCount = this.publicChannels.length;
+
   }
   closeModal() {
     this.setState({ modalOpen: false });
@@ -46,7 +48,7 @@ class ChannelList extends React.Component {
   }
 
   render(){
-    if (this.publicChannels === undefined) return <Spinner />;
+    if (this.publicChannels === undefined || this.props.notifications === undefined) return <Spinner />;
       // <div id="exit-new-channel" onClick={this.closeModal}>
       //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
       // </div>
@@ -71,10 +73,19 @@ class ChannelList extends React.Component {
             private="false"
             />
       </Modal>;
+    const self = this;
     const channelItems = this.props.publicChannels.map((channel) => {
+      let channelNotifications;
+      channelNotifications = self.props.notifications.filter((notification) => (
+        notification.channel_id === channel.id
+      ));
       return(
         <li key={channel.id}>
-         <ChannelListItem channel={channel} private="false"/>
+         <ChannelListItem
+           channel={channel}
+           private="false"
+           notifications={channelNotifications}
+           />
         </li>
       );
     });
