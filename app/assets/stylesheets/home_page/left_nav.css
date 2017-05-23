@@ -404,6 +404,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 
 p#about-me-intro {
     color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
 #about-header{
@@ -412,7 +414,6 @@ p#about-me-intro {
   padding-left: 10px;
   font-size: 17px;
   font-weight: bold;
-
 }
 
 #about-me-links{
@@ -439,4 +440,12 @@ p#about-me-intro {
 
 #about-header-info{
   display: flex;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+
+aside#about-me-credits {
+    font-size: 12px;
+    margin-bottom: 6px;
 }

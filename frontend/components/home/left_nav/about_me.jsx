@@ -2,11 +2,13 @@ import React from 'react';
 const AboutMe = () =>(
   <section id="about-container">
     <section id="about-me-section">
-      <img id="about-logo"
-        src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_28/v1494891230/slack_zawidf.svg" />
-
       <section id="about-description-container">
-        <h4 id="about-header">About Splat</h4>
+        <div id="about-header-info">
+          <img id="about-logo"
+            src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_28/v1494891230/slack_zawidf.svg" />
+
+          <h4 id="about-header">About Splat</h4>
+        </div>
         <p id="about-me-intro">
           This application is an App Academy portfolio project inspired by
           Slack.
