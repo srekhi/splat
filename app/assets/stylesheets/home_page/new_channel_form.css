@@ -16,7 +16,9 @@
 }
 
 #new-channel-window h1 {
-  align-items: left;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
   font-weight: 800;
   font-size: 34px;
   margin-bottom: 30px;
@@ -25,12 +27,16 @@
 
 
 .new-channel-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 8px 12px 12px 12px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 1px solid #E0E0E0;
   border-radius: 6px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   margin-top: 10px;
 }
@@ -40,8 +46,12 @@
   font-size: 20px;
   font-weight: 300;
   margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 
@@ -58,8 +68,12 @@
   font-size: 20px;
   font-weight: 300;
   margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-bottom: 7px;
 }
 
@@ -70,8 +84,12 @@
   border-right: 1px solid transparent;
   border-bottom: 1px solid transparent;
   height: 64px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 16px;
   cursor: pointer;
   color: #555459;
@@ -105,8 +123,12 @@ li.new-channel-user-list-item:hover {
     border-radius: 50%;
     cursor: pointer;
     color: #717274;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
     z-index: 100;
   }
@@ -118,10 +140,19 @@ li.new-channel-user-list-item:hover {
   #new-channel-window {
     max-height: 91%;
     margin-top: 9%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     position: relative;
   }
 
@@ -130,8 +161,12 @@ li.new-channel-user-list-item:hover {
   }
 
   #wrap-username-and-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .fa-3x {
@@ -140,10 +175,18 @@ li.new-channel-user-list-item:hover {
   }
 
   #selected-user-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   #wrap-username-and-button{
@@ -151,6 +194,8 @@ li.new-channel-user-list-item:hover {
   }
 
   .selected-user{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     font-weight: 300;
     padding: 8px 10px;
@@ -160,14 +205,20 @@ li.new-channel-user-list-item:hover {
     color: white;
     border-radius: 5px;
     width: 176px;
+    -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   #delete-selected-user {
     cursor: pointer;
     font-size: 19px;
-    align-self: flex-start;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
     margin-left: 10px;
     /* align-self: flex-start; */
     margin-right: -3px;
@@ -176,7 +227,8 @@ li.new-channel-user-list-item:hover {
   .errors-new-channel > ul > li:first-of-type {
     margin-bottom: -22px;
     /* height: 13px; */
-    align-self: center;
+    -ms-flex-item-align: center;
+        align-self: center;
     display: inline-block;
   }
 
@@ -191,9 +243,15 @@ li#new-channel-error {
 }
 
 ul.error-list-new-channel {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 32px;
     font-size: 21px;
     color: red;

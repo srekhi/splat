@@ -15,19 +15,29 @@
 #reaction{
   padding: 1px 3px;
   border: 1px solid #E8E8E8;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-grow: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   border-radius: 5px;
   cursor: pointer;
   color: #959595;
   font-size: 11px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 6px 6px 0px 0px;
   width: 24px;
 }
 
 #reaction-list{
-  flex-grow: 0;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 

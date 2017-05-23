@@ -20,16 +20,17 @@ body {
    font-family: Lato, sans-serif;
    margin: auto;
    vertical-align: middle;
-   position: absolute;
+   /* position: absolute; */
    top: 25%;
    left: auto;
    right: auto;
-   bottom: 35%;
+   bottom: 36%;
    background: rgb(255, 255, 255);
    border-radius: 8px;
    opacity: 1;
    z-index: 1;
    /*display: flex;*/
+   margin-bottom: auto;
    /*flex-direction: column;*/
    /*text-align: center;*/
    /*align-items: center;*/
@@ -37,6 +38,8 @@ body {
    width: 615px;
    height: 405px;
    font-size: 20px;
+   margin-top: 8%;
+   margin-bottom: 22%;
 }
 .session-form > h1 {
   font-size: 32px;
@@ -71,19 +74,25 @@ body {
   border-radius: 6px;
   height: 50px;
   width: 75%;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 20px;
   font-weight: 300;
   padding-left: 10px;
   outline-width: 0;
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   display: block;
   margin: 5px auto;
 }
 
 #login-window {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #background-video {
@@ -95,7 +104,8 @@ body {
  width: auto;
  height: auto;
  webkit-transform: translate(-50%, -50%);
- transform: translate(-50%, -50%);
+ -webkit-transform: translate(-50%, -50%);
+         transform: translate(-50%, -50%);
  z-index: -100;
 }
 
@@ -120,17 +130,26 @@ body {
   list-style: none;
   padding-left: 0px;
   margin: 0 auto;
-  align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 .errors > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .errors > ul > li {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-size: 15px;
   padding: 0 10px 0 10px;
 }
@@ -147,9 +166,15 @@ body {
   background-color: rgba(255,255,255,1);
   opacity: 0.98;
   font-size: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #session-control-container > button {
@@ -174,16 +199,23 @@ body {
 
 #splat-logo{
   height: 50px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   cursor: pointer;
   margin-left: 15px;
 }
 #session-control-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 #logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -193,7 +225,8 @@ body {
   margin-left: 10px;
   margin-top: -1px;
   font-size: 40px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 
