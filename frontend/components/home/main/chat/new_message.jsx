@@ -3,6 +3,7 @@ import { withRouter } from 'react-router';
 import GiphySearchContainer from '../giphys/giphys_search_container';
 import MyEmojiInput from './emoticon/emoticon_picker';
 import ReactEmoji from 'react-emoji';
+import Spinner from '../../../spinner';
 
 class NewMessageForm extends React.Component {
   constructor(props){
@@ -112,7 +113,7 @@ class NewMessageForm extends React.Component {
     } else{
       placeholder = `Message #${this.props.channel.name}`;
     }
-    if (this.props.channel === undefined) return <p></p>;
+    if (this.props.channel === undefined) return <Spinner />;
       return (
         <div id="new-message-input">
           <div id="new-message-giphy" onClick={this.toggleGiphySearch}>

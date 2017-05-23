@@ -8,7 +8,11 @@ import { connect } from 'react-redux';
 //eventually going to have LeftNav, Main, and Detail Component in here only.
 //MainHeader will eventually be replaced as its simply a part of the main component.
 
+
 const HomeContainer = () => {
+  let display;
+
+
   return(
     <main className="overall-home-view">
       <LeftNav className="left-nav" />

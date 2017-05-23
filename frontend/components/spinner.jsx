@@ -6,7 +6,7 @@ const Spinner = () => {
     <div className='loading-container'>
       <img
         className='loading-logo'
-        src="https://cloudinary.com/console/media_library#/dialog/image/upload/slack_zawidf"
+        src=""
       />
       <h1>Loading Splat...</h1>
       <MDSpinner size={60} />

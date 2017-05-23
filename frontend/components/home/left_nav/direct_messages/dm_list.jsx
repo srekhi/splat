@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import NewChannelForm from '../channel_list/new_channel_form';
 import ChannelListItem from '../channel_list/channel_list_item';
+import Spinner from '../../../spinner';
 class DMList extends React.Component {
   constructor(props){
     super(props);
@@ -36,7 +37,7 @@ class DMList extends React.Component {
   }
 
   render(){
-    if (this.props.privateChannels === undefined) return <ul></ul>;
+    if (this.props.privateChannels === undefined) return <Spinner />;
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}

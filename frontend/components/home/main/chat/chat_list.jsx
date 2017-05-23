@@ -6,7 +6,7 @@ import DetailViewContainer from '../detail/detail_view_container';
 import MyEmojiInput from './emoticon/emoticon_picker';
 import ReactEmoji from 'react-emoji';
 import MessageItem from './message_item';
-
+import Spinner from '../../../spinner';
 
 class ChatList extends React.Component {
   constructor(props){
@@ -88,7 +88,7 @@ class ChatList extends React.Component {
   }
 
   render(){
-    if (this.props.channel === undefined) return <p>Loading..</p>;
+    if (this.props.channel === undefined) return <Spinner />;
 
 
     const messages = this.props.messages.map((message, idx) => {

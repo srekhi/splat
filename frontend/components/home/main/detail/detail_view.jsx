@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import Spinner from '../../../spinner';
 class DetailView extends React.Component{
     constructor(props){
       super(props);
@@ -11,7 +12,7 @@ class DetailView extends React.Component{
     }
 
     render(){
-      if (this.props.channel === undefined) return <p>Loading..</p>;
+      if (this.props.channel === undefined) return <Spinner />;
       let name;
       name = "#" + this.props.channel.name;
       if (this.props.channel.private === true){

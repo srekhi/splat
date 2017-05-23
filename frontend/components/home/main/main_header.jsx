@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import Spinner from '../../spinner';
 class MainHeader extends React.Component {
   constructor(props){
     super(props);
@@ -36,7 +37,7 @@ class MainHeader extends React.Component {
   }
 
   render(){
-    if (this.props.channel === undefined) return <header>Loading..</header>;
+    if (this.props.channel === undefined) return <Spinner />;
 
     let channelName = "#" + this.props.channel.name;
     let usernames = [];

@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import NewChannelForm from './new_channel_form';
 import DMListContainer from '../direct_messages/dm_list_container';
 import FAClose from 'react-icons/lib/fa/close';
+import Spinner from '../../../spinner';
 class ChannelList extends React.Component {
   constructor(props){
     super(props);
@@ -45,7 +46,7 @@ class ChannelList extends React.Component {
   }
 
   render(){
-    if (this.publicChannels === undefined) return <ul></ul>;
+    if (this.publicChannels === undefined) return <Spinner />;
       // <div id="exit-new-channel" onClick={this.closeModal}>
       //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
       // </div>

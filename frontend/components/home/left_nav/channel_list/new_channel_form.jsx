@@ -2,6 +2,7 @@ import React from 'react';
 import AlertContainer from 'react-alert';
 import { createChannel } from '../../../../util/channel_api_util';
 import { withRouter } from 'react-router-dom';
+import Spinner from '../../../spinner';
 //actually creating a new membership.
 class NewChannelForm extends React.Component {
   constructor(props) {
@@ -110,7 +111,7 @@ class NewChannelForm extends React.Component {
 
   renderErrors() {
     let error_exclamation = "";
-    if (this.props.errors === undefined) return <p></p>;
+    if (this.props.errors === undefined) return <Spinner />;
     if (this.props.errors.length > 0){
       error_exclamation = <i className="fa fa-exclamation" aria-hidden="true"></i>;
     }
@@ -159,7 +160,7 @@ class NewChannelForm extends React.Component {
         return user.username.indexOf(this.state.allUsers) !== -1;
       }
     );
-    if (this.props.allUsers === undefined) return <div></div>;
+    if (this.props.allUsers === undefined) return <Spinner />;
     let userList = filteredUsers.map((user) => {
       return(
         <li onClick={() => this.selectUser(user)} className="new-channel-user-list-item">
