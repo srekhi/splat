@@ -14,6 +14,8 @@ users = []
 u1 = User.create(username: "drake", password: "password")
 u2 = User.create(username: "test", password: "password")
 u3 = User.create(username: "50-cent", password: "password")
+u4 = User.create(username: "sunny", password: "sunny-pass")
+u4.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
 
 30.times do |i|
   username = Faker::Name.first_name.to_s.split(" ").join("_").downcase
@@ -75,8 +77,8 @@ Membership.create(user_id: users.sample.id, channel_id: d2.id)
 # demo-user3 is not part of a test_channel
 
 #Faker::HowIMetYourMother.quote
-Message.destroy_all
 Message.skip_callback(:commit, :after, :broadcast_message)
+Message.destroy_all
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham

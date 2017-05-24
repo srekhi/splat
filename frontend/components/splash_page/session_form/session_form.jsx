@@ -57,9 +57,14 @@ class SessionForm extends React.Component {
   navLink() {
     //USE THIS IN NAV BAR
     if (this.props.formType === 'login') {
-      return <Link to="/signup">sign up instead</Link>;
+      return (<span>
+        Dont have an account?  <Link to="/signup">Sign up</Link>
+    </span>);
     } else {
-      return <Link to="/login">log in instead</Link>;
+      return (<span>
+        Already have an account?
+        <Link to="/login">  Log in</Link>
+      </span>);
     }
   }
 
@@ -101,7 +106,7 @@ class SessionForm extends React.Component {
               className="login-input"
             />
             <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
-            <p id="demo-login">Don't have an account? Try our <a onClick={this.demoLogin} href="">demo login!</a></p>
+            <p id="demo-login">{this.navLink()} or try a <a onClick={this.demoLogin} href="">demo login!</a></p>
             {this.renderErrors()}
         </form>
       </div>
