@@ -33,7 +33,7 @@ class Api::EmoticonsController < ApplicationController
   end
 
   def show
-    message = Message.find_by(id: params[:id])
+    message = Message.find_by(id: params[:id]).includes(:emoticons)
     @emoticons = message.emoticons
   end
 

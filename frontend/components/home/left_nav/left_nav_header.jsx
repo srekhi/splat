@@ -34,7 +34,7 @@ class LeftNavHeader extends React.Component {
   }
 
   logoutUser(event) {
-    document.removeEventListener("click", this.toggleDropdown);
+    // document.removeEventListener("click", this.toggleDropdown);
     event.preventDefault();
     event.stopPropagation();
     this.props.logout();
@@ -62,13 +62,13 @@ class LeftNavHeader extends React.Component {
 
   toggleDropdown(){
       document.getElementById("logout-dropdown").classList.toggle("hidden");
-      document.removeEventListener("click", this.toggleDropdown);
+      // document.removeEventListener("click", this.toggleDropdown);
     }
 
   displayDropdown(e) {
     e.preventDefault();
     this.toggleDropdown();
-    document.addEventListener("click", this.toggleDropdown);
+    // document.addEventListener("click", this.toggleDropdown);
 
   }
 

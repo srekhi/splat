@@ -10,14 +10,15 @@ class LogoutBox extends React.Component{
     };
   }
 
-  handleClickOutside() {
+  handleClickOutside(e) {
+    e.stopPropagation();
     this.props.displayDropdown();
   }
 
 
   render(){
     return (
-      <ul className={`${this.state.className}`}>
+      <ul id="logout-dropdown" className={`${this.state.className}`}>
         <li>
           <div id="logout-box" className="logout-box">
             <div id="logout-box-user-display">
@@ -27,7 +28,7 @@ class LogoutBox extends React.Component{
                 <p id="logout-box-handle">@{this.props.user.username}</p>
               </div>
             </div>
-            <span id="logout-box-logout-btn" onClick={this.props.logoutUser}>Logout</span>
+            <span id="logout-box-logout-btn" onClick={this.logoutUser}>Logout</span>
           </div>
         </li>
       </ul>
