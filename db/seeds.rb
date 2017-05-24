@@ -71,12 +71,49 @@ Membership.create(user_id: User.first.id, channel_id: d2.id)
 Membership.create(user_id: users.sample.id, channel_id: d2.id)
 
 
+sample_emojis= %w(
+  :yum:
+  :satisfied:
+  :scream:
+  :confounded:
+  :dizzy_face:
+  :joy:
+  :stuck_out_tongue_winking_eye:
+  :flushed:
+  :100:
+  :grimacing:
+  :unamused:
+  :100:
+  :heart_eyes:
+  :joy:
+  :satisfied:
+  :joy:
+  :sweat_smile:
+  :stuck_out_tongue_closed_eyes:
+  :scream:
+  :joy:
+  :disappointed_relieved:
+  :hear_no_evil:
+  :triumph:
+  :scream_cat:
+  :tired_face:
+  :blush:
+  :grin:
+  :hear_no_evil:
+  :sweat_smile:
+  :scream:
+  :ok_hand:
+  :sweat:
+  :confounded:
+  :disappointed_relieved:
+)
 
 # demo-user1 is part of test_channel1, 2
 # demo-user2 is part of test_channel2
 # demo-user3 is not part of a test_channel
 
 #Faker::HowIMetYourMother.quote
+
 Message.skip_callback(:commit, :after, :broadcast_message)
 Message.destroy_all
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
@@ -85,8 +122,11 @@ Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second messa
 
 30.times do
   sample_user_id = users.sample.id
-  mId= Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
-  Emoticon.create(user_id: sample_user_id, message_id: mId, icon: ":smile:")
+  sample_emoji = sample_emojis.sample
+  message = Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
+  rand(4).times do
+    Emoticon.create(user_id: users.sample.id, message_id: message.id, icon: sample_emojis.sample)
+  end
   Membership.create(user_id: sample_user_id, channel_id: c2.id)
 end
 
