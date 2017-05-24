@@ -7,9 +7,9 @@ class Api::UsersController < ApplicationController
       Channel.where(private: false).each do |channel|
         Membership.create(user_id: @user.id, channel_id: channel.id)
       end
-      IntroductionJob.set(wait: 10.seconds).perform_later(@user)
       # Notification.create()
       render "api/users/show"
+      IntroductionJob.perform_later(@user)
     else
       render json: @user.errors.full_messages, status: 422
     end
