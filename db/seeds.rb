@@ -76,6 +76,7 @@ Membership.create(user_id: users.sample.id, channel_id: d2.id)
 
 #Faker::HowIMetYourMother.quote
 Message.destroy_all
+Message.skip_callback(:commit, :after, :broadcast_message)
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
 Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
 # both belong to the demo user Drake Graham
