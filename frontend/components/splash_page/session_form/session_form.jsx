@@ -51,8 +51,6 @@ class SessionForm extends React.Component {
     return faker.internet.password();
   }
 
-
-
   demoLogin(event) {
     event.preventDefault();
     // this.clearState();
@@ -82,8 +80,7 @@ class SessionForm extends React.Component {
             clearInterval(slowPassInput);
           }
           if (username.length === 0 && password.length === 0){
-            self.props.signup(user);
-            self.props.history.push("/");
+            self.props.signup(user).then(()=> self.props.history.push("/"));
           }
         }, timeout);
       }
