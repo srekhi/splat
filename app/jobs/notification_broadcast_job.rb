@@ -9,7 +9,7 @@ class NotificationBroadcastJob < ApplicationJob
       locals: { notification: notification }
     )
 
-    ActionCable.server.broadcast("user_id_#{user_id}",
+    ActionCable.server.broadcast("new_channel_#{user_id}",
                                  notification: JSON.parse(notification))
   end
 

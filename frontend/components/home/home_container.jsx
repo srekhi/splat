@@ -89,6 +89,7 @@ class HomeContainer extends React.Component{
       connected: () => {},
       disconnected: () => {},
       received: (data) => {
+        console.log('notification received');
         this.props.receiveNotification(data.notification);
       }
     });
