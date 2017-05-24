@@ -190,8 +190,8 @@ class MessageItem extends React.Component{
     let messageContent =  <p id="message-text">{ReactEmoji.emojify(this.props.message.content)}</p>;
     //this logic exists to set variables for rendering further down.
     if (this.props.message.content.startsWith("giphy")) {
-      let messageGif = this.props.message.content.slice(6);
       let endOfImageUrl = this.props.message.content.indexOf("gif") + 3;
+      let messageGif = this.props.message.content.slice(6, endOfImageUrl);
       let gifCaption = this.props.message.content.slice(endOfImageUrl);
       messageContent = (
         <div>
