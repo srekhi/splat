@@ -8,8 +8,8 @@ class Api::UsersController < ApplicationController
         Membership.create(user_id: @user.id, channel_id: channel.id)
       end
       # Notification.create()
-      render "api/users/show"
       IntroductionJob.perform_later(@user)
+      render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 422
     end

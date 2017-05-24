@@ -541,11 +541,19 @@ aside#about-me-credits {
   font-size: 12px;
   font-weight: 400;
   text-align: center;
+  er; */
   color: #fff;
-  margin-left: 6px;
-  margin-right: 3px;
+  margin-left: 100px;
+  margin-right: 4px;
   display: inline-block;
   width: 9px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  color: #fff;
+  background: #eb4d5c;
+  border-radius: 53px;
+  vertical-align: baseline;
+  font-size: 0.8rem;
+  width: 7px;
 }
 
 }
