@@ -31,7 +31,7 @@ class MessageItem extends React.Component{
       offset: 25,
       position: 'bottom left',
       theme: 'dark',
-      time: 2000,
+      time: 0,
       transition: 'scale'
     };
   }
@@ -155,7 +155,8 @@ class MessageItem extends React.Component{
     msg.show(text, {
       time: 2000,
       type: 'info',
-      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_32,w_32/v1494891230/slack_zawidf.svg" />
+      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_thumb,h_40,w_40/v1494891230/slack_zawidf.png"
+      />
     });
   }
 
@@ -218,7 +219,7 @@ class MessageItem extends React.Component{
             {reactions}
           </div>
         </div>
-        <AlertContainer ref={a => global.msg = a} {...this.alertOptions} />
+        <AlertContainer id="alert-container" ref={a => global.msg = a} {...this.alertOptions} />
         <div className="message-buttons hidden">
 
           <div id="message-button" onClick={this.toggleEmojiDisplay}>
