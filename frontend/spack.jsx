@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Modal.setAppElement(document.body);
     let store;
     if (window.currentUser) {
-      const preloadedState = { session: { currentUser: window.currentUser, errors: []} };
+      const preloadedState = { session: { currentUser: window.currentUser, errors: [], notifications: []} };
       store = configureStore(preloadedState);
       window.store = store;
       delete window.currentUser;
