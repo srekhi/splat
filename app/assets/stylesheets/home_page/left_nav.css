@@ -234,18 +234,21 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     max-height: calc(100% - 81px);
     margin-top: 10px;
     margin-left: 5px;
-    overflow: scroll; -webkit-overflow-scrolling: touch;
-    overflow-y: scroll; -webkit-overflow-scrolling: touch;
+    /* overflow: scroll; */
+    -webkit-overflow-scrolling: touch;
+    /* overflow-y: scroll; */
+    -webkit-overflow-scrolling: touch;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    overflow-y: auto;
 }
 
 
@@ -256,7 +259,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     margin-top: 3px;
     /* overflow: scroll; */
     -webkit-overflow-scrolling: touch;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     -webkit-overflow-scrolling: touch;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -369,18 +372,21 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     max-height: calc(100% - 81px);
     margin-top: 10px;
     margin-left: 5px;
-    overflow: scroll-webkit; -overflow-scrolling: touch;;
-    overflow-y: scroll; -webkit-overflow-scrolling: touch;
+    overflow: scroll-webkit;
+    -overflow-scrolling: touch;
+    /* overflow-y: scroll; */
+    -webkit-overflow-scrolling: touch;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    overflow-y: auto;
 }
 
 #left-nav-dm-list > li {
