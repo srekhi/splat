@@ -179,6 +179,7 @@ class MessageItem extends React.Component{
     }));
     if (this.state.emoticonPickerOpen) {
       emojiDisplay = <MyEmojiInput
+        className="emoji-picker-display"
         addEmoticon={this.addEmoticon}
         toggleEmojiDisplay={this.toggleEmojiDisplay}
         />;
@@ -233,7 +234,6 @@ class MessageItem extends React.Component{
           <div id="message-button" onClick={this.deleteMessage}>
             <i className="fa fa-times-circle-o fa-6" aria-hidden="true"></i>
           </div>
-
 
 
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import EmojiPicker from 'react-emoji-picker';
 import emojiMap from 'react-emoji-picker/lib/emojiMap';
+import EnhanceWithClickOutside from 'react-click-outside';
 
 // styles for the emoji picker wrapper
 class MyEmojiInput extends React.Component {
@@ -30,12 +31,13 @@ class MyEmojiInput extends React.Component {
     this.grabKeyPress = this.grabKeyPress.bind(this);
     this.emojiPicker = this.emojiPicker.bind(this);
     }
+
   componentDidMount() {
-    document.addEventListener('click', this.props.toggleEmojiDisplay, false);
+    // document.addEventListener('click', this.props.toggleEmojiDisplay, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.props.toggleEmojiDisplay, false);
+    // document.removeEventListener('click', this.props.toggleEmojiDisplay, false);
   }
 
   toggleEmojiPicker(e) {
@@ -77,6 +79,11 @@ class MyEmojiInput extends React.Component {
     }
   }
 
+  handleClickOutside(e) {
+    e.stopPropagation();
+    this.props.toggleEmojiDisplay();
+  }
+
   emojiPicker() {
     return (
       <EmojiPicker
@@ -98,4 +105,4 @@ class MyEmojiInput extends React.Component {
   }
 }
 
-export default MyEmojiInput;
+export default EnhanceWithClickOutside(MyEmojiInput);
