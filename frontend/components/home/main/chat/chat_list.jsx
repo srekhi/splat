@@ -38,7 +38,6 @@ class ChatList extends React.Component {
     //subscription to be created here as well
     if (this.props.match.params.channelId !== newProps.match.params.channelId) {
       //delete notifications for the new channel
-      console.log(newProps);
       if (newProps.notifications.length > 0){
         let newChannelId = newProps.match.params.channelId;
         newProps.deleteNotifications(newChannelId);
