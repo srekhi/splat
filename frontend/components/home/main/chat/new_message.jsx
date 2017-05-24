@@ -41,6 +41,7 @@ class NewMessageForm extends React.Component {
   }
 
   createMessage(){
+    this.props.deleteNotifications(this.props.channel.id);
     const msg = this.state;
     this.state.channel_id = this.props.match.params.channelId;
     this.props.createMessage(msg).then(this.props.scrollToBottom);
@@ -58,6 +59,7 @@ class NewMessageForm extends React.Component {
   updateContent(e) {
     let content = e.currentTarget.value;
     this.setState( {content} );
+
   }
 
   formatUsers(){
@@ -104,7 +106,7 @@ class NewMessageForm extends React.Component {
   }
 
   render(){
-    this.props.deleteNotifications(this.props.channel.id);
+    // this.props.deleteNotifications(this.props.channel.id);
     let emojiDisplay = "";
 
     if (this.state.emoticonPickerOpen) {

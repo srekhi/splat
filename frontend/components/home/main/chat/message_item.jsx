@@ -28,7 +28,7 @@ class MessageItem extends React.Component{
       message_id: this.message.id
     };
     this.alertOptions = {
-      offset: 14,
+      offset: 2,
       position: 'bottom left',
       theme: 'dark',
       time: 5000,

@@ -17,6 +17,7 @@ const defaultState = Object.freeze({
 const SessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
   let newState;
+  console.log(action);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       const currentUser = action.currentUser;
@@ -45,7 +46,7 @@ const SessionReducer = (state = defaultState, action) => {
       newState = merge({}, state);
       // debugger;
       newState.notifications = state.notifications.filter(notification =>(
-        notification.channel_id === action.channel_id
+        notification.channel_id !== parseInt(action.channel_id)
       ));
       return newState;
     default:

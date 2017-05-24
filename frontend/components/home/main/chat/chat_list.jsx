@@ -23,7 +23,6 @@ class ChatList extends React.Component {
     const channelId = this.props.match.params.channelId;
     this.props.fetchMessages(channelId);
     this.props.deleteNotifications(channelId);
-
     setTimeout(() => { //allows for state to be populated before running this.
       const channel = this.props.channel;
       this.setSocket(channelId); //changed this as well. because channel id === channelId. i think.
@@ -39,8 +38,11 @@ class ChatList extends React.Component {
     //subscription to be created here as well
     if (this.props.match.params.channelId !== newProps.match.params.channelId) {
       //delete notifications for the new channel
-      let newChannelId = newProps.match.params.channelId;
-      newProps.deleteNotifications(newChannelId);
+      console.log(newProps);
+      if (newProps.notifications.length > 0){
+        let newChannelId = newProps.match.params.channelId;
+        newProps.deleteNotifications(newChannelId);
+      }
 
       this.setSocket(newProps.match.params.channelId); ////changed this ;
       newProps.fetchMessages(newProps.match.params.channelId).then(this.scrollToBottom.bind(this));

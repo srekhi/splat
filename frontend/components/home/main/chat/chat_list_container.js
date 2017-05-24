@@ -11,7 +11,9 @@ const mapStateToProps = (state, {match}) => {
     messages: Object.keys(state.messages).map(key => state.messages[key]),
     channel: state.channels.channels[match.params.channelId],
     currentUser: state.session.currentUser,
-    notifications: state.session.notifications.filter(notif => notif.channel_id === match.params.channelId)
+    notifications: state.session.notifications.filter( (notif) => {
+      return notif.channel_id === parseInt(match.params.channelId);
+    })
   };
 };
 
