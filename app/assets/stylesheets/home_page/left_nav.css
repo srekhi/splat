@@ -436,6 +436,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-size:15px;
   overflow: hidden;
   width: 100%;
+  display: flex;
 }
 
 #left-nav-dm-list span:first-child {
