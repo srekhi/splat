@@ -1,11 +1,68 @@
 import React from 'react';
 import { Link, withRouter }  from 'react-router-dom';
 import { Redirect } from 'react-router';
+import faker from 'faker';
+
+
 class Navbar extends React.Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
+    this.generateRandomUsername = this.generateRandomUsername.bind(this);
+    this.generateRandomPassword = this.generateRandomPassword.bind(this);
+
   }
+
+  generateRandomUsername(){
+    return faker.name.firstName().toLowerCase();
+  }
+
+  generateRandomPassword(){
+    return faker.internet.password();
+  }
+
+
+  demoLogin(event) {
+    $(".login-input")[0].value = "";
+    $(".login-input")[1].value = "";
+    event.preventDefault();
+    let username = this.generateRandomUsername();
+    let password = this.generateRandomPassword();
+    const user = {username, password};
+    console.log("is this workign");
+    username = username.split('').reverse();
+    password = password.split('').reverse();
+
+    let timeout = 50;
+    const self = this;
+    let slowUserInput = setInterval( () => {
+      let oldVal = $(".login-input")[0].value;
+      $(".login-input")[0].value = oldVal + username.pop();
+      if (username.length === 0){
+        clearInterval(slowUserInput);
+        let slowPassInput = setInterval( () => {
+          let oldPassVal = $(".login-input")[1].value;
+          $(".login-input")[1].value = oldPassVal + password.pop();
+          if (password.length === 0){
+            clearInterval(slowPassInput);
+          }
+          if (username.length === 0 && password.length === 0){
+            self.props.signup(user);
+            self.props.history.push("/");
+          }
+        }, timeout);
+      }
+
+    }, timeout);
+
+
+      // this.props.login(user);
+      // this.props.history.push('/');
+
+      // this.setState({username: savedUsername, password: savedPassword},
+      //   () => this.handleSubmit());
+     }
 
   handleClick(e){
     e.preventDefault();
@@ -13,21 +70,6 @@ class Navbar extends React.Component {
       this.props.history.push("/login");
     } else if (e.target.id === "sign-up") {
       this.props.history.push("/signup");
-    } else if (e.target.id === "demo") {
-      let username;
-      let password;
-      // debugger;
-      if (e.target.textContent === "Guest 1") {
-        username = "drake";
-        password = "password";
-      } else{
-        username = "50-cent";
-        password = "password";
-      }
-      const user = {username, password};
-      this.props.login(user);
-      this.props.history.push("/");
-
     } else if (e.target.id === "splat-logo") {
       this.props.history.push("/");
     }
@@ -43,8 +85,7 @@ class Navbar extends React.Component {
           <Link id="landing-page-logo-link" to="/">Splat</Link>
         </section>
         <section id="session-control-container">
-          <button onClick={this.handleClick} id="demo">Guest 1</button>
-          <button onClick={this.handleClick} id="demo">Guest 2</button>
+          <button onClick={this.demoLogin} id="demo">Demo</button>
           <button onClick={this.handleClick} id="login">Log in</button>
           <button onClick={this.handleClick} id="sign-up">Sign up</button>
         </section>
