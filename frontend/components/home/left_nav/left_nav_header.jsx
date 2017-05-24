@@ -62,13 +62,17 @@ class LeftNavHeader extends React.Component {
 
   toggleDropdown(){
       document.getElementById("logout-dropdown").classList.toggle("hidden");
-      // document.removeEventListener("click", this.toggleDropdown);
+      document.removeEventListener("click", this.toggleDropdown);
     }
 
   displayDropdown(e) {
     e.preventDefault();
     this.toggleDropdown();
-    // document.addEventListener("click", this.toggleDropdown);
+    //check if theres an event listener
+    document.removeEventListener("click", this.toggleDropdown);
+    if (!(document.getElementById("logout-dropdown").classList.value.indexOf("hidden") > -1)){
+      document.addEventListener("click", this.toggleDropdown);
+    }
 
   }
 
