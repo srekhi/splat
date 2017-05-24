@@ -29,8 +29,7 @@ const SessionReducer = (state = defaultState, action) => {
         errors
       });
     case REMOVE_SESSION_ERRORS:
-      newState = merge({}, state, {
-      });
+      newState = merge({}, state);
       newState['errors'] = [];
       return newState;
     case RECEIVE_NOTIFICATIONS:
@@ -45,9 +44,9 @@ const SessionReducer = (state = defaultState, action) => {
     case REMOVE_NOTIFICATIONS:
       newState = merge({}, state);
       // debugger;
-      // newState.notifications = state.notifications.filter(notification =>(
-      //   notification.channel_id === action.channel_id
-      // ));
+      newState.notifications = state.notifications.filter(notification =>(
+        notification.channel_id === action.channel_id
+      ));
       return newState;
     default:
       return state;

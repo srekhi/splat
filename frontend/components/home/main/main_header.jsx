@@ -12,12 +12,12 @@ class MainHeader extends React.Component {
     this.props.fetchChannels(this.props.user.id);
     // this.props.fetchUserCount(channelId);
     //here, I need to remove notifications for the current user.
-    this.props.deleteNotifications(channelId);
+    // this.props.deleteNotifications(channelId);
 
   }
 
   componentDidMount(){
-    this.props.history.push()
+    // this.props.history.push()
   }
 
   componentWillReceiveProps(newProps){
@@ -29,7 +29,7 @@ class MainHeader extends React.Component {
     // debugger;
     if (newProps.match.params.channelId !== this.props.match.params.channelId && newProps.notifications > 0 ) {
       const channelId = newProps.match.params.channelId;
-      this.props.deleteNotifications(channelId);
+      // this.props.deleteNotifications(channelId);
       }
   }
 

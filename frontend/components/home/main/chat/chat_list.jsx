@@ -24,9 +24,6 @@ class ChatList extends React.Component {
     this.props.fetchMessages(channelId);
     this.props.deleteNotifications(channelId);
 
-    //delete notifications for this current channel
-
-
     setTimeout(() => { //allows for state to be populated before running this.
       const channel = this.props.channel;
       this.setSocket(channelId); //changed this as well. because channel id === channelId. i think.
@@ -106,6 +103,8 @@ class ChatList extends React.Component {
             currentUser={this.props.currentUser}
             editMessage={this.props.editMessage}
             updateMessage={this.props.updateMessage}
+            channelId={this.props.match.params.channelId}
+            deleteNotifications={this.props.deleteNotifications}
             />;
     }
 
@@ -126,6 +125,7 @@ class ChatList extends React.Component {
               currentUser={this.props.currentUser}
               scrollToBottom={this.scrollToBottom}
               createNotification={this.props.createNotification}
+              deleteNotifications={this.props.deleteNotifications}
               />
           </footer>
         </section>

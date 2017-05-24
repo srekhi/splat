@@ -104,7 +104,9 @@ class NewMessageForm extends React.Component {
   }
 
   render(){
+    this.props.deleteNotifications(this.props.channel.id);
     let emojiDisplay = "";
+
     if (this.state.emoticonPickerOpen) {
       emojiDisplay = <MyEmojiInput
         addEmoticon={this.addEmoticon}
