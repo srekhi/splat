@@ -1,7 +1,11 @@
-# README
+# Splat
+Live application link
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Splat is a fullstack web application inspired by Slack [insert link here]. It's built with React/Redux on the frontend and Ruby/Rails on the backend with a Postgresql datbase. 
+
+# Features 
+Live chat:
+
 
 Things you may want to cover:
 
