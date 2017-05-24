@@ -31,8 +31,7 @@ class Message < ApplicationRecord
   end
 
   def broadcast_message
-    MessageBroadcastJob.perform_later(self, self.channel
-    )
+    MessageBroadcastJob.perform_later(self, self.channel)
     # also need to create the corresponding notiication and broadcast it.
     channel = self.channel
     users = channel.users
@@ -41,6 +40,5 @@ class Message < ApplicationRecord
       notif = Notification.create(user_id: user.id, channel_id: self.channel.id)
       NotificationBroadcastJob.perform_later(notif)
     end
-
   end
 end

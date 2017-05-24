@@ -1,7 +1,7 @@
 class Api::ChannelsController < ApplicationController
   def index #grab the channels for a specific user
     user_id = current_user.id
-    user = User.find_by(id: user_id)
+    user = User.find_by(id: user_id)#.include(:channels)
     @channels = user.channels
     render "api/channels/index"
   end
@@ -20,6 +20,10 @@ class Api::ChannelsController < ApplicationController
       @channel.save
       user_ids.each { |user_id| Membership.create(channel_id: @channel.id, user_id: user_id) }
       render "api/channels/show"
+      @channel.users.each do |user|
+        ChannelListBroadcastJob.perform_later(user, @channel)
+      end
+
     else
       render json: @channel.errors.full_messages, status: 422
     end

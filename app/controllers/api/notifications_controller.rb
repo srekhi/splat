@@ -1,7 +1,7 @@
 class Api::NotificationsController < ApplicationController
 
   def index
-    user = User.find_by(id: params[:user_id])
+    user = User.find_by(id: params[:user_id])#.include(:notifications)
     @notifications = user.notifications
     render 'api/notifications/index'
   end

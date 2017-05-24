@@ -6,6 +6,7 @@ import MainView from './main/main_view';
 import DetailViewContainer from './main/detail/detail_view_container';
 import { connect } from 'react-redux';
 import { receiveNotification } from '../../actions/session_actions';
+import { receiveChannel } from '../../actions/channel_actions';
 //eventually going to have LeftNav, Main, and Detail Component in here only.
 //MainHeader will eventually be replaced as its simply a part of the main component.
 
@@ -17,32 +18,70 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  receiveNotification: (notification) => dispatch(receiveNotification(notification))
+  receiveNotification: (notification) => dispatch(receiveNotification(notification)),
+  receiveChannel: (channel) => dispatch(receiveChannel(channel))
 });
 
 class HomeContainer extends React.Component{
   constructor(props){
     super(props);
-    this.setSocket = this.setSocket.bind(this);
-    this.addSocket = this.addSocket.bind(this);
-    this.removeSocket = this.removeSocket.bind(this);
+    this.setNotificationsSocket = this.setNotificationsSocket.bind(this);
+    this.addNotificationsSocket = this.addNotificationsSocket.bind(this);
+    this.removeNotificationsSocket = this.removeNotificationsSocket.bind(this);
 
-    this.setSocket(this.props.userId);
+    // channel listener socket:
+    this.setChannelListSocket = this.setChannelListSocket.bind(this);
+    this.addChannelListSocket = this.addChannelListSocket.bind(this);
+    this.removeChannelListSocket = this.removeChannelListSocket.bind(this);
+
+    this.setNotificationsSocket(this.props.userId);
+    this.setChannelListSocket(this.props.userId);
     //handle setting socket here.
   }
 
-  setSocket(userId) {
-    if (window.App.notificationChannel) {
-      this.removeSocket();
+  // channel-list
+  setChannelListSocket(userId) {
+    if (window.App.messageChannel) {
+      this.removeChannelListSocket();
     }
-    this.addSocket(userId);
+    this.addChannelListSocket(userId);
   }
 
-  removeSocket() {
+  removeChannelListSocket() {
+    window.App.cable.subscriptions.remove(window.App.messageChannel);
+  }
+
+  addChannelListSocket(userId) {
+    window.App.messageChannel = window.App.cable.subscriptions.create({
+      channel: 'MessageChannel',
+      user_id: userId
+    }, {
+      connected: () => {},
+      disconnected: () => {},
+      received: (data) => {
+        console.log("MESSAGE Received");
+        console.log(data);
+        this.props.receiveChannel(data.channel);
+      }
+    });
+  }
+
+
+  //
+
+
+  setNotificationsSocket(userId) {
+    if (window.App.notificationChannel) {
+      this.removeNotificationsSocket();
+    }
+    this.addNotificationsSocket(userId);
+  }
+
+  removeNotificationsSocket() {
     window.App.cable.subscriptions.remove(window.App.notificationChannel);
   }
 
-  addSocket(userId) {
+  addNotificationsSocket(userId) {
     window.App.notificationChannel = window.App.cable.subscriptions.create({
       channel: 'NotificationChannel',
       user_id: userId
@@ -50,8 +89,6 @@ class HomeContainer extends React.Component{
       connected: () => {},
       disconnected: () => {},
       received: (data) => {
-        console.log('data received');
-        console.log(data);
         this.props.receiveNotification(data.notification);
       }
     });
