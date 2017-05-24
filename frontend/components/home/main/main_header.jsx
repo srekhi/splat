@@ -34,7 +34,6 @@ class MainHeader extends React.Component {
   }
 
   toggleDetailView() {
-      console.log('fired');
       let detailLink;
       let channelId = this.props.match.params.channelId;
       detailLink = `/messages/${channelId}/details`;

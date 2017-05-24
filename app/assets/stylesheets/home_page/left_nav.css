@@ -435,6 +435,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   text-overflow: ellipsis;
   font-size:15px;
   overflow: hidden;
+  width: 100%;
 }
 
 #left-nav-dm-list span:first-child {
@@ -549,8 +550,11 @@ aside#about-me-credits {
   text-align: center;
   er; */
   color: #fff;
-  margin-left: 100px;
-  margin-right: 4px;
+  margin-left: 109px;
+  /* margin-right: 4px; */
+  padding-left: 9px;
+  text-align: center;
+  padding-right: 11px;
   display: inline-block;
   width: 9px;
   text-shadow: 0 1px 0 rgba(0,0,0,.2);

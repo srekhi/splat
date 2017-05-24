@@ -95,6 +95,8 @@ class NewMessageForm extends React.Component {
   addGiphy(giphy) {
     this.clearState();
     this.setState({ content: `giphy:${giphy}` });
+    $("#message-content-input").focus();
+
   }
 
   toggleEmojiDisplay(){

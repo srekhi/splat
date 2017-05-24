@@ -59,8 +59,6 @@ class HomeContainer extends React.Component{
       connected: () => {},
       disconnected: () => {},
       received: (data) => {
-        console.log("MESSAGE Received");
-        console.log(data);
         this.props.receiveChannel(data.channel);
       }
     });
@@ -89,7 +87,6 @@ class HomeContainer extends React.Component{
       connected: () => {},
       disconnected: () => {},
       received: (data) => {
-        console.log('notification received');
         this.props.receiveNotification(data.notification);
       }
     });
