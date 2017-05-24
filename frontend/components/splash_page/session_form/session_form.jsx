@@ -68,7 +68,8 @@ class SessionForm extends React.Component {
     username = username.split('').reverse();
     password = password.split('').reverse();
 
-    let timeout = 10;
+    let timeout = 50;
+    const self = this;
     let slowUserInput = setInterval( () => {
       let oldVal = $(".login-input")[0].value;
       $(".login-input")[0].value = oldVal + username.pop();
@@ -80,13 +81,14 @@ class SessionForm extends React.Component {
           if (password.length === 0){
             clearInterval(slowPassInput);
           }
+          if (username.length === 0 && password.length === 0){
+            self.props.signup(user);
+            self.props.history.push("/");
+          }
         }, timeout);
       }
+
     }, timeout);
-
-
-
-    if (username.length === 0 && password.length === 0) this.props.signup(user);
 
 
     // this.props.login(user);
