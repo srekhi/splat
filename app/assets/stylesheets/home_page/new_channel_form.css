@@ -98,15 +98,22 @@
 
 #new-channel-form-list{
   width: 100%;
-  nav ul{height: 200px;
-  width:18%;}
-  nav ul{overflow:hidden;
-  overflow-y:scroll;}
   overflow: hidden;
   overflow: hidden;
-  overflow-y:scroll;
+  overflow-y: scroll;
   height: 500px;
 }
+
+nav ul{
+  height: 200px;
+  width:18%;
+}
+
+nav ul{
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
 
 li.new-channel-user-list-item:hover {
     background-color: #edf7fd;
