@@ -48,10 +48,11 @@ class ChatList extends React.Component {
       // setTimeout(this.scrollToBottom.bind(this), 50);
 
       //this:
-      // if (this.props.location.pathname.endsWith('details') && !newProps.location.pathname.endsWith('details')) {
-      //   let newUrl = newProps.location.pathname;
-      //   newProps.history.push(newUrl + '/details');
-      // }
+      debugger;
+      if (this.props.location.pathname.endsWith('details') && !newProps.location.pathname.endsWith('details')) {
+        let newUrl = newProps.location.pathname;
+        newProps.history.push(newUrl + '/details');
+      }
     }
 
 

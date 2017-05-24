@@ -46,7 +46,7 @@ class ChannelListItem extends React.Component {
       }
     // debugger;
     if (this.props.location.pathname.endsWith('details')){
-      showLink = showLink + '/details/';
+      // showLink = showLink + '/details';
     }
 
     return (
