@@ -16,23 +16,23 @@ class GiphysSearch extends React.Component {
 
   componentDidMount() {
     this.props.fetchSearchGiphys('');
-    // document.addEventListener("click", (event) => {
-    //   // debugger;
-    //   if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form") {
-    //     console.log("something");
-    //     this.props.toggleGiphySearch();
-    //   }
-    // });
+    // console.log("giphys search mounted");
+    document.addEventListener("click", (event) => {
+      // debugger;
+      if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form" && event.target.id !== "search-giphy-box") {
+        this.props.toggleGiphySearch();
+      }
+    });
 
   }
 
   componentWillUnmount(){
-    // document.removeEventListener("click", (event) => {
-    //   if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form") {
-    //     console.log("something");
-    //     this.props.toggleGiphySearch();
-    //   }
-    // });
+    // console.log("giphys search unmounted");
+    document.removeEventListener("click", (event) => {
+      if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form" && event.target.id !== "search-giphy-box") {
+        this.props.toggleGiphySearch();
+      }
+    });
   }
 
   handleChange(e) {
