@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
-
+import faker from 'faker';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -15,6 +15,8 @@ class SessionForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearState = this.clearState.bind(this);
+    this.generateRandomUsername = this.generateRandomUsername.bind(this);
+    this.generateRandomPassword = this.generateRandomPassword.bind(this);
 }
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
@@ -41,14 +43,55 @@ class SessionForm extends React.Component {
     this.setState({username: "", password: ""});
   }
 
+  generateRandomUsername(){
+    return faker.name.firstName().toLowerCase();
+  }
+
+  generateRandomPassword(){
+    return faker.internet.password();
+  }
+
+
+
   demoLogin(event) {
     event.preventDefault();
     // this.clearState();
-    const savedUsername = "drake";
-    const savedPassword = "password";
-    const user = {username: savedUsername, password: savedPassword};
-    this.props.login(user);
-    this.props.history.push('/');
+
+    // const savedUsername = "drake";
+    // const savedPassword = "password";
+    // const user = {username: savedUsername, password: savedPassword};
+    this.clearState();
+    let username = this.generateRandomUsername();
+    let password = this.generateRandomPassword();
+    const user = {username, password};
+
+    username = username.split('').reverse();
+    password = password.split('').reverse();
+
+    let timeout = 10;
+    let slowUserInput = setInterval( () => {
+      let oldVal = $(".login-input")[0].value;
+      $(".login-input")[0].value = oldVal + username.pop();
+      if (username.length === 0){
+        clearInterval(slowUserInput);
+        let slowPassInput = setInterval( () => {
+          let oldPassVal = $(".login-input")[1].value;
+          $(".login-input")[1].value = oldPassVal + password.pop();
+          if (password.length === 0){
+            clearInterval(slowPassInput);
+          }
+        }, timeout);
+      }
+    }, timeout);
+
+
+
+    if (username.length === 0 && password.length === 0) this.props.signup(user);
+
+
+    // this.props.login(user);
+    // this.props.history.push('/');
+
     // this.setState({username: savedUsername, password: savedPassword},
     //   () => this.handleSubmit());
    }
@@ -108,6 +151,7 @@ class SessionForm extends React.Component {
             <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
             <p id="demo-login">{this.navLink()} or try a <a onClick={this.demoLogin} href="">demo login!</a></p>
             {this.renderErrors()}
+
         </form>
       </div>
     );

@@ -31,6 +31,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
+    "faker": "^4.1.0",
     "react": "^15.5.4",
     "react-alert": "^2.0.1",
     "react-alerts": "^0.3.0",
