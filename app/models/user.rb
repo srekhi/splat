@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
 
   attr_reader :password
-  attr_writer :avatar_url
+  # attr_writer :avatar_url
 
   after_initialize :ensure_session_token, :ensure_avatar_url
 
