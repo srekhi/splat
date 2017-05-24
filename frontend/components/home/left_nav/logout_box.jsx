@@ -19,7 +19,7 @@ class LogoutBox extends React.Component{
     return (
       <ul className={`${this.state.className}`}>
         <li>
-          <div className="logout-box">
+          <div id="logout-box" className="logout-box">
             <div id="logout-box-user-display">
               <img src={`${this.props.user.avatar_url}`} />
               <div id="logout-box-user-details">

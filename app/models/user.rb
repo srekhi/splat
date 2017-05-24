@@ -13,6 +13,7 @@
 
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
+  validates :username, uniqueness: true 
 
   DEFAULT_URLS = [
     "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/default_logo1_msxm8z.png",

@@ -52,7 +52,6 @@ class LeftNavHeader extends React.Component {
 
   }
 
-
   closeModal() {
     this.setState({ modalOpen: false });
   }
@@ -70,6 +69,7 @@ class LeftNavHeader extends React.Component {
     e.preventDefault();
     this.toggleDropdown();
     document.addEventListener("click", this.toggleDropdown);
+
   }
 
 
@@ -87,7 +87,7 @@ class LeftNavHeader extends React.Component {
         <i id="fa-bars-menu" className="fa fa-bars" aria-hidden="true" onClick={this.displayDropdown}>
           <ul id="logout-dropdown" className={`${this.state.className}`}>
             <li>
-              <div className="logout-box">
+              <div id="logout-box" className="logout-box">
                 <div id="logout-box-user-display">
                   <img src={`${this.props.user.avatar_url}`} />
                   <div id="logout-box-user-details">
