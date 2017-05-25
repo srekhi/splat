@@ -371,7 +371,8 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
 #logout-box-user-display > img {
     -ms-flex-item-align: left;
         align-self: left;
-    height: 42px;
+    min-height: 42px;
+    min-width: 42px;
     margin-right: 4px;
 }
 
