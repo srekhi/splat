@@ -36,7 +36,10 @@ class MessageItem extends React.Component{
     };
   }
 
-  toggleEmojiDisplay(){
+  toggleEmojiDisplay(e){
+    e.preventDefault();
+    debugger;
+    e.target.classList.add("visible");
     this.setState({ emoticonPickerOpen: !this.state.emoticonPickerOpen });
   }
 
@@ -183,7 +186,7 @@ class MessageItem extends React.Component{
         className="emoji-picker-display"
         addEmoticon={this.addEmoticon}
         toggleEmojiDisplay={this.toggleEmojiDisplay}
-        
+
         />;
     }
 

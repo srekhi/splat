@@ -1,6 +1,5 @@
 import React from 'react';
 const AboutMe = () =>(
-  <section id="about-container">
     <section id="about-me-section">
       <section id="about-description-container">
         <div id="about-header-info">
@@ -25,7 +24,6 @@ const AboutMe = () =>(
       </a>
     </div>
     </section>
-  </section>
 );
 
 export default AboutMe;

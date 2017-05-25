@@ -502,6 +502,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   color: white;
   padding: 15px 15px 0px 15px;
   font-weight: 300;
+  max-height: 160px;
 }
 
 
@@ -529,6 +530,7 @@ p#about-me-intro {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: auto;
 }
 
 

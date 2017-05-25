@@ -20,6 +20,7 @@
 
 #main-view-container{
   width: 100%;
+  height: 100vh;
 }
 
 #channel-count-of-users {
@@ -132,4 +133,12 @@ div#main-header-content {
 
 #detail-view-toggle{
   cursor: pointer;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
 }
