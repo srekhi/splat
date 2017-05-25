@@ -9,7 +9,6 @@ class DetailView extends React.Component{
 
     closeDetailView(){
       console.log("is this being hit?");
-      debugger
       this.props.history.push(`/messages/${this.props.channelId}`);
     }
 

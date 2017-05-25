@@ -30,7 +30,6 @@ class Navbar extends React.Component {
     let username = this.generateRandomUsername();
     let password = this.generateRandomPassword();
     const user = {username, password};
-    console.log("is this workign");
     username = username.split('').reverse();
     password = password.split('').reverse();
 
@@ -85,7 +84,7 @@ class Navbar extends React.Component {
           <Link id="landing-page-logo-link" to="/">Splat</Link>
         </section>
         <section id="session-control-container">
-          <button onClick={this.demoLogin} id="demo">Demo</button>
+          <button onClick={this.demoLogin} id="demo">Guest</button>
           <button onClick={this.handleClick} id="login">Log in</button>
           <button onClick={this.handleClick} id="sign-up">Sign up</button>
         </section>
