@@ -87,7 +87,8 @@ class MyEmojiInput extends React.Component {
   emojiPicker() {
     return (
       <EmojiPicker
-        style={this.emojiPickerStyles} onSelect={this.setEmoji}
+        style={this.emojiPickerStyles}
+        onSelect={this.setEmoji}
         query={this.state.emoji}
       />);
     }

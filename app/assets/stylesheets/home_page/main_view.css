@@ -123,9 +123,9 @@ div#main-header-content {
 }
 
 .message-buttons{
-  display: none;
+  visibility: hidden;
 }
 
 .chat-message:hover  .message-buttons{
-  display: flex;
+  visibility: visible;
 }
