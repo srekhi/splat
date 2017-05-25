@@ -110,9 +110,10 @@ li#details-user-list-item {}
 }
 
 #detail-view-header{
+  width: 100%;
   -webkit-box-align: space-between;
-      -ms-flex-align: space-between;
-          align-items: space-between;
+  -ms-flex-align: space-between;
+  align-items: space-between;
 }
 
 #chat-list-and-detail-container{

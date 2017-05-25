@@ -105,6 +105,7 @@ class NewMessageForm extends React.Component {
 
   addEmoticon(emoticon){
     this.setState({content: this.state.content+ " "+ emoticon});
+    $("#message-content-input").focus();
   }
 
   render(){

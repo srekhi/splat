@@ -36,6 +36,12 @@ class ChatList extends React.Component {
 
   componentWillReceiveProps(newProps){
     //subscription to be created here as well
+    if (this.props.match.params.channelId === newProps.match.params.channelId){
+      if (this.props.location.pathname.endsWith('details') && !newProps.location.pathname.endsWith('details')){
+        let newUrl = newProps.location.pathname;
+        newProps.history.push(newUrl + '/details');
+      }
+    }
     if (this.props.match.params.channelId !== newProps.match.params.channelId) {
       //delete notifications for the new channel
       if (newProps.notifications.length > 0){
@@ -62,8 +68,10 @@ class ChatList extends React.Component {
   }
 
   scrollToBottom(){
-    let height = this.refs.chatMessages.scrollHeight;
-    this.refs.chatMessages.scrollTop = height;
+    setTimeout( () => {
+      let height = this.refs.chatMessages.scrollHeight;
+      this.refs.chatMessages.scrollTop = height;
+    }, 10);
   }
 
   setSocket(channelId) {
