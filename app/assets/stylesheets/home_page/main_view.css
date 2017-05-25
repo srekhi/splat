@@ -121,3 +121,11 @@ div#main-header-content {
 #alert-container{
   width: 10px;
 }
+
+.message-buttons{
+  display: none;
+}
+
+.chat-message:hover  .message-buttons{
+  display: flex;
+}
