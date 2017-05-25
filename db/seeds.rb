@@ -18,8 +18,15 @@ u4 = User.create(username: "sunny", password: "sunny-pass")
 u4.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
 u4.save
 
-30.times do |i|
-  username = Faker::Name.first_name.to_s.split(" ").join("_").downcase
+
+20.times do |i|
+  random_faker_names = [
+    Faker::Name.first_name.to_s.split(" ").join("_").downcase,
+    Faker::Name.last_name.to_s.split(" ").join("_").downcase,
+    Faker::StarWars.character.to_s.split(" ").join("_").downcase,
+    Faker::Lorem.word.slice(0, 7),
+  ]
+  username = random_faker_names.sample
   u = User.create(username: username, password: "password")
   users.push(u)
 end
@@ -118,7 +125,7 @@ sample_emojis= %w(
 Message.skip_callback(:commit, :after, :broadcast_message)
 Message.destroy_all
 
-30.times do
+50.times do
   sample_user_id = users.sample.id
   sample_emoji = sample_emojis.sample
   message = Message.create(user_id: sample_user_id, channel_id: c1.id, content: Faker::StarWars.quote )
@@ -127,7 +134,7 @@ Message.destroy_all
   end
   # Message.create(user_id: sample_user_id, channel_id: c1.id, content: "Yooo first message")
   # Message.create(user_id: sample_user_id.id, channel_id: c1.id, content: "Second message woooo")
-  Membership.create(user_id: sample_user_id, channel_id: c1.id)
+  Membership.create(user_id: sample_user_id, channel_id: c1.id) 
 end
 
 50.times do

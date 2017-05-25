@@ -10,8 +10,14 @@ class ChannelListItem extends React.Component {
   componentWillMount(){
   }
 
-  componentWillReceiveProps(){
+  componentWillReceiveProps(newProps){
     //handle toggling off of detail link here
+    // console.log('newprops');
+    // debugger;
+    if (parseInt(newProps.match.params.messageId) === this.props.channel.id){
+      newProps.notifications.length = "";
+      //delete these notifications from here.
+    }
   }
 
   render(){

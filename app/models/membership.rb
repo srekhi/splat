@@ -14,6 +14,7 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :channel
 
-  validates :id, uniqueness: { scope: [:user_id, :channel_id] }
+  # validates uniqueness: { scope: [:user_id, :channel_id] }
+  validates :user_id, uniqueness: { scope: [:channel_id] }
 
 end

@@ -1,7 +1,7 @@
 import { selectAllPublicChannels } from '../../../../reducers/selectors/channel_selectors';
 import { selectAllUsers } from '../../../../reducers/selectors/user_selectors';
 
-import { fetchChannels, createChannel, removeChannelErrors } from '../../../../actions/channel_actions';
+import { fetchChannels, createChannel, removeChannelErrors, deleteNotifications } from '../../../../actions/channel_actions';
 import { fetchUsers } from '../../../../actions/user_actions';
 import { fetchNotifications } from '../../../../actions/session_actions';
 
@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   createChannel: (channel) => dispatch(createChannel(channel)),
   fetchUsers: () => dispatch(fetchUsers()),
   removeChannelErrors: () => dispatch(removeChannelErrors()),
-  fetchNotifications: (userId) => dispatch(fetchNotifications(userId))
+  fetchNotifications: (userId) => dispatch(fetchNotifications(userId)),
+  deleteNotifications: (channelId) => dispatch(deleteNotifications(channelId))
+
 });
 
 

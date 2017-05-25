@@ -30,17 +30,22 @@ class ChatList extends React.Component {
     // this.scrollToBottom();
   }
 
+
   componentDidMount(){
-    setTimeout(this.scrollToBottom.bind(this), 500);
+    // debugger;
+    // setTimeout(this.scrollToBottom.bind(this), 500);
   }
 
   componentWillReceiveProps(newProps){
     //subscription to be created here as well
-    if (this.props.match.params.channelId === newProps.match.params.channelId){
+    if (this.props.match.params.channelId !== newProps.match.params.channelId){
       // if (this.props.location.pathname.endsWith('details') && !newProps.location.pathname.endsWith('details')){
       //   let newUrl = newProps.location.pathname;
       //   newProps.history.push(newUrl + '/details');
       // }
+      //delete notifications for channel that i was already at
+      let oldChannelId = parseInt(this.props.match.params.channelId);
+      this.props.deleteNotifications(oldChannelId);
     }
     if (this.props.match.params.channelId !== newProps.match.params.channelId) {
       //delete notifications for the new channel
@@ -71,7 +76,7 @@ class ChatList extends React.Component {
     setTimeout( () => {
       let height = this.refs.chatMessages.scrollHeight;
       this.refs.chatMessages.scrollTop = height;
-    }, 10);
+    }, 0);
   }
 
   setSocket(channelId) {
@@ -137,6 +142,7 @@ class ChatList extends React.Component {
               deleteNotifications={this.props.deleteNotifications}
               />
           </footer>
+          {this.scrollToBottom()}
         </section>
       );
   }

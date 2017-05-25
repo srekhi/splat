@@ -85,6 +85,7 @@ class ChannelList extends React.Component {
            channel={channel}
            private="false"
            notifications={channelNotifications}
+           deleteNotifications={this.props.deleteNotifications}
            />
         </li>
       );
