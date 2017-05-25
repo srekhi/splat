@@ -7,6 +7,10 @@ class ChannelListItem extends React.Component {
     this.channel = this.props.channel;
   }
 
+  componentWillMount(){
+    //handle toggling off of detail link here
+  }
+
   render(){
     let showLink;
     showLink = this.props.channel.id;

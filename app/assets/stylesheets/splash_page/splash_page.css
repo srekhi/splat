@@ -18,7 +18,7 @@ body {
 }
 .session-form {
    font-family: Lato, sans-serif;
-   margin: auto;
+   /* margin: auto; */
    vertical-align: middle;
    /* position: absolute; */
    top: 25%;
@@ -30,16 +30,30 @@ body {
    opacity: 1;
    z-index: 1;
    /*display: flex;*/
-   margin-bottom: auto;
+   /* margin-bottom: auto; */
    /*flex-direction: column;*/
    /*text-align: center;*/
    /*align-items: center;*/
    border: 1px solid black;
-   width: 615px;
-   height: 405px;
+   min-width: 615px;
+   min-height: 405px;
    font-size: 20px;
-   margin-top: 8%;
-   margin-bottom: 22%;
+   /* margin-top: 8%; */
+   /* margin-bottom: 22%; */
+   /* margin-top: 20%; */
+   /* margin-bottom: auto; */
+   position: absolute;
+   top: 50%;
+   bottom: 50%;
+   /* width: 500px; */
+   /* height:500px; */
+   margin:0 auto;
+   /* background:#f7f7f7; */
+   position:absolute;
+   left: 45%;
+   top:50%;
+   margin-left:-250px;
+   margin-top:-250px;
 }
 .session-form > h1 {
   font-size: 32px;
@@ -61,6 +75,8 @@ body {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   color: #555459;
+  margin-bottom: 20px;
+  margin-top:20px;
 }
 .session-form > button {
   background-color: #2ab27b;
@@ -156,6 +172,7 @@ body {
 
 #demo-login {
   font-size: 15px;
+  margin-top: 15px;
 }
 
 .landing-page-nav {
