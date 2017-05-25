@@ -139,3 +139,8 @@ li#details-user-list-item {}
   font-family: Lato, sans-serif;
   margin-left: 15px;
 }
+
+
+#detail-user-count-header{
+  height: auto;
+}

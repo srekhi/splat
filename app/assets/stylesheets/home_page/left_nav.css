@@ -555,6 +555,7 @@ p#about-me-intro {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 11px;
+  height: auto;
 }
 
 
