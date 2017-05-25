@@ -58,14 +58,14 @@ class MainHeader extends React.Component {
         usernames.push(user.username);
       }
       usernames[0] = "@" + usernames[0];
-      channelName = usernames.join(", ");
+      channelName = usernames.join(",  ");
     }
       return (
         <header id="main-team-header">
           <div id="main-header-content">
             {channelName}
             <br />
-            <span onClick={this.toggleDetailView}>
+            <span id="detail-view-toggle" onClick={this.toggleDetailView}>
               <i id="channel-count-of-users" className="fa fa-user-o" aria-hidden="true"></i>
               <span id="channel-count-of-users" >{this.props.channel.userCount}</span>
             </span>

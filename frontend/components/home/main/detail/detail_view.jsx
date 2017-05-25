@@ -13,7 +13,7 @@ class DetailView extends React.Component{
     }
 
     render(){
-      if (this.props.channel === undefined) return <Spinner />;
+      if (this.props.channel === undefined) return <p></p>;
       let name;
       name = "#" + this.props.channel.name;
       if (this.props.channel.private === true){

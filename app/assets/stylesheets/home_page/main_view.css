@@ -129,3 +129,7 @@ div#main-header-content {
 .chat-message:hover  .message-buttons{
   visibility: visible;
 }
+
+#detail-view-toggle{
+  cursor: pointer;
+}

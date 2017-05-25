@@ -8,6 +8,9 @@ class ChannelListItem extends React.Component {
   }
 
   componentWillMount(){
+  }
+
+  componentWillReceiveProps(){
     //handle toggling off of detail link here
   }
 

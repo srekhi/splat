@@ -48,7 +48,7 @@ class ChannelList extends React.Component {
   }
 
   render(){
-    if (this.publicChannels === undefined || this.props.notifications === undefined) return <Spinner />;
+    if (this.publicChannels === undefined || this.props.notifications === undefined) return <p></p>;
       // <div id="exit-new-channel" onClick={this.closeModal}>
       //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
       // </div>

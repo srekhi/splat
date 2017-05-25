@@ -132,7 +132,7 @@ class NewMessageForm extends React.Component {
     } else{
       placeholder = `Message #${this.props.channel.name}`;
     }
-    if (this.props.channel === undefined) return <Spinner />;
+    if (this.props.channel === undefined) return <p></p>;
       return (
         <div id="new-message-input">
           <div id="new-message-giphy" onClick={this.toggleGiphySearch}>

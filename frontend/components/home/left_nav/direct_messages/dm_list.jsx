@@ -37,7 +37,7 @@ class DMList extends React.Component {
   }
 
   render(){
-    if (this.props.privateChannels === undefined || this.props.notifications === undefined) return <Spinner />;
+    if (this.props.privateChannels === undefined || this.props.notifications === undefined) return <p></p>;
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}

@@ -117,11 +117,20 @@ sample_emojis= %w(
 
 Message.skip_callback(:commit, :after, :broadcast_message)
 Message.destroy_all
-Message.create(user_id: User.first.id, channel_id: c1.id, content: "Yooo first message")
-Message.create(user_id: User.first.id, channel_id: c1.id, content: "Second message woooo")
-# both belong to the demo user Drake Graham
 
 30.times do
+  sample_user_id = users.sample.id
+  sample_emoji = sample_emojis.sample
+  message = Message.create(user_id: sample_user_id, channel_id: c1.id, content: Faker::StarWars.quote )
+  rand(4).times do
+    Emoticon.create(user_id: users.sample.id, message_id: message.id, icon: sample_emojis.sample)
+  end
+  # Message.create(user_id: sample_user_id, channel_id: c1.id, content: "Yooo first message")
+  # Message.create(user_id: sample_user_id.id, channel_id: c1.id, content: "Second message woooo")
+  Membership.create(user_id: sample_user_id, channel_id: c1.id)
+end
+
+50.times do
   sample_user_id = users.sample.id
   sample_emoji = sample_emojis.sample
   message = Message.create(user_id: sample_user_id, channel_id: c2.id, content: Faker::HarryPotter.quote )
@@ -136,7 +145,7 @@ end
 end
 
 
-30.times do
+50.times do
   sample_user_id = users.sample.id
   Message.create(user_id: sample_user_id, channel_id: c3.id, content: Faker::ChuckNorris.fact )
   Membership.create(user_id: sample_user_id, channel_id: c3.id)

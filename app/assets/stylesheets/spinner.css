@@ -6,3 +6,13 @@
 .css-6bx4c3 {
   font-size: 12px;
 }
+
+.loading-container{
+  /*width: 50vh;
+  height: 50vh;*/
+  position: absolute;
+  top: 30%;
+  /*transform: translateY(-50%);*/
+  text-align: center;
+  margin: auto;
+}

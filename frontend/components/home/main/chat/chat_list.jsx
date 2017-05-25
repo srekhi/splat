@@ -101,7 +101,7 @@ class ChatList extends React.Component {
   }
 
   render(){
-    if (this.props.channel === undefined) return <Spinner />;
+    if (this.props.channel === undefined) return <p></p>;
 
 
     const messages = this.props.messages.map((message, idx) => {
