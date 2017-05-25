@@ -124,7 +124,6 @@ div#main-header-content {
 }
 
 .message-buttons{
-  visibility: hidden;
 }
 
 .chat-message:hover  .message-buttons{
@@ -135,9 +134,9 @@ div#main-header-content {
   cursor: pointer;
 }
 
-.visible {
+/*.visible {
   visibility: visible;
-}
+}*/
 
 .invisible {
   visibility: hidden;

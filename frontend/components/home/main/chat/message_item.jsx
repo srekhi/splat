@@ -5,6 +5,8 @@ import AlertContainer from 'react-alert';
 import { addEmojiToMessage } from '../../../../util/emoticon_api_util';
 
 
+//TODO: set state on visibility for class.
+
 class MessageItem extends React.Component{
   constructor(props){
     super(props);
@@ -17,6 +19,7 @@ class MessageItem extends React.Component{
     this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
     this.addEmoticon = this.addEmoticon.bind(this);
     this.compressEmoticons = this.compressEmoticons.bind(this);
+
     this.state = {
       id: this.message.id,
       user_id: this.message.user_id,
@@ -25,7 +28,8 @@ class MessageItem extends React.Component{
       content: this.message.content,
       emoticonPickerOpen: false,
       icon: "",
-      message_id: this.message.id
+      message_id: this.message.id,
+      emojiButtonClass: "message-buttons invisible"
     };
     this.alertOptions = {
       offset: 25,
@@ -37,9 +41,15 @@ class MessageItem extends React.Component{
   }
 
   toggleEmojiDisplay(e){
-    e.preventDefault();
-    debugger;
-    e.target.classList.add("visible");
+    // e.preventDefault();
+
+    // e.target.parentElement.parentElement.classList.toggle("invisible");
+    //both of these
+    if (this.state.emojiButtonClass.indexOf("invisible") > -1){
+      this.setState({emojiButtonClass: "message-buttons"});
+    }else{
+      this.setState({emojiButtonClass: "message-buttons invisible"});
+    }
     this.setState({ emoticonPickerOpen: !this.state.emoticonPickerOpen });
   }
 
@@ -130,6 +140,7 @@ class MessageItem extends React.Component{
 
   toggleEditForm(){
     this.setState({showEditForm: !this.state.showEditForm});
+
   }
 
   editMessage(e){
@@ -186,7 +197,6 @@ class MessageItem extends React.Component{
         className="emoji-picker-display"
         addEmoticon={this.addEmoticon}
         toggleEmojiDisplay={this.toggleEmojiDisplay}
-
         />;
     }
 
@@ -225,7 +235,7 @@ class MessageItem extends React.Component{
         </div>
         <AlertContainer id="alert-container" ref={a => global.msg = a} {...this.alertOptions} />
         {emojiDisplay}
-        <div className="message-buttons hidden">
+        <div className={this.state.emojiButtonClass}>
 
           <div id="message-button" onClick={this.toggleEmojiDisplay}>
             <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
