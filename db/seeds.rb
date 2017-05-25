@@ -50,7 +50,7 @@ end
 Channel.destroy_all
 c1 = Channel.create(name: "general", private: false)
 c2 = Channel.create(name: "harry_potter_quotes", private: false)
-c3 = Channel.create(name: "chuck_norris_programs", private: false)
+c3 = Channel.create(name: "chuck_norris", private: false)
 
 d1 = Channel.create(name: "private_channel1", private: true)
 d2 = Channel.create(name: "private_channel2", private: true)

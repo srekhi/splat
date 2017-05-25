@@ -304,7 +304,22 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   font-size: 20px;
   text-overflow: ellipsis;
   font-size:15px;
-
+  white-space: nowrap;
+  width: 159px;
+  color: #AB9BA9;
+  font-weight: 500;
+  margin-left: 10px;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  overflow: hidden;
+  /* width: 31%; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #left-nav-channel-list span:first-child {
@@ -435,8 +450,13 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
   text-overflow: ellipsis;
   font-size:15px;
   overflow: hidden;
-  width: 100%;
+  /* width: 31%; */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #left-nav-dm-list span:first-child {
@@ -549,9 +569,8 @@ aside#about-me-credits {
   font-size: 12px;
   font-weight: 400;
   text-align: center;
-  er; */
   color: #fff;
-  margin-left: 109px;
+  /* margin-left: 109px; */
   /* margin-right: 4px; */
   padding-left: 9px;
   text-align: center;
@@ -564,9 +583,8 @@ aside#about-me-credits {
   border-radius: 53px;
   vertical-align: baseline;
   font-size: 0.8rem;
-  width: 7px;
-}
-
+  /* width: 7px; */
+  height: 15px;
 }
 
 
@@ -588,3 +606,10 @@ i#github-fa {
 
 
 ul#logout-dropdown {}
+
+#channel-name-and-notification{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+}

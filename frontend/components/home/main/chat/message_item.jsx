@@ -220,13 +220,13 @@ class MessageItem extends React.Component{
           </div>
         </div>
         <AlertContainer id="alert-container" ref={a => global.msg = a} {...this.alertOptions} />
+        {emojiDisplay}
         <div className="message-buttons hidden">
 
           <div id="message-button" onClick={this.toggleEmojiDisplay}>
             <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
           </div>
 
-          {emojiDisplay}
 
           <div id="message-button" onClick={this.editMessage}>
             <i className="fa fa-pencil-square-o fa-6" aria-hidden="true"></i>
