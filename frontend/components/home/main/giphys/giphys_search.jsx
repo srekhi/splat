@@ -17,7 +17,7 @@ class GiphysSearch extends React.Component {
 
   handleClick(e){
     e.preventDefault();
-    if (event.target.id !== "giphys-container" && event.target.id !== "giphy-form" && event.target.id !== "search-giphy-box") {
+    if (e.target.id !== "giphys-container" && e.target.id !== "giphy-form" && e.target.id !== "search-giphy-box") {
       this.props.toggleGiphySearch();
     }
   }
