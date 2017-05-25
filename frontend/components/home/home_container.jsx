@@ -65,9 +65,6 @@ class HomeContainer extends React.Component{
   }
 
 
-  //
-
-
   setNotificationsSocket(userId) {
     if (window.App.notificationChannel) {
       this.removeNotificationsSocket();

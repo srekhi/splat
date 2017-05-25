@@ -6,17 +6,18 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   min-width: 364px;
   max-width: 380px;
   /* border-left: 1px solid #E8E8E8; */
-  z-index: 1;
+  /* z-index: 1; */
   padding-top: 0px;
   /* position: absolute; */
   height: 80%;
   overflow: hidden;
   overflow-y: hidden;
+  flex: 1;
 }
 
 #detail-view-header{
@@ -87,7 +88,10 @@
   margin-bottom: 5px;
   display: flex;
   justify-items: center;
+  z-index: 1;
 }
+
+li#details-user-list-item {}
 #detail-view-username{
   margin-left: 10px;
   text-align: center;

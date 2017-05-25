@@ -183,6 +183,7 @@ class MessageItem extends React.Component{
         className="emoji-picker-display"
         addEmoticon={this.addEmoticon}
         toggleEmojiDisplay={this.toggleEmojiDisplay}
+        
         />;
     }
 
@@ -226,7 +227,6 @@ class MessageItem extends React.Component{
           <div id="message-button" onClick={this.toggleEmojiDisplay}>
             <i className="fa fa-smile-o fa-6" aria-hidden="true"></i>
           </div>
-
 
           <div id="message-button" onClick={this.editMessage}>
             <i className="fa fa-pencil-square-o fa-6" aria-hidden="true"></i>

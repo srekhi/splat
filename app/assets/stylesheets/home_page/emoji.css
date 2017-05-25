@@ -3,13 +3,13 @@
 }
 
 .emoji-form{
-  position: absolute;
+  /*position: absolute;
   right: 50px;
   top: 41px;
   background: white;
   z-index: 100;
   width: 200px;
-  bottom: 100px;
+  bottom: 100px;*/
 }
 
 #reaction{
