@@ -47,6 +47,7 @@ class MessageItem extends React.Component{
     //both of these
     if (this.state.emojiButtonClass.indexOf("invisible") > -1){
       this.setState({emojiButtonClass: "message-buttons"});
+      // debugger;
     }else{
       this.setState({emojiButtonClass: "message-buttons invisible"});
     }

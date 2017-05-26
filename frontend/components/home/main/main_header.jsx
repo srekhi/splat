@@ -9,7 +9,10 @@ class MainHeader extends React.Component {
 
   componentWillMount(){
     const channelId = this.props.match.params.channelId;
-    this.props.fetchChannels(this.props.user.id);
+    // this.props.fetchChannels(this.props.user.id);
+
+
+    
     // this.props.fetchUserCount(channelId);
     //here, I need to remove notifications for the current user.
     // this.props.deleteNotifications(channelId);
