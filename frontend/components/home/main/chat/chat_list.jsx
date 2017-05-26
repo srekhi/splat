@@ -19,15 +19,13 @@ class ChatList extends React.Component {
   }
 
   componentWillMount(){
-    //subscription to be created here
     const channelId = this.props.match.params.channelId;
     this.props.fetchMessages(channelId);
     this.props.deleteNotifications(channelId);
-    setTimeout(() => { //allows for state to be populated before running this.
+    setTimeout(() => {
       const channel = this.props.channel;
-      this.setSocket(channelId); //changed this as well. because channel id === channelId. i think.
+      this.setSocket(channelId);
     }, 100);
-    // this.scrollToBottom();
   }
 
 
@@ -92,10 +90,9 @@ class ChatList extends React.Component {
 
 
   addSocket(channelId) {
-    //add the channel as a property of the App on window.
     window.App.channel = window.App.cable.subscriptions.create({
       channel: 'RoomChannel',
-      channel_id: channelId //set params for subscription in room_channel (passes to server side)
+      channel_id: channelId
     }, {
       connected: () => {},
       disconnected: () => {},

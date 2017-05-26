@@ -14,7 +14,7 @@
   width: 100%;
   font-size: 18px;
   display: inline-block;
-  height: 7%;
+  height: 7vh;
   padding-bottom: 1%;
 }
 
@@ -116,8 +116,10 @@ div#main-header-content {
   /* border-right: 2px; */
   /*border2px solid lightgray:;*/
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   /* border: 2px solid lightgray; */
+  height: 5vh;
+  box-sizing: border-box;
 }
 
 #alert-container{
