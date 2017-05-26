@@ -1,18 +1,6 @@
 # Splat
-Live application link
-
-Splat is a fullstack web application inspired by Slack [insert link to actual slack here]. It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting in the near future. Other technologies and libraries involved:
-PostgreSQL
-jQuery
-Heroku
-BCrypt
-Figaro
-Paperclip
-jBuilder
-react-modal
-react-alert
-emoji-mart
-react-tooltip
+[Live App](https://www.splat.work/)
+Splat is a fullstack web application inspired by [Slack](https://slack.com/)]. It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
 
 # Features 
 (show video in here 
@@ -21,6 +9,28 @@ react-tooltip
 Most important part of any chat application is, of course, real-time updates. Using Action Cable, I designed Splat so that whenever a user authenticates, they're automatically subscribed to three channels:
   1) Live Chat (Cable 1)
       + Whenever a user selects a channel, React parses the URL and grabs the channel ID. Action Cable then subscribes the user to the channel that they're currently visiting. Any updates to this channel trigger an automatic re-render on the React/Redux front-end architecture without requiring the user to refresh the page. 
+      
+      ```ruby 
+        class ChatList extends React.Component {
+          constructor(props){
+            super(props);
+            this.scrollToBottom = this.scrollToBottom.bind(this);
+            this.setSocket = this.setSocket.bind(this);
+            this.addSocket = this.addSocket.bind(this);
+            this.removeSocket = this.removeSocket.bind(this);
+            this.toggleEmojiDisplay = this.toggleEmojiDisplay.bind(this);
+          }
+
+          componentWillMount(){
+            const channelId = this.props.match.params.channelId;
+            this.props.fetchMessages(channelId);
+            this.props.deleteNotifications(channelId);
+            setTimeout(() => {
+              const channel = this.props.channel;
+              this.setSocket(channelId);
+            }, 100);
+       }
+      ```
   2) Notifications (Cable 2)
       + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. [show the socket code here]. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
       + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database [insert code snippets and video sample showing this happening live]
