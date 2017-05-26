@@ -1,5 +1,6 @@
 # Splat
 [Live App](https://www.splat.work/)
+
 Splat is a fullstack web application inspired by [Slack](https://slack.com/)]. It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
 
 # Features 
@@ -29,7 +30,30 @@ Most important part of any chat application is, of course, real-time updates. Us
               const channel = this.props.channel;
               this.setSocket(channelId);
             }, 100);
-       }
+          }
+         setSocket(channelId) {
+          if (window.App.channel) {
+            this.removeSocket();
+          }
+            this.addSocket(channelId);
+          }
+          
+         removeSocket(){
+           window.App.cable.subscriptions.remove(window.App.channel);
+         }
+
+        addSocket(channelId) {
+          window.App.channel = window.App.cable.subscriptions.create({
+            channel: 'RoomChannel',
+            channel_id: channelId
+          }, {
+            connected: () => {},
+            disconnected: () => {},
+            received: (data) => {
+              this.props.receiveMessage(data.message);
+            }
+          });
+        }
       ```
   2) Notifications (Cable 2)
       + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. [show the socket code here]. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
