@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526052332) do
+ActiveRecord::Schema.define(version: 20170526190930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170526052332) do
     t.string   "icon",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_emoticons_on_message_id", using: :btree
     t.index ["user_id", "message_id"], name: "index_emoticons_on_user_id_and_message_id", using: :btree
   end
 

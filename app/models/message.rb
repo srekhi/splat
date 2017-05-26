@@ -38,8 +38,9 @@ class Message < ApplicationRecord
     # users = channel.users
     MessageBroadcastJob.perform_later(self, self.channel_id, message_author)
     NotificationBroadcastJob.perform_later(self.channel_id, message_author)
-
+  end
     # users.each do |user|
+      # NotificationBroadcastJob.perform_later()
     #   next if user.id == message_author.id
     #   notification = Notification.create(user_id: user.id, channel_id: channel.id)
     #   user_id = user.id
@@ -51,5 +52,5 @@ class Message < ApplicationRecord
     #       notification: JSON.parse(notification))
     #   end
     # NotificationBroadcastJob.perform_later(channel, user)
-  end
+  # end
 end

@@ -1,17 +1,14 @@
 class NotificationBroadcastJob < ApplicationJob
-  queue_as :default
+  queue_as :low_priority
 
   def perform(channel_id, message_author)
-    # debugger THIS IS BEING HIT PROPERLY
-    # sleep 20
-    channel = Channel.find_by(id: channel_id)
-    users = channel.users
-    # debugger
-    channel_id = channel.id
-    users.each do |user|
-      next if user.id == message_author.id
-      notification = Notification.create(user_id: user.id, channel_id: channel_id)
-      user_id = user.id
+    memberships = Membership.where(channel_id: channel_id)
+    # Notification.create([{user_id: 5, channel_id: 790},{user_id: 6, channel_id: 790}])
+    memberships.each do |membership|
+      
+      user_id = membership.user_id
+      next if user_id == message_author.id
+      notification = Notification.create(user_id: user_id, channel_id: channel_id)
       notification = Api::NotificationsController.render(
           partial: 'api/notifications/notification',
           locals: { notification: notification, user_id: user_id, channel_id: channel_id }
