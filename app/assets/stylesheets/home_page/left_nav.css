@@ -249,7 +249,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 
@@ -404,6 +404,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     -ms-flex-pack: justify;
     justify-content: space-between;
     overflow-y: auto;
+    overflow-y: scroll
 }
 
 #left-nav-dm-list > li {
