@@ -38,7 +38,6 @@ const SessionReducer = (state = defaultState, action) => {
       return newState;
     case RECEIVE_NOTIFICATION:
       newState = merge({}, state);
-      console.log('notif received');
       if (!newState['notifications'].includes(action.notification)){
       newState['notifications'].push(action.notification);
     }

@@ -8,7 +8,6 @@ class DetailView extends React.Component{
     }
 
     closeDetailView(){
-      console.log("is this being hit?");
       this.props.history.push(`/messages/${this.props.channelId}`);
     }
 

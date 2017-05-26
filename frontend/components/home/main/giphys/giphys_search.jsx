@@ -24,13 +24,11 @@ class GiphysSearch extends React.Component {
 
   componentDidMount() {
     this.props.fetchSearchGiphys('');
-    console.log("giphys search mounted");
 
     document.addEventListener("click", this.handleClick);
   }
 
   componentWillUnmount(){
-    console.log("giphys search unmounted");
     document.removeEventListener("click", this.handleClick);
   }
 

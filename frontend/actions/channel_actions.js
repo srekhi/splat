@@ -53,7 +53,7 @@ export const receiveUserCount = userCount => ({
 });
 
 export const fetchUserCount = channelId => dispatch => {
-  console.log(` about to fetch ${channelId}  `);
+  
   return APIUtil.fetchUserCountForChannel(channelId).then(userCount => (
     dispatch(receiveUserCount(userCount))
   ));

@@ -7,7 +7,7 @@ class NotificationBroadcastJob < ApplicationJob
     # debugger
     channel_id = channel.id
     users.each do |user|
-      next if user.id === message_author.id
+      next if user.id == message_author.id
       notification = Notification.create(user_id: user.id, channel_id: channel_id)
       user_id = user.id
       notification = Api::NotificationsController.render(
@@ -16,7 +16,7 @@ class NotificationBroadcastJob < ApplicationJob
           )
       ActionCable.server.broadcast("new_channel_#{user_id}",
           notification: JSON.parse(notification))
-    end
+      end
   end
 
 end
