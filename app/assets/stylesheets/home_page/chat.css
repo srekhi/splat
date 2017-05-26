@@ -19,6 +19,7 @@ ul.chat-message-list {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
+    /* margin-bottom: 6px; */
 }
 
 
@@ -65,16 +66,16 @@ p#message-text {
   color: #3D3C40;
   border-radius: 6px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 81%;
   width: 100%;
-  margin-top: 11px;
+  /* margin-top: 11px; */
 }
 
 #new-message-giphy{

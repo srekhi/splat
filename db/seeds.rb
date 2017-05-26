@@ -134,7 +134,7 @@ Message.destroy_all
   end
   # Message.create(user_id: sample_user_id, channel_id: c1.id, content: "Yooo first message")
   # Message.create(user_id: sample_user_id.id, channel_id: c1.id, content: "Second message woooo")
-  Membership.create(user_id: sample_user_id, channel_id: c1.id) 
+  Membership.create(user_id: sample_user_id, channel_id: c1.id)
 end
 
 50.times do
