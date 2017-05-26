@@ -5,7 +5,7 @@
 }
 
 #main-team-header {
-  min-height: 62px;
+  /* min-height: 62px; */
   border-bottom: 1px solid #E8E8E8;
   /* display: flex; */
   background-color: #fff;
@@ -15,7 +15,9 @@
   font-size: 18px;
   display: inline-block;
   height: 7vh;
-  padding-bottom: 1%;
+  box-sizing: border-box;
+  padding-top: 9px;
+  /* padding-bottom: 1%; */
 }
 
 #main-view-container{
@@ -32,12 +34,12 @@
 
 div#main-header-content {
     display: inline-block;
-    height: 73%;
-    margin-top: 1.5%;
+    height: 100%;
+    /* margin-top: 1.5%; */
     margin-left: 2.0%;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 1%;
+    /* margin-bottom: 1%; */
   }
 
 .message-content{
@@ -92,15 +94,16 @@ div#main-header-content {
   width: calc(100% - 250px);
   height: 64px;
   background-color: white;
-  margin: 0 auto -19px auto;
+  margin: 0 auto 0px auto;
   margin-left: 20px;
   margin-right: 20px;
   -webkit-box-sizing:border-box;
   box-sizing:border-box;
   border-radius: 6px;
   margin-left: 9px;
-  margin-bottom: 10px;
-  height: 7vh;
+  /* margin-bottom: 10px; */
+  height: 5vh;
+  margin-bottom: 1vh;
 }
 #message-content-input{
   width: 100%;
@@ -118,7 +121,7 @@ div#main-header-content {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   /* border: 2px solid lightgray; */
-  height: 5vh;
+  /* height: 5vh; */
   box-sizing: border-box;
 }
 
