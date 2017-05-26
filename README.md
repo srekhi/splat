@@ -3,8 +3,7 @@
 
 Splat is a fullstack web application inspired by [Slack](https://slack.com/)]. It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
 
-# Features 
-(show video in here 
+# Features
 
 ## Live updates:
 Most important part of any chat application is, of course, real-time updates. Using Action Cable, I designed Splat so that whenever a user authenticates, they're automatically subscribed to three channels:
