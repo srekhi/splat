@@ -137,25 +137,25 @@ class SessionForm extends React.Component {
     let capitalizedFormType = this.props.formType.charAt(0).toUpperCase() + this.props.formType.slice(1);
     if (capitalizedFormType === "Signup") capitalizedFormType = "Sign up";
     return (
-      <div id="login-window">
-        <form className="session-form" onSubmit={this.handleSubmit}>
-          <h1> {capitalizedFormType} </h1>
-          <p>Enter your <b>username</b> and <b>password</b></p>
-            <input type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              className="login-input"
-            />
-            <input type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              className="login-input"
-            />
-            <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
-            <p id="demo-login">{this.navLink()} or continue with a <a onClick={this.demoLogin} href="">guest login!</a></p>
-            {this.renderErrors()}
-        </form>
-      </div>
+        <div id="login-window">
+          <form className="session-form" onSubmit={this.handleSubmit}>
+            <h1> {capitalizedFormType} </h1>
+            <p>Enter your <b>username</b> and <b>password</b></p>
+              <input type="text"
+                value={this.state.username}
+                onChange={this.update('username')}
+                className="login-input"
+              />
+              <input type="password"
+                value={this.state.password}
+                onChange={this.update('password')}
+                className="login-input"
+              />
+              <button className="login-button" type="submit" value="Submit">{capitalizedFormType}</button>
+              <p id="demo-login">{this.navLink()} or continue with a <a onClick={this.demoLogin} href="">guest login!</a></p>
+              {this.renderErrors()}
+          </form>
+        </div>
     );
   }
 }

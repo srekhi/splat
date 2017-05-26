@@ -82,6 +82,7 @@ class Navbar extends React.Component {
             alt="Splat logo"
             onClick={this.handleClick} />
           <Link id="landing-page-logo-link" to="/">Splat</Link>
+          <p id="tagline">Where work happens</p>
         </section>
         <section id="session-control-container">
           <button onClick={this.demoLogin} id="demo">Guest</button>
