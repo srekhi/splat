@@ -88,7 +88,7 @@ div#main-header-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  bottom: 5px;
+  bottom: 0px;
   width: calc(100% - 250px);
   height: 64px;
   background-color: white;
@@ -96,10 +96,10 @@ div#main-header-content {
   margin-left: 20px;
   margin-right: 20px;
   -webkit-box-sizing:border-box;
-          box-sizing:border-box;
+  box-sizing:border-box;
   border-radius: 6px;
   margin-left: 9px;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
 }
 #message-content-input{
   width: 100%;
