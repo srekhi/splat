@@ -76,7 +76,6 @@ Most important part of any chat application is, of course, real-time updates. Us
       end 
       ```
       
-      ![notification](/docs/notifications.png)
       The broadcast logic is held in ActiveJobs in order to be performed asynchronously.
       ```ruby
       class NotificationBroadcastJob < ApplicationJob
@@ -95,8 +94,8 @@ Most important part of any chat application is, of course, real-time updates. Us
             ActionCable.server.broadcast("new_channel_#{user_id}",
                 notification: JSON.parse(notification))
             end
-        end
-     end
+          end
+       end
      ```
       + This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
       + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database [insert code snippets and video sample showing this happening live]
