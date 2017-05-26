@@ -18,7 +18,7 @@ react-tooltip
 (show video in here 
 
 ## Live updates:
-Most important part of any chat application is, of course, live feeds. Using Action Cable, I designed Splat so that whenever a user authenticates, they're automatically subscribed to three channels:
+Most important part of any chat application is, of course, real-time updates. Using Action Cable, I designed Splat so that whenever a user authenticates, they're automatically subscribed to three channels:
   1) Live Chat (Cable 1)
       + Whenever a user selects a channel, React parses the URL and grabs the channel ID. Action Cable then subscribes the user to the channel that they're currently visiting. Any updates to this channel trigger an automatic re-render on the React/Redux front-end architecture without requiring the user to refresh the page. 
   2) Notifications (Cable 2)
