@@ -19,7 +19,7 @@ u4.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w
 u4.save
 
 
-20.times do |i|
+10.times do |i|
   random_faker_names = [
     Faker::Name.first_name.to_s.split(" ").join("_").downcase,
     Faker::Name.last_name.to_s.split(" ").join("_").downcase,
