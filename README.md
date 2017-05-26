@@ -56,10 +56,66 @@ Most important part of any chat application is, of course, real-time updates. Us
         }
       ```
   2) Notifications (Cable 2)
-      + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. [show the socket code here]. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
+      + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
+      ```ruby 
+      class Message < ApplicationRecord
+        validates :user_id, :channel_id, :content, presence: true
+        belongs_to :user
+        belongs_to :channel
+        has_many :emoticons
+        after_commit :broadcast_message
+
+        def set_formatted_time
+          self.chat_time = Time.now.localtime.strftime("%I:%M %p")
+        end
+
+        def broadcast_message
+          message_author = self.user
+          MessageBroadcastJob.perform_later(self, self.channel_id, message_author)
+          NotificationBroadcastJob.perform_later(self.channel_id, message_author)
+        end
+      end 
+      ```
+      
+      The broadcast logic is held in ActiveJobs in order to be performed asynchronously.
+      ```ruby
+      class NotificationBroadcastJob < ApplicationJob
+        queue_as :low_priority
+
+        def perform(channel_id, message_author)
+          memberships = Membership.where(channel_id: channel_id)
+          memberships.each do |membership|
+            user_id = membership.user_id
+            next if user_id == message_author.id
+            notification = Notification.create(user_id: user_id, channel_id: channel_id)
+            notification = Api::NotificationsController.render(
+                partial: 'api/notifications/notification',
+                locals: { notification: notification, user_id: user_id, channel_id: channel_id }
+                )
+            ActionCable.server.broadcast("new_channel_#{user_id}",
+                notification: JSON.parse(notification))
+            end
+        end
+    end
+      ```
+      This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
       + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database [insert code snippets and video sample showing this happening live]
   3) Channel List (Cable 3)
-      +  The last problem to be solved was the scenario where a user creates a new channel with another (either a direct message or creates a new public channel). The receiving user wouldn't receive that new channel in their channel list without a third Action Cable subscription. Architecturally, this is very similar to Cable 2. When a user visits the Splat home page, they are automatically subscribed to a ChannelList socket that is unique to the user's id. When a new channel is created, the ChannelList socket is triggered for each user in the new channel. React receives the broadcast from the socket, and dispatches the newly minted data to the frontend for display to the user.
+      +  The last problem to be solved was the scenario where a user creates a new channel with another (either a direct message or creates a new public channel). The receiving user wouldn't receive that new channel in their channel list without a third Action Cable subscription. Architecturally, this is very similar to Cable 2. When a user visits the Splat home page, they are automatically subscribed to a ChannelList socket that is unique to the user's id. When a new channel is created, the ChannelList socket is triggered for each user in the new channel. React receives the broadcast from the socket, and dispatches the newly minted data to the frontend for display to the user. Below is the MessageBroadcast job:
+      ```ruby
+      class MessageBroadcastJob < ApplicationJob
+        queue_as :default
+
+        def perform(message, channel_id, user)
+          message = Api::MessagesController.render(
+            partial: 'api/messages/message',
+            locals: { message: message, channel_id: channel_id, user_id: user.id, user: user }
+          )
+          ActionCable.server.broadcast("channel_#{channel_id}",
+                                       message: JSON.parse(message))
+        end
+      end
+```
       
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis. By interacting with the Giphy API [link https://api.giphy.com/] the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness. (related code samples).
