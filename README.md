@@ -76,6 +76,7 @@ Most important part of any chat application is, of course, real-time updates. Us
       end 
       ```
       
+      [notification] (docs/notifications.png)
       The broadcast logic is held in ActiveJobs in order to be performed asynchronously.
       ```ruby
       class NotificationBroadcastJob < ApplicationJob
