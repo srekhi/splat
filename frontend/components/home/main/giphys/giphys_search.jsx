@@ -78,7 +78,7 @@ class GiphysSearch extends React.Component {
     return (
       <form id="giphy-form" onSubmit={this.handleSubmit}>
         <img
-          src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_112/v1495559212/Screen_Shot_2017-05-23_at_10.06.34_AM_yunwdx.png" />
+          src="https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_112/v1495559212/Screen_Shot_2017-05-23_at_10.06.34_AM_yunwdx.png" />
         {this.giphysContainer()}
         <input type="text"
           id="search-giphy-box"

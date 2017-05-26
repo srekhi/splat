@@ -179,7 +179,7 @@ class MessageItem extends React.Component{
     msg.show(text, {
       time: 2000,
       type: 'info',
-      icon: <img src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_thumb,h_40,w_40/v1494891230/slack_zawidf.png"
+      icon: <img src="https://res.cloudinary.com/dbbzpmyvc/image/upload/c_thumb,h_40,w_40/v1494891230/slack_zawidf.png"
       />
     });
   }

@@ -46,7 +46,7 @@ class LeftNavHeader extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    if (this.props.match.params.messageId === undefined) {
+    if (this.props.match.params.messageId === undefined && newProps.firstChannel !== undefined) {
       newProps.history.push(`/messages/${newProps.firstChannel.id}/details`);
     }
 

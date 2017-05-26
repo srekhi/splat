@@ -13,7 +13,7 @@ users = []
 
 u1 = User.create(username: "sunny", password: "sunny-pass")
 u2 = User.create(username: "drake", password: "drake-pass")
-u1.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
+u1.avatar_url = "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
 u1.save
 
 

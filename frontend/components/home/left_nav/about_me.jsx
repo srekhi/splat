@@ -4,7 +4,7 @@ const AboutMe = () =>(
       <section id="about-description-container">
         <div id="about-header-info">
           <img id="about-logo"
-            src="http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_28/v1494891230/slack_zawidf.svg" />
+            src="https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_28/v1494891230/slack_zawidf.svg" />
 
           <h4 id="about-header">About Splat</h4>
         </div>

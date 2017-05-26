@@ -13,14 +13,14 @@
 
 class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
-  validates :username, uniqueness: true 
+  validates :username, uniqueness: true
 
   DEFAULT_URLS = [
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/default_logo1_msxm8z.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
-    "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
+    "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/default_logo1_msxm8z.png",
+    "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
+    "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.53_PM_hzckom.png",
+    "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
+    "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
   ]
   # TODO: Comment back in
   # validates :email, :username, uniqueness: true

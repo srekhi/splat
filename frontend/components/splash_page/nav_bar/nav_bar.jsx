@@ -78,7 +78,7 @@ class Navbar extends React.Component {
       <nav className="landing-page-nav">
         <section id="logo-container">
           <img id="splat-logo"
-            src={"http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg"}
+            src={"https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,q_81,r_0,w_77/v1494891230/slack_zawidf.svg"}
             alt="Splat logo"
             onClick={this.handleClick} />
           <Link id="landing-page-logo-link" to="/">Splat</Link>
