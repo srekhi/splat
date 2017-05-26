@@ -98,7 +98,7 @@ Most important part of any chat application is, of course, real-time updates. Us
         end
      end
      ```
-  This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
+      + This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
       + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database [insert code snippets and video sample showing this happening live]
   3) Channel List (Cable 3)
       +  The last problem to be solved was the scenario where a user creates a new channel with another (either a direct message or creates a new public channel). The receiving user wouldn't receive that new channel in their channel list without a third Action Cable subscription. Architecturally, this is very similar to Cable 2. When a user visits the Splat home page, they are automatically subscribed to a ChannelList socket that is unique to the user's id. When a new channel is created, the ChannelList socket is triggered for each user in the new channel. React receives the broadcast from the socket, and dispatches the newly minted data to the frontend for display to the user. Below is the MessageBroadcast job that broadcasts new messages to all members of a channel:
