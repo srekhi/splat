@@ -11,12 +11,10 @@ User.destroy_all
 
 users = []
 
-u1 = User.create(username: "drake", password: "password")
-u2 = User.create(username: "test", password: "password")
-u3 = User.create(username: "50-cent", password: "password")
-u4 = User.create(username: "sunny", password: "sunny-pass")
-u4.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
-u4.save
+u1 = User.create(username: "sunny", password: "sunny-pass")
+u2 = User.create(username: "drake", password: "drake-pass")
+u1.avatar_url = "http://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,h_38,w_38/v1495598891/Screen_Shot_2017-05-23_at_9.07.55_PM_tab5wm.png"
+u1.save
 
 
 10.times do |i|
