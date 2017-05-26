@@ -20,6 +20,7 @@ ul.chat-message-list {
     -ms-flex: 1;
     flex: 1;
     margin-bottom: -26px;
+    min-width: 500px;
 }
 
 

@@ -34,12 +34,10 @@ class Message < ApplicationRecord
   end
 
   def broadcast_message
-    channel = self.channel
     message_author = self.user
-    users = channel.users
-
-    MessageBroadcastJob.perform_later(self, channel, message_author)
-    NotificationBroadcastJob.perform_later(channel, message_author)
+    # users = channel.users
+    MessageBroadcastJob.perform_later(self, self.channel_id, message_author)
+    NotificationBroadcastJob.perform_later(self.channel_id, message_author)
 
     # users.each do |user|
     #   next if user.id == message_author.id

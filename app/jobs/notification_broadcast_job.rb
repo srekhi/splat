@@ -1,8 +1,10 @@
 class NotificationBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(channel, message_author)
+  def perform(channel_id, message_author)
     # debugger THIS IS BEING HIT PROPERLY
+    # sleep 20
+    channel = Channel.find_by(id: channel_id)
     users = channel.users
     # debugger
     channel_id = channel.id
