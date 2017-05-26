@@ -250,6 +250,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     -ms-flex-pack: justify;
     justify-content: space-between;
     /* overflow-y: scroll; */
+    overflow-y: hidden;
 }
 
 

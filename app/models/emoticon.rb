@@ -16,5 +16,4 @@ class Emoticon < ApplicationRecord
 
   validates :user, :message, :icon, presence: true
   validates :icon, uniqueness: { scope: [:user_id, :message_id] }
-  #above says don't let the same user select multiple emojis of the same kind on same message.
 end
