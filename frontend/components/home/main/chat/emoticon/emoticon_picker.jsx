@@ -47,6 +47,8 @@ class MyEmojiInput extends React.Component {
       setTimeout(this.validateEmoji, 10);
       this.setState({showEmojiPicker: false});
     }
+
+
   }
 
   validateEmoji() { //filters based on emoji text
@@ -99,7 +101,7 @@ class MyEmojiInput extends React.Component {
     //   type={this.state.showEmojiPicker ? "search" : "text"}
     //   onChange={this.updateState} onKeyDown={this.grabKeyPress}/>
     return (
-      <form ref="emoji" className="emoji-form">
+      <form ref="emoji" className="emoji-form" id="emoji-dropdown">
         {this.emojiPicker()}
       </form>
     );

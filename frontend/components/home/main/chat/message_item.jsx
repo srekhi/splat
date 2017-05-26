@@ -138,6 +138,15 @@ class MessageItem extends React.Component{
   //   );
   // }
 
+  componentDidUpdate(){
+    if ($(".emoji-form span").first().offset() && $(".emoji-form span").first().offset().top < 40){
+      // debugger;
+      let oldTop = $(".emoji-form span").first().offset().top;
+      let oldLeft = $(".emoji-form span").first().offset().left;
+      $(".emoji-form span").first().offset({top: oldTop + 300, left: oldLeft - 60 });
+    }
+  }
+
 
   toggleEditForm(){
     this.setState({showEditForm: !this.state.showEditForm});
@@ -236,6 +245,7 @@ class MessageItem extends React.Component{
         </div>
         <AlertContainer id="alert-container" ref={a => global.msg = a} {...this.alertOptions} />
         {emojiDisplay}
+
         <div className={this.state.emojiButtonClass}>
 
           <div id="message-button" onClick={this.toggleEmojiDisplay}>

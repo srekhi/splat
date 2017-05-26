@@ -20,7 +20,7 @@ class Message < ApplicationRecord
 
   # after_initialize :set_formatted_time
   # after_commit { MessageBroadcastJob.perform_later(self, self.channel) }
-  validates :user, :channel, :content, presence: true
+  validates :user_id, :channel_id, :content, presence: true
   belongs_to :user
   belongs_to :channel
   has_many :emoticons
@@ -37,17 +37,17 @@ class Message < ApplicationRecord
     channel = self.channel
     message_author = self.user
 
-    MessageBroadcastJob.perform_later(self, channel)
-    NotificationBroadcastJob.perform_later(channel, message_author)
+    MessageBroadcastJob.perform_later(self, channel, message_author)
+    # NotificationBroadcastJob.perform_later(channel, message_author)
 
     users = channel.users
     users.each do |user|
-      next if user.id === message_author.id
-      notification = Notification.create(user_id: user.id, channel_id: channel_id)
+      next if user.id == message_author.id
+      notification = Notification.create(user_id: user.id, channel_id: channel.id)
       user_id = user.id
       notification = Api::NotificationsController.render(
           partial: 'api/notifications/notification',
-          locals: { notification: notification }
+          locals: { notification: notification, user_id: user_id, channel_id: channel.id }
           )
       ActionCable.server.broadcast("new_channel_#{user_id}",
           notification: JSON.parse(notification))
