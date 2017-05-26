@@ -115,7 +115,7 @@ Most important part of any chat application is, of course, real-time updates. Us
                                        message: JSON.parse(message))
         end
       end
-```
+    ```
       
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
@@ -147,7 +147,6 @@ Most important part of any chat application is, of course, real-time updates. Us
       data: {emoticon}
     });
   };
-
   ```
 ## DMs  
   Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste (show video of writing a juicy DM). The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
