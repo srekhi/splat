@@ -114,7 +114,6 @@ Most important part of any chat application is, of course, real-time updates. Us
         end
       end
     ```
-      
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
 
@@ -173,5 +172,3 @@ Given that this project was completed from scratch in ten days, there were some 
   + Code snippets / file upload: My personal use of Slack involves heavy usage of these features, and it'd be a great addition to Splat's codebase.
   
   + Message Search: I find Slack's message search very useful for when I need to look up information about a select keyword. This search functionality will allow users to find older messages based on their search input.
-
-* ...
