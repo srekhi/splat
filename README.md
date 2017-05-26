@@ -15,6 +15,8 @@ emoji-mart
 react-tooltip
 
 # Features 
+(show video in here 
+
 ## Live updates:
 Most important part of any chat application is, of course, live feeds. Using Action Cable, I designed Splat so that whenever a user authenticates, they're automatically subscribed to three channels:
   1) Live Chat (Cable 1)
@@ -29,6 +31,20 @@ Most important part of any chat application is, of course, live feeds. Using Act
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis. By interacting with the Giphy API [link https://api.giphy.com/] the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness. (related code samples).
 
   Emojis work in a very similar way. Using React Emoji packages, the application fires an AJAX request when a user reacts to a message. The emoticon database table is simply a join table between messages and users. When a message renders to the user, it fetches the related reactions stored in the join table for display. 
+
+## DMs  
+  Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste (show video of writing a juicy DM). The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
+
+The only difference is that direct message channels are flagged with a private:true booelan. When the user first loads Splat, all channels are loaded in, and the front end renders the direct messages in a separate section from the public channels depending on the channel's 'private' attribute.  You also don't have to worry about scrolling through all the users involved. Splat conveniently offers a filter bar so you can quickly find your friends to message. (video showing this).
+
+## Future Directions
+Given that this project was completed from scratch in ten days, there were some features that were left off of the priority list. However, I plan to continually revisit and add more features. The below is non-exhaustive list of features I plan to implement:
+
+  + Code snippets / file upload: My personal use of Slack involves heavy usage of these features, and it'd be a great addition to Splat's codebase.
+  
+  + Message Search: I find Slack's message search very useful for when I need to look up information about a select keyword. This search functionality will allow users to find older messages based on their search input.
+
+
 
 
 * ...
