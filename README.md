@@ -1,7 +1,7 @@
 # Splat
 [Live App](https://www.splat.work/)
 
-Splat is a fullstack web application inspired by [Slack](https://slack.com/)]. It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
+Splat is a fullstack web application inspired by [Slack](https://slack.com/). It's built with React/Redux on the frontend and Ruby on Rails on the backend with a Postgresql datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
 
 # Features
 
@@ -117,7 +117,7 @@ Most important part of any chat application is, of course, real-time updates. Us
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
 
- By interacting with the Giphy API [link https://api.giphy.com/] the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness. (related code samples).
+ By interacting with the [Giphy API][https://api.giphy.com/] the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
     $.ajax({
@@ -146,7 +146,9 @@ Most important part of any chat application is, of course, real-time updates. Us
   };
   ```
 ## DMs  
-  Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste (show video of writing a juicy DM). The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
+  Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste (show video of writing a juicy DM)
+  
+  . The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
   ```ruby
     # Table name: channels
   #
