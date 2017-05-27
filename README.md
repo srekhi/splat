@@ -178,7 +178,7 @@ The only difference is that direct message channels are flagged with a private:t
     );
   ```
 
-## Future Directions
+## Future Direction
 Given that this project was completed from scratch in ten days, there were some features that were left off of the priority list. However, I plan to continually revisit and add more features. The below is non-exhaustive list of features I plan to implement:
 
   + Code snippets / file upload: My personal use of Slack involves heavy usage of these features, and it'd be a great addition to Splat's codebase.
