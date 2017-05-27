@@ -406,6 +406,7 @@ ul.fa-bars-dropdown > li, ul.fa-bars-dropdown > li > button{
     justify-content: space-between;
     overflow-y: auto;
     /* overflow-y: scroll */
+    overflow: hidden;
 }
 
 #left-nav-dm-list > li {
