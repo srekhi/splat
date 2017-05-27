@@ -56,6 +56,7 @@ Most important part of any chat application is, of course, real-time updates. Us
       ```
   2) Notifications (Cable 2)
       + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
+      ![Notification](/docs/notifications.png)
       ```ruby 
       class Message < ApplicationRecord
         validates :user_id, :channel_id, :content, presence: true
@@ -96,8 +97,10 @@ Most important part of any chat application is, of course, real-time updates. Us
           end
        end 
        ```
-      + This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state. [show model code + related jobs].
-      + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database [insert code snippets and video sample showing this happening live]
+      + This job handles both the creation of the notification in the backend server and the delivery of the notification data to the Redux state.
+      + Whenever a user clicks on a channel to view the unread messages, an AJAX request fires from the frontend to remove those notifications from the database.
+      ![Notification-removal](/docs/notif-delete)
+      
   3) Channel List (Cable 3)
       +  The last problem to be solved was the scenario where a user creates a new channel with another (either a direct message or creates a new public channel). The receiving user wouldn't receive that new channel in their channel list without a third Action Cable subscription. Architecturally, this is very similar to Cable 2. When a user visits the Splat home page, they are automatically subscribed to a ChannelList socket that is unique to the user's id. When a new channel is created, the ChannelList socket is triggered for each user in the new channel. React receives the broadcast from the socket, and dispatches the newly minted data to the frontend for display to the user. Below is the MessageBroadcast job that broadcasts new messages to all members of a channel:
       ```ruby
@@ -116,7 +119,9 @@ Most important part of any chat application is, of course, real-time updates. Us
     ```
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
-
+  ![Giphy-demo](/docs/notif-delete)
+  ![Emoji-menu](/docs/emoji-menu.png)
+  
  By interacting with the [Giphy API][https://api.giphy.com/] the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
@@ -126,9 +131,10 @@ Most important part of any chat application is, of course, real-time updates. Us
     })
   );
   ```
+  
   Emojis work in a very similar way. Using React Emoji packages, the application fires an AJAX request when a user reacts to a message. The emoticon database table is simply a join table between messages and users. When a message renders to the user, it fetches the related reactions stored in the join table for display. 
 
-  ```ruby
+```ruby
   class Emoticon < ApplicationRecord
     belongs_to :user
     belongs_to :message
@@ -146,7 +152,8 @@ Most important part of any chat application is, of course, real-time updates. Us
   };
   ```
 ## DMs  
-  Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste (show video of writing a juicy DM)
+  Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste.
+  ![DM-demo](/docs/dm-demo)
   
   . The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
   ```ruby
@@ -159,6 +166,7 @@ Most important part of any chat application is, of course, real-time updates. Us
   #  updated_at :datetime         not null
  ```
 The only difference is that direct message channels are flagged with a private:true booelan. When the user first loads Splat, all channels are loaded in, and the front end renders the direct messages in a separate section from the public channels depending on the channel's 'private' attribute.  You also don't have to worry about scrolling through all the users involved. Splat conveniently offers a filter bar so you can quickly find your friends to message.
+  ![DM-demo](/docs/filter-demo)
 
   ```javascript
       let filteredUsers = this.props.allUsers.filter(
