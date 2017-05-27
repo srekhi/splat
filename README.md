@@ -121,7 +121,7 @@ Most important part of any chat application is, of course, real-time updates. Us
      ```
 ## Giphys/Emojis
   Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
-  ![Giphy-demo](/docs/notif-delete.gif)
+  ![Notification-removal](/docs/giphy-demo.gif)
   ![Emoji-menu](/docs/emoji-menu.png)
   
  By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
