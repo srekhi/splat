@@ -56,9 +56,9 @@ Most important part of any chat application is, of course, real-time updates. Us
       ```
   2) Notifications (Cable 2)
       + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar. Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
-      
+      <p align="center">
       ![Notification](/docs/notifications.png)
-      
+      </p>
       ```ruby 
       class Message < ApplicationRecord
         validates :user_id, :channel_id, :content, presence: true
