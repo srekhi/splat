@@ -55,7 +55,7 @@ Most important part of any chat application is, of course, real-time updates. Us
         }
       ```
   2) Notifications (Cable 2)
-      + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar (insert video here). Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
+      + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar. Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
       
       ![Notification](/docs/notifications.png)
       
@@ -120,7 +120,7 @@ Most important part of any chat application is, of course, real-time updates. Us
       end
      ```
 ## Giphys/Emojis
-  Previous generations were inspired by art from Da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
+  Previous generations were inspired by art from da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
   ![Notification-removal](/docs/giphy-demo.gif)
   ![Emoji-menu](/docs/emoji-menu.png)
   
@@ -157,7 +157,7 @@ Most important part of any chat application is, of course, real-time updates. Us
   Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste.
   ![DM-demo](/docs/dm-demo.gif)
   
-  . The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
+  The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
   ```ruby
     # Table name: channels
   #
