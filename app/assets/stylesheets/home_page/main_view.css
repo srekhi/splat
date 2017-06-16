@@ -16,7 +16,8 @@
   display: inline-block;
   height: 7vh;
   box-sizing: border-box;
-  padding-top: 9px;
+  padding-top: 1vh;
+  /* padding-bottom: 1vh; */
   /* padding-bottom: 1%; */
 }
 
@@ -36,8 +37,9 @@ div#main-header-content {
     display: inline-block;
     height: 100%;
     /* margin-top: 1.5%; */
-    margin-left: 2.0%;
-    font-size: 18px;
+    /* margin-left: 2.0%; */
+    margin-left: 1vw;
+    font-size: 20px;
     font-weight: bold;
     /* margin-bottom: 1%; */
   }
@@ -64,7 +66,7 @@ div#main-header-content {
 }
 
 .all-messages-container{
-  height: 100%;
+  height: 92vh;
 }
 
 .new-message-input {
