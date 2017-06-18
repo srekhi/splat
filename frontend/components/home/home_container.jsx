@@ -99,14 +99,3 @@ class HomeContainer extends React.Component{
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
-// //
-// const HomeContainer = () => {
-//   let display;
-//   return(
-//     <main className="overall-home-view">
-//       <LeftNav className="left-nav" />
-//       <Route path="/messages/:channelId" component={MainView} />
-//    </main>);
-// };
-
-// <Route exact path="/messages/:channelId/details" component={DetailViewContainer} />
