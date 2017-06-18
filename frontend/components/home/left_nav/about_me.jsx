@@ -19,8 +19,8 @@ const AboutMe = () =>(
       <a className="about-me-link" href="mailto:rohit.rekhi@gmail.com">
         <i id="email-fa" className="fa fa-envelope"></i> E-mail
       </a>
-      <a className="about-me-link" href="https://github.com/srekhi">
-        <i id="github-fa" className="fa fa-github"></i> Github
+      <a className="about-me-link" href="https://github.com/srekhi/splat">
+        <i id="github-fa" className="fa fa-github"></i> GitHub
       </a>
     </div>
     </section>

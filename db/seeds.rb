@@ -69,11 +69,7 @@ Membership.create(user_id: User.first.id, channel_id: c3.id)
 
 Membership.create(user_id: User.last.id, channel_id: c2.id)
 
-Membership.create(user_id: User.last.id, channel_id: d1.id)
-Membership.create(user_id: User.first.id, channel_id: d1.id)
 
-Membership.create(user_id: User.first.id, channel_id: d2.id)
-Membership.create(user_id: users.sample.id, channel_id: d2.id)
 
 
 sample_emojis= %w(
