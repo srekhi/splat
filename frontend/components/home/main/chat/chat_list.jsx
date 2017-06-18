@@ -135,23 +135,5 @@ class ChatList extends React.Component {
   }
 
 }
-//
-// <section className="all-messages-container">
-//   <ul className="chat-message-list">
-//          <li className="chat-message">
-      //   <div className="all-message-content">
-      //     <img src={message.user.avatar_url} />
-      //     <div className="message-content">
-      //       {message.user.username} <span id="message-time">{message.created_at}</span>
-      //       <br />
-      //       {message.content}
-      //     </div>
-      //   </div>
-      // </li>
-//   </ul>
-//   <footer id="new-message-footer">
-//     <NewMessageForm channel={this.props.channel} />
-//   </footer>
-// </section>
 
 export default withRouter(ChatList);

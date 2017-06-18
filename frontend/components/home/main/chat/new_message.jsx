@@ -28,14 +28,6 @@ class NewMessageForm extends React.Component {
 
   }
 
-  componentWillReceiveProps(newProps) {
-    // this.setState = {
-    //   channel_id: newProps.channel.id,
-    //   userId: newProps.userId,
-    //   content: ""
-    // };
-  }
-
   clearState() {
     this.setState({content: ""});
   }
@@ -45,7 +37,6 @@ class NewMessageForm extends React.Component {
     const msg = this.state;
     this.state.channel_id = this.props.match.params.channelId;
     this.props.createMessage(msg).then(this.props.scrollToBottom);
-    // this.sendNotifications();
     this.clearState();
   }
 
@@ -59,7 +50,6 @@ class NewMessageForm extends React.Component {
   updateContent(e) {
     let content = e.currentTarget.value;
     this.setState( {content} );
-
   }
 
   formatUsers(){
@@ -80,7 +70,6 @@ class NewMessageForm extends React.Component {
   }
 
   sendNotifications(){
-    // debugger;
     this.props.channel.users.forEach((user) => {
       if (user.id !== this.props.userId) {
         this.props.createNotification(this.props.channel.id, user.id);
@@ -94,6 +83,8 @@ class NewMessageForm extends React.Component {
 
   addGiphy(giphy) {
     this.clearState();
+    let questionMark = giphy.indexOf("?");
+    giphy.slice(0, questionMark);
     this.setState({ content: `giphy:${giphy}` });
     $("#message-content-input").focus();
 
@@ -109,7 +100,6 @@ class NewMessageForm extends React.Component {
   }
 
   render(){
-    // this.props.deleteNotifications(this.props.channel.id);
     let emojiDisplay = "";
 
     if (this.state.emoticonPickerOpen) {

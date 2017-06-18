@@ -24,7 +24,6 @@ class GiphysSearch extends React.Component {
 
   componentDidMount() {
     this.props.fetchSearchGiphys('');
-
     document.addEventListener("click", this.handleClick);
   }
 
@@ -40,7 +39,6 @@ class GiphysSearch extends React.Component {
     e.preventDefault();
     let searchTerm = this.state.searchTerm.split(' ').join('+');
     this.props.fetchSearchGiphys(searchTerm).then(() => {
-
     });
   }
 
