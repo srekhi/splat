@@ -23,7 +23,7 @@ class GiphysSearch extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSearchGiphys('');
+    this.props.fetchSearchGiphys('sunny');
     document.addEventListener("click", this.handleClick);
   }
 

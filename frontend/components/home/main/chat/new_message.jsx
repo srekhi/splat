@@ -84,10 +84,9 @@ class NewMessageForm extends React.Component {
   addGiphy(giphy) {
     this.clearState();
     let questionMark = giphy.indexOf("?");
-    giphy = giphy.slice(0, questionMark);
+    if (questionMark !== - 1) giphy = giphy.slice(0, questionMark);
     this.setState({ content: `giphy:${giphy}` });
     $("#message-content-input").focus();
-
   }
 
   toggleEmojiDisplay(){
