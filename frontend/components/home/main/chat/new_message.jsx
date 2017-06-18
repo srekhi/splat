@@ -84,7 +84,7 @@ class NewMessageForm extends React.Component {
   addGiphy(giphy) {
     this.clearState();
     let questionMark = giphy.indexOf("?");
-    giphy.slice(0, questionMark);
+    giphy = giphy.slice(0, questionMark);
     this.setState({ content: `giphy:${giphy}` });
     $("#message-content-input").focus();
 
