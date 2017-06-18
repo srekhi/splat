@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
   }
 
   generateRandomUsername(){
-    let max = 4;
+    let max = 3;
     let min = 0;
     let fakeNames = [faker.name.firstName().toLowerCase(), faker.name.lastName().toLowerCase(), faker.internet.userName().toLowerCase().slice(0,6)];
     let randomIndex = Math.floor(Math.random() * (max - min)) + min;
@@ -91,12 +91,6 @@ class SessionForm extends React.Component {
 
     }, timeout);
 
-
-    // this.props.login(user);
-    // this.props.history.push('/');
-
-    // this.setState({username: savedUsername, password: savedPassword},
-    //   () => this.handleSubmit());
    }
 
 
