@@ -27,18 +27,4 @@ class Message < ApplicationRecord
     MessageBroadcastJob.perform_later(self, self.channel_id, message_author)
     NotificationBroadcastJob.perform_later(self.channel_id, message_author)
   end
-    # users.each do |user|
-      # NotificationBroadcastJob.perform_later()
-    #   next if user.id == message_author.id
-    #   notification = Notification.create(user_id: user.id, channel_id: channel.id)
-    #   user_id = user.id
-    #   notification = Api::NotificationsController.render(
-    #       partial: 'api/notifications/notification',
-    #       locals: { notification: notification, user_id: user_id, channel_id: channel.id }
-    #       )
-    #   ActionCable.server.broadcast("new_channel_#{user_id}",
-    #       notification: JSON.parse(notification))
-    #   end
-    # NotificationBroadcastJob.perform_later(channel, user)
-  # end
 end

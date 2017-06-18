@@ -21,8 +21,7 @@ u1.save
   random_faker_names = [
     Faker::Name.first_name.to_s.split(" ").join("_").downcase,
     Faker::Name.last_name.to_s.split(" ").join("_").downcase,
-    Faker::StarWars.character.to_s.split(" ").join("_").downcase,
-    Faker::Lorem.word.slice(0, 7),
+    Faker::StarWars.character.to_s.split(" ").join("_").downcase
   ]
   username = random_faker_names.sample
   u = User.create(username: username, password: "password")
