@@ -263,15 +263,13 @@ i#splash-page-error-fa {
   display: inline-block;
   margin: 0 auto;
   color: white;
-  position: absolute;
-
-
+  /* position: absolute; */
 }
 
 #tagline {
-  font-size: 14px;
+  font-size: 15px;
   /* align-self: center; */
-  margin-left: 172px;
+  margin-left: 11px;
   vertical-align: center;
   justify-self: flex-end;
   margin-top: 28px;

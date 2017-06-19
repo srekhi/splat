@@ -9,7 +9,7 @@ const AboutMe = () =>(
           <h4 id="about-header">About Splat</h4>
         </div>
         <p id="about-me-intro">
-          This application is an App Academy portfolio project inspired by
+          Splat is a live chat web application inspired by
           Slack.
         </p>
         <aside id="about-me-credits">Created by Sunny Rekhi</aside>
