@@ -30,22 +30,22 @@ Most important part of any chat application is, of course, real-time updates. Us
               this.setSocket(channelId);
             }, 100);
           }
-         setSocket(channelId) {
-          if (window.App.channel) {
-            this.removeSocket();
-          }
+          setSocket(channelId) {
+            if (window.App.channel) {
+              this.removeSocket();
+            }
             this.addSocket(channelId);
-          }
+           }
           
-         removeSocket(){
-           window.App.cable.subscriptions.remove(window.App.channel);
-         }
+          removeSocket(){
+            window.App.cable.subscriptions.remove(window.App.channel);
+          }
 
-        addSocket(channelId) {
-          window.App.channel = window.App.cable.subscriptions.create({
-            channel: 'RoomChannel',
-            channel_id: channelId
-          }, {
+          addSocket(channelId) {
+            window.App.channel = window.App.cable.subscriptions.create({
+              channel: 'RoomChannel',
+              channel_id: channelId
+            }, {
             connected: () => {},
             disconnected: () => {},
             received: (data) => {
