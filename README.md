@@ -172,10 +172,10 @@ The only difference is that direct message channels are flagged with a private:t
 
   ```javascript
       let filteredUsers = this.props.allUsers.filter(
-      (user) => {
-        return user.username.indexOf(this.state.allUsers) !== -1;
-      }
-    );
+        (user) => {
+          return user.username.indexOf(this.state.allUsers) !== -1;
+        }
+      );
   ```
 
 ## Future Direction
