@@ -30,6 +30,7 @@ Most important part of any chat application is, of course, real-time updates. Us
               this.setSocket(channelId);
             }, 100);
           }
+          
           setSocket(channelId) {
             if (window.App.channel) {
               this.removeSocket();
@@ -125,6 +126,28 @@ Most important part of any chat application is, of course, real-time updates. Us
   ![Emoji-menu](/docs/emoji-menu.png)
   
  By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
+ ```javascript 
+   giphysContainer(){ 
+    const giphys = this.props.giphys.map((giphy, idx) =>
+      <GiphyItem key={idx}
+                 giphyUrl={giphy.images.fixed_height.url}
+                 selectGiphy={this.selectGiphy}/>);
+    return (
+      <div id="giphys-container">
+        <ul id="giphys-list">
+          { giphys.slice(0,6) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(6,12) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(12,18) }
+        </ul>
+      </div>
+    );
+  }
+  ```
+  
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
     $.ajax({
