@@ -155,7 +155,6 @@ Most important part of any chat application is, of course, real-time updates. Us
   ```
 ## DMs  
   Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste.
-  ![DM-demo](/docs/dm-demo.gif)
   
   The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
   ```ruby
