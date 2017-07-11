@@ -121,7 +121,7 @@ Most important part of any chat application is, of course, real-time updates. Us
       end
      ```
 ## Giphys/Emojis
-  Previous generations were inspired by art from da Vinci and Michaelangelo. In the millenial generation, we have a new, innovative kinds of artistic inspiration: giphys and emojis.
+  Previous generations were inspired by art from da Vinci and Michaelangelo. In the millenial generation, we have new, innovative kinds of artistic inspiration: giphys and emojis.
   ![Notification-removal](/docs/giphy-demo.gif)
   ![Emoji-menu](/docs/emoji-menu.png)
   
