@@ -125,7 +125,7 @@ Most important part of any chat application is, of course, real-time updates. Us
   ![Notification-removal](/docs/giphy-demo.gif)
   ![Emoji-menu](/docs/emoji-menu.png)
   
- By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions. This is architected in the front end by taking the search input from the user and firing an AJAX request to the Giphy api with those query parameters. Redux holds a separate slice of state for the Giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
+ By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions. This is architected in the front end by taking the search input from the user and firing an AJAX request to the Giphy API with those query parameters. Redux holds a separate slice of state for the Giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
  ```javascript 
    giphysContainer(){ 
     const giphys = this.props.giphys.map((giphy, idx) =>
@@ -150,10 +150,10 @@ Most important part of any chat application is, of course, real-time updates. Us
   
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
-    $.ajax({
-      method: 'GET',
-      url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=18`
-    })
+      $.ajax({
+        method: 'GET',
+        url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=18`
+      })
   );
   ```
   
