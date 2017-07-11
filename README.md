@@ -150,10 +150,10 @@ Most important part of any chat application is, of course, real-time updates. Us
   
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
-    $.ajax({
-      method: 'GET',
-      url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=18`
-    })
+      $.ajax({
+        method: 'GET',
+        url: `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=dc6zaTOxFJmzC&limit=18`
+      })
   );
   ```
   
