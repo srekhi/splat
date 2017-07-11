@@ -26,9 +26,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   ReactDOM.render(<Root store={store} />, root);
 });
-
-window.SessionApiUtil = SessionApiUtil;
-window.ChannelActions = ChannelActions;
-window.ChannelApiUtil = ChannelApiUtil;
-window.selectAllPublicChannels = selectAllPublicChannels;
-window.selectAllUsers = selectAllUsers;

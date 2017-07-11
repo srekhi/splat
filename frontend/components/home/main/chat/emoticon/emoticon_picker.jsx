@@ -32,14 +32,6 @@ class MyEmojiInput extends React.Component {
     this.emojiPicker = this.emojiPicker.bind(this);
     }
 
-  componentDidMount() {
-    // document.addEventListener('click', this.props.toggleEmojiDisplay, false);
-  }
-
-  componentWillUnmount() {
-    // document.removeEventListener('click', this.props.toggleEmojiDisplay, false);
-  }
-
   toggleEmojiPicker(e) {
     if(this.refs.emoji.contains(e.target)) {
       this.setState({showEmojiPicker: true});
@@ -47,8 +39,6 @@ class MyEmojiInput extends React.Component {
       setTimeout(this.validateEmoji, 10);
       this.setState({showEmojiPicker: false});
     }
-
-
   }
 
   validateEmoji() { //filters based on emoji text
@@ -67,11 +57,8 @@ class MyEmojiInput extends React.Component {
 
   setEmoji(emoji) {
     this.setState({emoji: emoji});
-    // debugger;
     this.props.addEmoticon(emoji);
     this.props.toggleEmojiDisplay();
-    // $("#message-content-input").val(emoji);
-    //here I need to do the logic of populating text input with that value.
   }
 
   // allows selecting first emoji by pressing "Enter" without submitting form

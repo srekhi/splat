@@ -47,12 +47,11 @@ class GiphysSearch extends React.Component {
   }
 
   selectGiphy(giphy){
-    // this.props.addGiphy(giphy);
     this.props.addGiphy(giphy);
     this.props.toggleGiphySearch();
   }
 
-  giphysContainer(){ //box around the resulting gifs.
+  giphysContainer(){
     const giphys = this.props.giphys.map((giphy, idx) =>
       <GiphyItem key={idx}
                  giphyUrl={giphy.images.fixed_height.url}
@@ -89,7 +88,6 @@ class GiphysSearch extends React.Component {
   }
   render() {
     let giphys = this.props.giphys;
-
     return (
       <div>
         {this.displayGiphysSearchBox()}
