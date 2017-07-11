@@ -21,7 +21,6 @@ class MainView extends React.Component {
   }
   render() {
     let channelDetailOpen = this.props.location.pathname.endsWith('details');
-    // const channel = { channelDetailOpen ? <ChannelDetail /> : "" }
     return (
       <section id="main-view-container">
         <MainHeaderContainer />

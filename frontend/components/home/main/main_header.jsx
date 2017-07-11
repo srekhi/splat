@@ -11,14 +11,9 @@ class MainHeader extends React.Component {
     const channelId = this.props.match.params.channelId;
   }
 
-  componentDidMount(){
-    // this.props.history.push()
-  }
-
   componentWillReceiveProps(newProps){
     if (newProps.match.params.channelId !== this.props.match.params.channelId && newProps.notifications > 0 ) {
       const channelId = newProps.match.params.channelId;
-      // this.props.deleteNotifications(channelId);
       }
   }
 

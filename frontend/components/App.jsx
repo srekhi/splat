@@ -18,15 +18,4 @@ class App extends React.Component {
   }
 }
 
-//
-// const App = () => (
-//   <div>
-//       <Switch>
-//         <ProtectedRoute exact path="/" component={HomeContainer} />
-//         <ProtectedRoute path="/messages/:messageId" component={HomeContainer} />
-//         <Route component={SplashPage} />
-//       </Switch>
-//   </div>
-// );
-
 export default App;

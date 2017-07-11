@@ -100,15 +100,6 @@ class NewChannelForm extends React.Component {
     });
   }
 
-  // renderErrors() {
-  //   if (this.props.errors.length > 0){
-  //     this.props.errors.forEach((err)=> {
-  //       // return this.showAlert(err);
-  //
-  //     });
-  //   }
-  // }
-
   renderErrors() {
     let error_exclamation = "";
     if (this.props.errors === undefined) return <Spinner />;

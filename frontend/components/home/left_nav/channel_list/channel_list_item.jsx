@@ -7,16 +7,9 @@ class ChannelListItem extends React.Component {
     this.channel = this.props.channel;
   }
 
-  componentWillMount(){
-  }
-
   componentWillReceiveProps(newProps){
-    //handle toggling off of detail link here
-    // console.log('newprops');
-    // debugger;
     if (parseInt(newProps.match.params.messageId) === this.props.channel.id){
       newProps.notifications.length = "";
-      //delete these notifications from here.
     }
   }
 
@@ -38,7 +31,6 @@ class ChannelListItem extends React.Component {
           }
           usernames.push(user.username);
         }
-
         usernames[0] = "@" + usernames[0];
         if (usernames.join(" ").length > 30) {
           dmPersonCount = usernames.length;
@@ -48,8 +40,6 @@ class ChannelListItem extends React.Component {
           channelName = usernames.join(", ");
         }
       }
-    if (this.props.location.pathname.endsWith('details')){
-    }
 
     return (
       <div id="channel-list-item">

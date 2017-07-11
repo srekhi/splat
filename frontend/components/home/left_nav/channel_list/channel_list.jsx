@@ -28,10 +28,6 @@ class ChannelList extends React.Component {
       }
     };
   }
-  componentWillMount() {
-    // this.props.fetchChannels(this.props.user.id);
-    // this.props.fetchNotifications(this.props.user.id);
-  }
 
   componentDidMount(){
     this.props.fetchNotifications(this.props.user.id);
@@ -53,9 +49,7 @@ class ChannelList extends React.Component {
 
   render(){
     if (this.publicChannels === undefined || this.props.notifications === undefined) return <p></p>;
-      // <div id="exit-new-channel" onClick={this.closeModal}>
-      //   <i className="fa fa-times fa-3x" aria-hidden="true"></i>
-      // </div>
+
     const modal = <Modal
         isOpen={this.state.modalOpen}
         onRequestClose={this.closeModal}
