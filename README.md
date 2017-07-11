@@ -125,7 +125,7 @@ Most important part of any chat application is, of course, real-time updates. Us
   ![Notification-removal](/docs/giphy-demo.gif)
   ![Emoji-menu](/docs/emoji-menu.png)
   
- By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
+ By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions. This is architected in the front end by taking the search input from the user and firing an AJAX request to the Giphy api with those query parameters. Redux holds a separate slice of state for the Giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
  ```javascript 
    giphysContainer(){ 
     const giphys = this.props.giphys.map((giphy, idx) =>
@@ -160,21 +160,22 @@ Most important part of any chat application is, of course, real-time updates. Us
   Emojis work in a very similar way. Using React Emoji packages, the application fires an AJAX request when a user reacts to a message. The emoticon database table is simply a join table between messages and users. When a message renders to the user, it fetches the related reactions stored in the join table for display. 
 
 ```ruby
-  class Emoticon < ApplicationRecord
-    belongs_to :user
-    belongs_to :message
+class Emoticon < ApplicationRecord
+  belongs_to :user
+  belongs_to :message
 
-    validates :user, :message, :icon, presence: true
-    validates :icon, uniqueness: { scope: [:user_id, :message_id] }
-  end
-  
-  export const addEmojiToMessage = emoticon => {
-    return $.ajax({
-      method: 'POST',
-      url: `/api/emoticons`,
-      data: {emoticon}
-    });
-  };
+  validates :user, :message, :icon, presence: true
+  validates :icon, uniqueness: { scope: [:user_id, :message_id] }
+end
+```
+```javascript
+export const addEmojiToMessage = emoticon => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/emoticons`,
+    data: {emoticon}
+  });
+};
   ```
 ## DMs  
   Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste.
@@ -189,15 +190,15 @@ Most important part of any chat application is, of course, real-time updates. Us
   #  created_at :datetime         not null
   #  updated_at :datetime         not null
  ```
-The only difference is that direct message channels are flagged with a private:true booelan. When the user first loads Splat, all channels are loaded in, and the front end renders the direct messages in a separate section from the public channels depending on the channel's 'private' attribute.  You also don't have to worry about scrolling through all the users involved. Splat conveniently offers a filter bar so you can quickly find your friends to message.
+The only difference is that direct message channels are flagged with a privacy boolean. When the user first loads Splat, all channels are loaded in, and the front end renders the direct messages in a separate section from the public channels depending on the channel's 'private' attribute.  You also don't have to worry about scrolling through all the users involved. Splat conveniently offers a filter bar so you can quickly find your friends to message.
   ![DM-demo](/docs/filter-demo.gif)
 
   ```javascript
-      let filteredUsers = this.props.allUsers.filter(
-        (user) => {
-          return user.username.indexOf(this.state.allUsers) !== -1;
-        }
-      );
+let filteredUsers = this.props.allUsers.filter(
+  (user) => {
+    return user.username.indexOf(this.state.allUsers) !== -1;
+  }
+);
   ```
 
 ## Future Direction
