@@ -10,7 +10,7 @@ Most important part of any chat application is, of course, real-time updates. Us
   1) Live Chat (Cable 1)
       + Whenever a user selects a channel, React parses the URL and grabs the channel ID. Action Cable then subscribes the user to the channel that they're currently visiting. Any updates to this channel trigger an automatic re-render on the React/Redux front-end architecture without requiring the user to refresh the page. 
       
-      ```ruby 
+      ```javascript 
         class ChatList extends React.Component {
           constructor(props){
             super(props);
@@ -30,22 +30,23 @@ Most important part of any chat application is, of course, real-time updates. Us
               this.setSocket(channelId);
             }, 100);
           }
-         setSocket(channelId) {
-          if (window.App.channel) {
-            this.removeSocket();
-          }
-            this.addSocket(channelId);
-          }
           
-         removeSocket(){
-           window.App.cable.subscriptions.remove(window.App.channel);
-         }
+          setSocket(channelId) {
+            if (window.App.channel) {
+              this.removeSocket();
+            }
+            this.addSocket(channelId);
+           }
+          
+          removeSocket(){
+            window.App.cable.subscriptions.remove(window.App.channel);
+          }
 
-        addSocket(channelId) {
-          window.App.channel = window.App.cable.subscriptions.create({
-            channel: 'RoomChannel',
-            channel_id: channelId
-          }, {
+          addSocket(channelId) {
+            window.App.channel = window.App.cable.subscriptions.create({
+              channel: 'RoomChannel',
+              channel_id: channelId
+            }, {
             connected: () => {},
             disconnected: () => {},
             received: (data) => {
@@ -56,10 +57,10 @@ Most important part of any chat application is, of course, real-time updates. Us
       ```
   2) Notifications (Cable 2)
       + Whenever a user joins a channel, they're automatically subscribed to its feed. If they're not currently on the chat, they'll be notified of new messages in the left navigation bar. Notifications are not displayed for the channel that the user is visiting. This is accomplished by building an Action Cable subscription unique to the user's id whenever they load Splat's home page. When a new chat messsage is directed to the user, an after_commit callback is triggered in the message model to fire off a notification broadcast background job for each user in the channel. 
-      
-      ![Notification](/docs/notifications.png)
-      
-      ```ruby 
+    <p align="center">
+    <img src="/docs/notifications.png" />
+    </p>
+     ```ruby 
       class Message < ApplicationRecord
         validates :user_id, :channel_id, :content, presence: true
         belongs_to :user
@@ -125,6 +126,28 @@ Most important part of any chat application is, of course, real-time updates. Us
   ![Emoji-menu](/docs/emoji-menu.png)
   
  By interacting with the [Giphy API](https://api.giphy.com/) the user can send Giphys when words can't quite capture their emotions (show giphy send video + adding of caption). This is architected in the front end by taking the search input from the user and firing an AJAX request to the giphy api with those query parameters. Redux holds a separate slice of state for the giphy API output, which then is displayed to the user in 40px by 40px boxes of happiness.
+ ```javascript 
+   giphysContainer(){ 
+    const giphys = this.props.giphys.map((giphy, idx) =>
+      <GiphyItem key={idx}
+                 giphyUrl={giphy.images.fixed_height.url}
+                 selectGiphy={this.selectGiphy}/>);
+    return (
+      <div id="giphys-container">
+        <ul id="giphys-list">
+          { giphys.slice(0,6) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(6,12) }
+        </ul>
+        <ul id="giphys-list">
+          { giphys.slice(12,18) }
+        </ul>
+      </div>
+    );
+  }
+  ```
+  
   ```javascript
     export const fetchSearchGiphys = (searchTerm) => (
     $.ajax({
@@ -155,7 +178,6 @@ Most important part of any chat application is, of course, real-time updates. Us
   ```
 ## DMs  
   Whenever you need to share juicy details with a friend, a public channel just won't do it. Luckily, Splat implements direct messaging so all that gossip doesn't have to go to waste.
-  ![DM-demo](/docs/dm-demo.gif)
   
   The direct message architecture is almost identical to the public channel architecture--in fact, they both come from the same model:
   ```ruby
@@ -172,10 +194,10 @@ The only difference is that direct message channels are flagged with a private:t
 
   ```javascript
       let filteredUsers = this.props.allUsers.filter(
-      (user) => {
-        return user.username.indexOf(this.state.allUsers) !== -1;
-      }
-    );
+        (user) => {
+          return user.username.indexOf(this.state.allUsers) !== -1;
+        }
+      );
   ```
 
 ## Future Direction
