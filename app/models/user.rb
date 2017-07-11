@@ -12,6 +12,7 @@
 #
 
 class User < ApplicationRecord
+  attr_reader :password
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true
 
@@ -22,18 +23,12 @@ class User < ApplicationRecord
     "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.04_PM_te3gr9.png",
     "https://res.cloudinary.com/dbbzpmyvc/image/upload/c_scale,w_38/v1494989557/Screen_Shot_2017-05-16_at_7.51.33_PM_yyhcbn.png",
   ]
-  # TODO: Comment back in
-  # validates :email, :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   has_many :memberships
   has_many :channels, through: :memberships
   has_many :messages
   has_many :emoticons
   has_many :notifications
-
-
-  attr_reader :password
-  # attr_writer :avatar_url
 
   after_initialize :ensure_session_token, :ensure_avatar_url
 
@@ -45,7 +40,6 @@ class User < ApplicationRecord
 
   def ensure_avatar_url
     self.avatar_url ||= DEFAULT_URLS.sample
-    # self.avatar_url = Faker::Avatar.image("#{self.id}", "50x50")
   end
 
   def is_password?(password)

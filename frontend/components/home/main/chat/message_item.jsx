@@ -4,9 +4,6 @@ import ReactEmoji from 'react-emoji';
 import AlertContainer from 'react-alert';
 import { addEmojiToMessage } from '../../../../util/emoticon_api_util';
 
-
-//TODO: set state on visibility for class.
-
 class MessageItem extends React.Component{
   constructor(props){
     super(props);
@@ -69,10 +66,6 @@ class MessageItem extends React.Component{
       let message = responseEmoticon.message;
       return this.props.updateMessage(message);
     });
-    // here i need to add the emoji to the list of message reactions
-    //fire off an ajax request to save the emoji string.
-    //on the frontend i can iterate through the reactions and call React.Emojify.
-
   }
 
   updateContent(e) {
@@ -96,7 +89,6 @@ class MessageItem extends React.Component{
     );
   }
 
-
   updateContent(e) {
     let content = e.currentTarget.value;
     this.setState( {content} );
@@ -116,48 +108,22 @@ class MessageItem extends React.Component{
     }
   }
 
-  // showAuthorAlert(){
-  //   msg.show('You are not the author of this message', {
-  //     time: 2000,
-  //     type: 'info',
-  //   });
-  // }
-  //
-  // buildAlert() {
-  //   const alertOptions = {
-  //     offset: 25,
-  //     position: 'bottom left',
-  //     theme: 'dark',
-  //     time: 2000,
-  //     transition: 'scale'
-  //   };
-  //   return(
-  //     <div>
-  //       <AlertContainer ref={(a) => global.msg = a} {...alertOptions} />
-  //     </div>
-  //   );
-  // }
-
   componentDidUpdate(){
     if ($(".emoji-form span").first().offset() && $(".emoji-form span").first().offset().top < 40){
-      // debugger;
       let oldTop = $(".emoji-form span").first().offset().top;
       let oldLeft = $(".emoji-form span").first().offset().left;
       $(".emoji-form span").first().offset({top: oldTop + 300, left: oldLeft - 60 });
     }
   }
 
-
   toggleEditForm(){
     this.setState({showEditForm: !this.state.showEditForm});
-
   }
 
   editMessage(e){
     e.preventDefault();
     if (this.props.currentUser.id !== this.message.user_id) {
       this.showAlert("You are not the author of this message");
-      //insert a react alert here.
     } else{
       this.toggleEditForm();
       this.props.editMessage(this.state);

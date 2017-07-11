@@ -7,8 +7,7 @@ class Api::UsersController < ApplicationController
       Channel.where(private: false).each do |channel|
         Membership.create(user_id: @user.id, channel_id: channel.id)
       end
-      # Notification.create()
-      # IntroductionJob.perform_later(@user)
+
       intro_dm = Channel.create(name: "dm", private: true)
       sunny = User.find_by(username: "sunny")
       Membership.create(user_id: @user.id, channel_id: intro_dm.id)

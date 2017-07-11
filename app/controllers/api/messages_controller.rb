@@ -1,7 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
     channel = Channel.find_by(id: params[:channel_id])#.include(:messages) #channel is part of url, so part of params.
-    # debugger
     @messages = channel.messages.includes(:emoticons, :user)
     render "api/messages/index"
   end

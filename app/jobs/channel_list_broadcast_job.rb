@@ -6,7 +6,6 @@ class ChannelListBroadcastJob < ApplicationJob
       partial: 'api/channels/channel',
       locals: { channel: channel, users: channel.users, count: channel.users.length }
     )
-    puts "went through"
     ActionCable.server.broadcast("message_list_#{user.id}",
                                  channel: JSON.parse(channel))
   end
