@@ -195,9 +195,9 @@ The only difference is that direct message channels are flagged with a privacy b
 
   ```javascript
 let filteredUsers = this.props.allUsers.filter(
-  (user) => {
-    return user.username.indexOf(this.state.allUsers) !== -1;
-  }
+    (user) => {
+      return user.username.indexOf(this.state.allUsers) !== -1;
+    }
 );
   ```
 
