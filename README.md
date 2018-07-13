@@ -1,6 +1,4 @@
 # Splat
-[Live App](https://www.splat.work/)
-
 Splat is a fullstack web application inspired by [Slack](https://slack.com/). It's built with React/Redux on the frontend and Ruby on Rails on the backend with a PostgreSQL datbase. This entire project was conceived, designed, and built within a ten-day period, but I look forward to revisiting and adding more features. 
 
 # Features
